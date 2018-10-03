@@ -263,3 +263,21 @@ To stop the blockchain:
 $ bitcoin-cli stop
 ```
 
+##NEO
+
+https://neo-python.readthedocs.io/en/latest/
+
+This currently only works with python 3.6, not the current 3.7    
+see https://github.com/CityOfZion/neo-python/issues/518
+
+Install level db:    
+`brew install leveldb`
+
+Install neo python:
+`pip install neo-python`
+
+Bootstrap the Testnet (Mainnet)
+`np-bootstrap` (`np-bootstrap -m`)
+
+Start the rest and rpc server:    
+`np-api-server --testnet --port-rpc 10332 --port-rest 80`
