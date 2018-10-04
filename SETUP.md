@@ -270,14 +270,28 @@ https://neo-python.readthedocs.io/en/latest/
 This currently only works with python 3.6, not the current 3.7    
 see https://github.com/CityOfZion/neo-python/issues/518
 
-Install level db:    
+List of possible RPC actions:
+http://docs.neo.org/en-us/node/cli/2.9.0/api.html
+
+use privateNet with docker image:    
+https://hub.docker.com/r/cityofzion/neo-privatenet/
+
+Python RPC
+https://github.com/CityOfZion/neo-python-rpc
+
+(1) Install level db:    
 `brew install leveldb`
 
-Install neo python:
+(2) Install neo python:    
 `pip install neo-python`
 
-Bootstrap the Testnet (Mainnet)
+(3) Bootstrap the Testnet (Mainnet)    
 `np-bootstrap` (`np-bootstrap -m`)
 
-Start the rest and rpc server:    
+(4) Create a wallet and unlock (open it):    
+`create wallet {wallet_path}`
+`open wallet {wallet_path}`
+
+(5) Start the rest and rpc server:      
 `np-api-server --testnet --port-rpc 10332 --port-rest 80`
+
