@@ -108,3 +108,7 @@ venv.bak/
 
 #virtualenv
 /env
+/venv*
+
+#notes
+note.md

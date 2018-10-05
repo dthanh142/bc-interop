@@ -263,3 +263,40 @@ To stop the blockchain:
 $ bitcoin-cli stop
 ```
 
+##NEO
+
+https://neo-python.readthedocs.io/en/latest/
+
+This currently only works with python 3.6, not the current 3.7    
+see https://github.com/CityOfZion/neo-python/issues/518
+
+List of possible RPC actions:
+http://docs.neo.org/en-us/node/cli/2.9.0/api.html
+
+use privateNet with docker image:    
+https://hub.docker.com/r/cityofzion/neo-privatenet/
+
+Python RPC
+https://github.com/CityOfZion/neo-python-rpc
+
+(1) Install level db:    
+`brew install leveldb`
+
+(2) Install neo python:    
+`pip install neo-python`
+
+(3) Bootstrap the Testnet (Mainnet)    
+`np-bootstrap` (`np-bootstrap -m`)
+
+(4) Create a wallet and unlock (open it):    
+`create wallet {wallet_path}`
+`open wallet {wallet_path}`
+
+(5) Start the rest and rpc server:      
+`np-api-server --testnet --port-rpc 10332 --port-rest 80`
+
+##Postgres Database
+(1) Install Docker
+(2) Pull the postgres image with `docker pull postgres`
+(3) Run a postgres server in a docker container `docker run --name postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=test -p 127.0.0.1:5000:5432 -d postgres` The database will be reachable under localhost:5000
+(4) 
