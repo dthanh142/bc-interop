@@ -25,6 +25,12 @@ class Adapter(ABC):
 
     @classmethod
     def retrieve(cls, transaction_hash):
+        """Get the transaction data from a tx hash:
+        Args:
+            param1 (str): The transaction hash.
+        Returns:
+            string: The transaction data as text.
+        """
         transaction = cls.get_transaction(transaction_hash)
         data = cls.extract_data(transaction)
         return cls.to_text(data)
@@ -71,4 +77,3 @@ class Adapter(ABC):
     @abstractmethod
     def add_transaction_to_database(transaction_hash):
         raise NotImplementedError
-

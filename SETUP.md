@@ -295,3 +295,8 @@ https://github.com/CityOfZion/neo-python-rpc
 (5) Start the rest and rpc server:      
 `np-api-server --testnet --port-rpc 10332 --port-rest 80`
 
+##Postgres Database
+(1) Install Docker
+(2) Pull the postgres image with `docker pull postgres`
+(3) Run a postgres server in a docker container `docker run --name postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=test -p 127.0.0.1:5000:5432 -d postgres` The database will be reachable under localhost:5000
+(4) 
