@@ -26,7 +26,7 @@ def store(text, blockchain):
     return transaction_hash
 
 
-print(store("Data_to_store", Blockchain.POSTGRES))
+print(store('Data_to_store', Blockchain.POSTGRES))
 
 
 def retrieve(transaction_hash):
