@@ -300,3 +300,7 @@ https://github.com/CityOfZion/neo-python-rpc
 (2) Pull the postgres image with `docker pull postgres`
 (3) Run a postgres server in a docker container `docker run --name postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=test -p 127.0.0.1:5000:5432 -d postgres` The database will be reachable under localhost:5000
 (4) 
+
+Sources:    
+Psycopg: http://initd.org/psycopg/docs/install.html#binary-install-from-pypi
+https://pynative.com/python-postgresql-tutorial/

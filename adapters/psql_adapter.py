@@ -1,6 +1,6 @@
 import psycopg2
 from blockchain import Blockchain
-import database
+import db.database as database
 
 # from adapters.adapter import Adapter
 
@@ -10,18 +10,18 @@ class PostgresAdapter():
     try:
         # connect and print version or error
         connection = psycopg2.connect(
-            user="test",
-            password="123456",
+            user=credentials['user'],
+            password=credentials['password'],
             host="localhost",
-            port="5000",
-            database="test")
+            port=credentials['key'],
+            database=credentials['address'])
         cursor = connection.cursor()
         cursor.execute("SELECT version();")
-        record = cursor.fetchone()
-        print("Successfully connected to - ", record, "\n")
+        version = cursor.fetchone()
+        print(f"Connected to {version}")
         # create table if not exists
         cursor.execute(
-            """CREATE TABLE IF NOT EXISTS test(id SERIAL PRIMARY KEY, text varchars)"""
+            """CREATE TABLE IF NOT EXISTS test (id SERIAL PRIMARY KEY, value text)"""
         )
         connection.commit()
     except (Exception, psycopg2.DatabaseError) as error:
@@ -47,31 +47,32 @@ class PostgresAdapter():
         Returns:
             string: The transaction hash.
         """
-        print("store was run with text" + text)
-        # transaction = cls.create_transaction(text)
+        transaction = cls.create_transaction(text)
+        print(f"this is the transaction {transaction}")
+        transaction_hash = cls.send_raw_transaction(transaction)
+        print(transaction_hash)
 
-        # query = """ INSERT INTO test (name, email) VALUES ('Bobby','bob@b.ch') """
-        # cursor.execute(query)
-        # con.commit()
+        #
         # cur.execute("SELECT * FROM test")
         # items = cur.fetchall()
 
-        # signed_transaction = cls.sign_transaction(transaction)
-        # transaction_hash = cls.send_raw_transaction(signed_transaction)
         # cls.add_transaction_to_database(transaction_hash)
         # return transaction_hash
 
+    @staticmethod
+    def create_transaction(text):
+        query = """INSERT INTO test (id, value) VALUES (DEFAULT, 'TESTVALUE')"""
+        return query
+
+
     @classmethod
-    def create_transaction(cls, text):
-        return f""" INSERT INTO {cls.tableName} (id, value) VALUES (1,{name},'bob@b.ch') """
-
-    @staticmethod
-    def sign_transaction(transaction):
-        raise NotImplementedError
-
-    @staticmethod
-    def send_raw_transaction(transaction):
-        raise NotImplementedError
+    def send_raw_transaction(cls, transaction):
+        try:
+            cls.cursor.execute(transaction)
+            cls.connection.commit()
+            
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(f"Error while sending transaction: {error}")
 
     @staticmethod
     def add_transaction_to_database(transaction_hash):

@@ -3,7 +3,7 @@
 # from adapters.btc_adapter import BTCAdapter
 from adapters.psql_adapter import PostgresAdapter
 from blockchain import Blockchain
-import database
+import db.database as database
 
 Adapter = {
     # Blockchain.ETHEREUM: EthAdapter,
@@ -26,7 +26,7 @@ def store(text, blockchain):
     return transaction_hash
 
 
-print(store("blablabla", Blockchain.POSTGRES))
+print(store("Data_to_store", Blockchain.POSTGRES))
 
 
 def retrieve(transaction_hash):

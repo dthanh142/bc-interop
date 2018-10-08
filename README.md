@@ -3,13 +3,17 @@
 ## Setup
 ### Using venv
 Create environment:
-`python3 -m venv <DIR>`    
+`python3 -m venv venv`    
 Activate environment:
-`source <DIR>/bin/activate`
+`source venv/bin/activate`
 The python version of the environment will be the one with which the environment is created.
   
 ### Export dependencies
-`env/bin/pip freeze > requirements.txt`
+`venv/bin/pip freeze > requirements.txt`
 
 ### Import dependencies
-`env/bin/pip install -r requirements.txt`
+`venv/bin/pip install -r requirements.txt`
+
+### Create and source database
+Create local DB: `import db.database`
+Source database: `db.database.setup()`
