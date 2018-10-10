@@ -3,7 +3,8 @@ from blockchain import Blockchain
 import db.database as database
 from adapters.adapter import Adapter
 
-# TODO: Close connections after doing stuff
+# TODO: Close connections after doing stuff. At the moment there is only one instance so this is not possible.
+# Maybe look for an alternative solution in the future or just leave it like this.
 
 
 class PostgresAdapter(Adapter):
@@ -59,6 +60,12 @@ class PostgresAdapter(Adapter):
         except (Exception, psycopg2.DatabaseError) as error:
             print(f"Error while sending transaction: {error}")
 
+        # finally:
+        #     if (cls.connection):
+        #         cls.cursor.close()
+        #         cls.connection.close()
+        #         print("PostgreSQL connection was closed")
+
     @staticmethod
     def add_transaction_to_database(transaction_hash):
         database.add_transaction(transaction_hash, Blockchain.POSTGRES)
@@ -73,6 +80,12 @@ class PostgresAdapter(Adapter):
 
         except (Exception, psycopg2.DatabaseError) as error:
             print(f"Error while sending transaction: {error}")
+
+        # finally:
+        #     if (cls.connection):
+        #         cls.cursor.close()
+        #         cls.connection.close()
+        #         print("PostgreSQL connection was closed")
 
     @staticmethod
     def extract_data(transaction):
