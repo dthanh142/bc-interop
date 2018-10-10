@@ -1,7 +1,7 @@
 from sqlite3 import connect, Row
 from datetime import datetime
 from blockchain import Blockchain
-from config import DATABASE, BLOCKCHAINS, CREDENTIALS, TRANSACTIONS
+from db.config import DATABASE, BLOCKCHAINS, CREDENTIALS, TRANSACTIONS
 
 connection = connect(DATABASE)
 # Rows wrapped with the Row class can be accessed both by index (like tuples)

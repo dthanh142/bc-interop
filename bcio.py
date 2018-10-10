@@ -1,14 +1,18 @@
-from adapters.eth_adapter import EthAdapter
-from adapters.mc_adapter import MCAdapter
-from adapters.btc_adapter import BTCAdapter
+# from adapters.eth_adapter import EthAdapter
+# from adapters.mc_adapter import MCAdapter
+# from adapters.btc_adapter import BTCAdapter
+from adapters.psql_adapter import PostgresAdapter
 from blockchain import Blockchain
-import database
+import db.database as database
 
 Adapter = {
-    Blockchain.ETHEREUM: EthAdapter,
-    Blockchain.MULTICHAIN: MCAdapter,
-    Blockchain.BITCOIN: BTCAdapter
+    # Blockchain.ETHEREUM: EthAdapter,
+    # Blockchain.MULTICHAIN: MCAdapter,
+    # Blockchain.BITCOIN: BTCAdapter,
+    Blockchain.POSTGRES:
+    PostgresAdapter,
 }
+
 
 def store(text, blockchain):
     """Store a text in a specific Blockchain:
@@ -34,3 +38,5 @@ def retrieve(transaction_hash):
     text = adapter.retrieve(transaction_hash)
     return text
 
+print(store('TestValue', Blockchain.POSTGRES))
+print(retrieve(29))

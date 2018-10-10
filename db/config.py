@@ -1,10 +1,10 @@
 from blockchain import Blockchain, blockchain
-from credential import credential
-from transaction import transaction
+from db.credential import credential
+from db.transaction import transaction
 
 AMOUNT = 0
 ENCODING = 'utf-8'
-DATABASE = 'bcio.db'
+DATABASE = 'db/bcio.db'
 BLOCKCHAINS = (
     blockchain(
         blockchain=Blockchain.ETHEREUM,
@@ -17,6 +17,10 @@ BLOCKCHAINS = (
     blockchain(
         blockchain=Blockchain.BITCOIN,
         name='BITCOIN'
+    ),
+    blockchain(
+        blockchain=Blockchain.POSTGRES,
+        name='POSTGRES'
     )
 )
 CREDENTIALS = (
@@ -38,6 +42,15 @@ CREDENTIALS = (
         key='cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
         user='bitcoinrpc',
         password='f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
+    ),
+    credential(
+        blockchain=Blockchain.POSTGRES,
+        # database name
+        address='test',
+        # port number
+        key='5000',
+        user='test',
+        password='123456'
     )
 )
 TRANSACTIONS = (
