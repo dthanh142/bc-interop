@@ -10,7 +10,7 @@ Adapter = {
     # Blockchain.MULTICHAIN: MCAdapter,
     # Blockchain.BITCOIN: BTCAdapter,
     Blockchain.POSTGRES:
-    PostgresAdapter
+    PostgresAdapter,
 }
 
 
@@ -26,9 +26,6 @@ def store(text, blockchain):
     return transaction_hash
 
 
-print(store('Data_to_store', Blockchain.POSTGRES))
-
-
 def retrieve(transaction_hash):
     """Get the text stored on the Blockchain:
         Args:
@@ -40,3 +37,6 @@ def retrieve(transaction_hash):
     adapter = Adapter[blockchain]
     text = adapter.retrieve(transaction_hash)
     return text
+
+print(store('TestValue', Blockchain.POSTGRES))
+print(retrieve(29))
