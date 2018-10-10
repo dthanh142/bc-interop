@@ -304,3 +304,14 @@ https://github.com/CityOfZion/neo-python-rpc
 Sources:    
 Psycopg: http://initd.org/psycopg/docs/install.html#binary-install-from-pypi
 https://pynative.com/python-postgresql-tutorial/
+
+
+##Stellar
+
+Run a docker container and map port 8000 for REST requests.    
+`docker run --rm -it -p "8000:8000" --name stellar stellar/quickstart --testnet`
+
+Sources:     
+Horizon server on docker: https://hub.docker.com/r/stellar/quickstart/    
+Python SDK to interact with horizon: https://github.com/StellarCN/py-stellar-base      
+API documentation: https://stellar-base.readthedocs.io/en/latest/api.html
