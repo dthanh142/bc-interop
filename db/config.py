@@ -21,6 +21,10 @@ BLOCKCHAINS = (
     blockchain(
         blockchain=Blockchain.POSTGRES,
         name='POSTGRES'
+    ),
+    blockchain(
+        blockchain=Blockchain.STELLAR,
+        name='STELLAR'
     )
 )
 CREDENTIALS = (
@@ -51,7 +55,14 @@ CREDENTIALS = (
         key='5000',
         user='test',
         password='123456'
-    )
+    ),
+    credential(
+        blockchain=Blockchain.STELLAR,
+        address='tbd',
+        key='tbd',
+        user='tbd',
+        password='tbd'
+    ),
 )
 TRANSACTIONS = (
     transaction(
