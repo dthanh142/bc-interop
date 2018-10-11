@@ -38,14 +38,14 @@ CREDENTIALS = (
         address='1MRQf6mYRDoXjtoKVBi8huxBC69zmSzheYN4yM',
         key='V7BFGjp4wrowNSJDSouXVFJQkwZxMFDScba4SkHYA9aYjEDhLrFBV2Nd',
         user='multichainrpc',
-        password='GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'
-    ),
+        password='GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'),
     credential(
         blockchain=Blockchain.BITCOIN,
         address='2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
         key='cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
         user='bitcoinrpc',
-        password='f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
+        password=
+        'f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
     ),
     credential(
         blockchain=Blockchain.POSTGRES,
@@ -54,15 +54,13 @@ CREDENTIALS = (
         # port number
         key='5000',
         user='test',
-        password='123456'
-    ),
+        password='123456'),
     credential(
         blockchain=Blockchain.STELLAR,
-        address='tbd',
-        key='tbd',
+        address='GCCAETWXN5VYPOU4MYTUGTFPTSWWNFYMDZWHWS566PUXR5GCQ7SY7QHQ',
+        key='SBJF56A62FP7OEATJIDFYUTXORNJXWGXD5GBWW7TDVN2QMHDJMOXBLPK',
         user='tbd',
-        password='tbd'
-    ),
+        password='tbd'),
 )
 TRANSACTIONS = (
     transaction(
@@ -74,4 +72,3 @@ TRANSACTIONS = (
         blockchain=Blockchain.BITCOIN
     )
 )
-
