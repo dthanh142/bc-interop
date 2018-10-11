@@ -315,3 +315,6 @@ Sources:
 Horizon server on docker: https://hub.docker.com/r/stellar/quickstart/    
 Python SDK to interact with horizon: https://github.com/StellarCN/py-stellar-base      
 API documentation: https://stellar-base.readthedocs.io/en/latest/api.html
+
+Maximum size to save on stellar is 28 bytes.
+https://www.stellar.org/developers/guides/concepts/transactions.html#memo
