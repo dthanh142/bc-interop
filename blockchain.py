@@ -6,6 +6,7 @@ class Blockchain(Enum):
     MULTICHAIN = auto()
     BITCOIN = auto()
     POSTGRES = auto()
+    STELLAR = auto()
 
 
 def blockchain(blockchain, name):
