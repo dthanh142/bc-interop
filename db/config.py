@@ -59,8 +59,8 @@ CREDENTIALS = (
         blockchain=Blockchain.STELLAR,
         address='GCCAETWXN5VYPOU4MYTUGTFPTSWWNFYMDZWHWS566PUXR5GCQ7SY7QHQ',
         key='SBJF56A62FP7OEATJIDFYUTXORNJXWGXD5GBWW7TDVN2QMHDJMOXBLPK',
-        user='tbd',
-        password='tbd'),
+        user='stellar (not used)',
+        password='stellar (not used)'),
 )
 TRANSACTIONS = (
     transaction(

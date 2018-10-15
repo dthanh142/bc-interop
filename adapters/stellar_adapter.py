@@ -4,7 +4,7 @@ from adapters.adapter import Adapter
 from stellar_base.builder import Builder
 from stellar_base.horizon import horizon_testnet, horizon_livenet
 
-//TODO: research how to use your own horizon server instead of the proviced one
+# TODO: research how to use your own horizon server instead of the proviced one
 
 class StellarAdapter(Adapter):
 
@@ -16,6 +16,8 @@ class StellarAdapter(Adapter):
     @classmethod
     def create_transaction(cls, text):
         builder = Builder(secret=cls.key)
+        # use this to use local node e.g with docker instead of public node
+        # builder = Builder(secret=cls.key, horizon_uri="http://localhost:8000/")
         builder.append_payment_op(cls.address, '100', 'XLM')
         builder.add_text_memo(text)  # string length <= 28 bytes
         return builder

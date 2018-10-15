@@ -42,7 +42,7 @@ def retrieve(transaction_hash):
     return text
 
 
-# print(store('TestValue', Blockchain.STELLAR))
-# print(
-#     retrieve(
-#         "4dc4a25db946018be202be035a15eddc073f8795b80d4e1b695a06a4f7991c5d"))
+# print(store('localhosttest', Blockchain.STELLAR))
+print(
+    retrieve(
+        "412fadb2eedd68420a8175032c0efdebb07799297add072deb7bb97da4c63246"))
