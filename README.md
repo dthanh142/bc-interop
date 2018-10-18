@@ -21,3 +21,7 @@ Source database: `db.database.setup()`
 ### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
+
+### Install secp256k1
+IF there is a certification error installing secp256k1:    
+/Applications/Python\ 3.6/Install\ Certificates.command
