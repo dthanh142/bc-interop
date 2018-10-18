@@ -18,6 +18,6 @@ The python version of the environment will be the one with which the environment
 Create local DB: `import db.database`
 Source database: `db.database.setup()`
 
-### Upgrade pip on >3.6
+### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
