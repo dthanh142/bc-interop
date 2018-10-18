@@ -22,7 +22,7 @@ Source database: `db.database.setup()`
 Use this command if upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
 
-### Install secp256k1 for Hyperledger instal
+### Install secp256k1 for Hyperledger installation
 Because python 3.6 is not compatible with secp256k1, you need to pull it from another repo and manually install it.    
 
 Make sure those are installed on your machine by running (mac):     
