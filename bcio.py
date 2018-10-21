@@ -1,19 +1,19 @@
-from adapters.eth_adapter import EthAdapter
-from adapters.mc_adapter import MCAdapter
-from adapters.btc_adapter import BTCAdapter
-from adapters.psql_adapter import PostgresAdapter
-from adapters.stellar_adapter import StellarAdapter
+# from adapters.eth_adapter import EthAdapter
+# from adapters.mc_adapter import MCAdapter
+# from adapters.btc_adapter import BTCAdapter
+# from adapters.psql_adapter import PostgresAdapter
+# from adapters.stellar_adapter import StellarAdapter
+from adapters.hyperledger_adapter import HyperledgerAdapter
 from blockchain import Blockchain
 import db.database as database
 
 Adapter = {
-    Blockchain.ETHEREUM: EthAdapter,
-    Blockchain.MULTICHAIN: MCAdapter,
-    Blockchain.BITCOIN: BTCAdapter,
-    Blockchain.POSTGRES:
-    PostgresAdapter,
-    Blockchain.STELLAR:
-    StellarAdapter,
+    # Blockchain.ETHEREUM: EthAdapter,
+    # Blockchain.MULTICHAIN: MCAdapter,
+    # Blockchain.BITCOIN: BTCAdapter,
+    # Blockchain.POSTGRES: PostgresAdapter,
+    # Blockchain.STELLAR: StellarAdapter,
+    Blockchain.HYPERLEDGER: HyperledgerAdapter,
 }
 
 
@@ -40,3 +40,5 @@ def retrieve(transaction_hash):
     adapter = Adapter[blockchain]
     text = adapter.retrieve(transaction_hash)
     return text
+
+store("testtext", Blockchain.HYPERLEDGER)

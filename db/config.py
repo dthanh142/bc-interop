@@ -25,6 +25,10 @@ BLOCKCHAINS = (
     blockchain(
         blockchain=Blockchain.STELLAR,
         name='STELLAR'
+    ),
+    blockchain(
+        blockchain=Blockchain.HYPERLEDGER,
+        name='HYPERLEDGER'
     )
 )
 CREDENTIALS = (
@@ -61,6 +65,12 @@ CREDENTIALS = (
         key='SBJF56A62FP7OEATJIDFYUTXORNJXWGXD5GBWW7TDVN2QMHDJMOXBLPK',
         user='stellar (not used)',
         password='stellar (not used)'),
+    credential(
+        blockchain=Blockchain.HYPERLEDGER,
+        address='tbd',
+        key='tbd',
+        user='hyperledger (not used)',
+        password='hyperledger (not used)'),
 )
 TRANSACTIONS = (
     transaction(

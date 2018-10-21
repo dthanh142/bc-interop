@@ -329,7 +329,7 @@ https://www.stellar.org/developers/guides/concepts/transactions.html#memo
 https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
 
 Start:    
-`docker-compose -f sawtooth-default.yaml up`
+`docker-compose -f setup_helpers/sawtooth-default.yaml up`
 Stop:    
 `docker-compose -f sawtooth-default.yaml down`
 Test if up:    
