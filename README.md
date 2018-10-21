@@ -17,3 +17,6 @@ The python version of the environment will be the one with which the environment
 ### Create and source database
 Create local DB: `import db.database`
 Source database: `db.database.setup()`
+
+### Docker
+Stop and remove all container: `docker rm $(docker ps -a -q)`

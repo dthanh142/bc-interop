@@ -96,10 +96,13 @@ class HyperledgerAdapter(Adapter):
 
         except HTTPError as e:
             response = e.file
+        #get transaction id
+            
 
 
     @staticmethod
     def add_transaction_to_database(transaction_hash):
+
         return ""
 
 # ---Retrieve---
