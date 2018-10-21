@@ -41,4 +41,5 @@ def retrieve(transaction_hash):
     text = adapter.retrieve(transaction_hash)
     return text
 
-store("testtext", Blockchain.HYPERLEDGER)
+# store("bla", Blockchain.HYPERLEDGER)
+print(retrieve("99f506fbfec7e85ebcbd7aa5f36b394ce2ca4e85256bfccd5764c9a6cceb344c34cc687619e34b785157c1433975ca209dace173e9332ca9c8dbbe93b170af2d"))

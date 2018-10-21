@@ -20,3 +20,10 @@ Source database: `db.database.setup()`
 
 ### Docker
 Stop and remove all container: `docker rm $(docker ps -a -q)`
+
+### Usefull python stuff
+Print a nice, readable version of a dict:     
+```python
+import pprint
+pprint.pprint(dict)
+```

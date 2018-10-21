@@ -14,6 +14,8 @@ from adapters.adapter import Adapter
 import requests
 import json
 import base64
+import db.database as database
+from blockchain import Blockchain
 
 # docker rm $(docker ps -a -q)
 # docker-compose -f /Users/timo/Documents/repos/bc-interop/setup_helpers/sawtooth-default.yaml up
@@ -85,6 +87,7 @@ class HyperledgerAdapter(Adapter):
         #encode the batch in a batchlist
         batch_list_bytes = BatchList(batches=[batch]).SerializeToString()
 
+
         #Submitting Batches to the Validator
         try:
             r=requests.post(
@@ -93,27 +96,28 @@ class HyperledgerAdapter(Adapter):
              headers={'Content-Type': 'application/octet-stream'})
             response = json.loads(r.text)
             print(f"response: {response}")
+            return [txn.header_signature for txn in txns][0]
 
         except HTTPError as e:
             response = e.file
         #get transaction id
-            
 
 
     @staticmethod
     def add_transaction_to_database(transaction_hash):
-
+        database.add_transaction(transaction_hash, Blockchain.HYPERLEDGER)
         return ""
 
 # ---Retrieve---
     @classmethod
     def get_transaction(cls, transaction_id):
         r = requests.get(f"http://localhost:8008/transactions/{transaction_id}")
-        return json.loads(r.text)
+        result = json.loads(r.text)
+        return result
 
     @staticmethod
     def extract_data(transaction):
-        return "transaction.get('memo')"
+        return transaction["data"]["payload"]
 
     @staticmethod
     def to_text(data):
