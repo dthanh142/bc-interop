@@ -30,7 +30,7 @@ class HyperledgerAdapter(Adapter):
         #encode the payload
         payload = {
          'Verb': 'set',
-         'Name': 'foo',
+         'Name': text,
          'Value': 42
         }
         payload_bytes = cbor.dumps(payload)
