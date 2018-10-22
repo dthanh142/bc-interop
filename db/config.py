@@ -67,8 +67,8 @@ CREDENTIALS = (
         password='stellar (not used)'),
     credential(
         blockchain=Blockchain.HYPERLEDGER,
-        address='tbd',
-        key='tbd',
+        address='will be generated from private key',
+        key='c2d0a398c3c3074e066b953b3bb15ae7053fd8aba1c2279b2f3ff058ab7e7661',
         user='hyperledger (not used)',
         password='hyperledger (not used)'),
 )

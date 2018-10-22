@@ -20,8 +20,14 @@ from blockchain import Blockchain
 
 class HyperledgerAdapter(Adapter):
     context = create_context('secp256k1')
-    private_key = context.new_random_private_key()
-    signer = CryptoFactory(context).new_signer(private_key)
+
+
+
+    credentials = database.find_credentials(Blockchain.HYPERLEDGER)
+    # address = credentials['address']
+    key = credentials['key']
+    signer = CryptoFactory(context).new_signer(
+        context.new_random_private_key().from_hex(key))
     # ---Store---
     @classmethod
     def create_transaction(cls, text):

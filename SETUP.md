@@ -335,6 +335,8 @@ Stop:
 Test if up:    
 `curl http://localhost:8008/blocks`
 
+`docker-compose -f /Users/timo/Documents/repos/bc-interop/setup_helpers/sawtooth-default.yaml up`
+
 ###Install Python SDK locally
 
 As install with pip fails on any other version except 3.5      
