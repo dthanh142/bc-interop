@@ -17,3 +17,13 @@ The python version of the environment will be the one with which the environment
 ### Create and source database
 Create local DB: `import db.database`
 Source database: `db.database.setup()`
+
+### Docker
+Stop and remove all container: `docker rm -f $(docker ps -a -q)`
+
+### Usefull python stuff
+Print a nice, readable version of a dict:     
+```python
+import pprint
+pprint.pprint(dict)
+```

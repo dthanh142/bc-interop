@@ -324,3 +324,24 @@ API documentation: https://stellar-base.readthedocs.io/en/latest/api.html
 
 Maximum size to save on stellar is 28 bytes.    
 https://www.stellar.org/developers/guides/concepts/transactions.html#memo    
+
+##Hyperledger Sawtooth
+https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
+
+Start:    
+`docker-compose -f setup_helpers/sawtooth-default.yaml up`
+Stop:    
+`docker-compose -f sawtooth-default.yaml down`
+Test if up:    
+`curl http://localhost:8008/blocks`
+
+`docker-compose -f /Users/timo/Documents/repos/bc-interop/setup_helpers/sawtooth-default.yaml up`
+
+###Install Python SDK locally
+
+As install with pip fails on any other version except 3.5      
+download and unpack: https://pypi.org/project/sawtooth-sdk/#files
+cd in the folder and run `python setup.py install`
+
+
+

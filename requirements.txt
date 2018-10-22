@@ -69,6 +69,7 @@ pexpect==4.6.0
 pluggy==0.6.0
 plyvel==1.0.5
 prompt-toolkit==2.0.3
+protobuf==3.6.1
 psutil==5.4.6
 psycopg2-binary==2.7.5
 ptyprocess==0.6.0
@@ -84,6 +85,8 @@ Pympler==0.5
 pyparsing==2.2.0
 python-dateutil==2.7.3
 pytz==2018.5
+PyYAML==3.13
+pyzmq==17.1.2
 requests==2.19.1
 rlp==1.0.3
 scrypt==0.8.6
