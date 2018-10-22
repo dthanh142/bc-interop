@@ -17,8 +17,6 @@ import base64
 import db.database as database
 from blockchain import Blockchain
 
-# docker rm $(docker ps -a -q)
-# docker-compose -f /Users/timo/Documents/repos/bc-interop/setup_helpers/sawtooth-default.yaml up
 
 class HyperledgerAdapter(Adapter):
     context = create_context('secp256k1')
@@ -28,45 +26,35 @@ class HyperledgerAdapter(Adapter):
     @classmethod
     def create_transaction(cls, text):
         #encode the payload
-        payload = {
-         'Verb': 'set',
-         'Name': text,
-         'Value': 42
-        }
+        payload = {'Verb': 'set', 'Name': text, 'Value': 42}
         payload_bytes = cbor.dumps(payload)
 
         #create the transaction header:
         txn_header_bytes = TransactionHeader(
             family_name='intkey',
             family_version='1.0',
-            inputs=[
-                '1cf1266e282c41be5e4254d8820772c5518a2c5a8c0c7f7eda19594a7eb539453e1ed7'
-            ],
-            outputs=[
-                '1cf1266e282c41be5e4254d8820772c5518a2c5a8c0c7f7eda19594a7eb539453e1ed7'
-            ],
+            inputs=[''],
+            outputs=[''],
             signer_public_key=cls.signer.get_public_key().as_hex(),
             batcher_public_key=cls.signer.get_public_key().as_hex(),
             # More infos about dependencies here:
             # https://sawtooth.hyperledger.org/docs/core/releases/1.0/architecture/transactions_and_batches.html#dependencies-and-input-output-addresses
             dependencies=[],
-            payload_sha512=sha512(payload_bytes).hexdigest()
-        ).SerializeToString()
+            payload_sha512=sha512(payload_bytes).
+            hexdigest()).SerializeToString()
 
         return {
-         'txn_header_bytes': txn_header_bytes,
-         'payload_bytes': payload_bytes,
+            'txn_header_bytes': txn_header_bytes,
+            'payload_bytes': payload_bytes,
         }
-
 
     @classmethod
     def sign_transaction(cls, tx_dict):
         signature = cls.signer.sign(tx_dict.get('txn_header_bytes'))
         txn = Transaction(
-         header=tx_dict.get('txn_header_bytes'),
-         header_signature=signature,
-         payload=tx_dict.get('payload_bytes')
-           )
+            header=tx_dict.get('txn_header_bytes'),
+            header_signature=signature,
+            payload=tx_dict.get('payload_bytes'))
         return txn
 
     @classmethod
@@ -74,8 +62,8 @@ class HyperledgerAdapter(Adapter):
         #create batch header
         txns = [txn]
         batch_header_bytes = BatchHeader(
-         signer_public_key=cls.signer.get_public_key().as_hex(),
-         transaction_ids=[txn.header_signature for txn in txns],
+            signer_public_key=cls.signer.get_public_key().as_hex(),
+            transaction_ids=[txn.header_signature for txn in txns],
         ).SerializeToString()
         #create the batch
         ### !!!Change here to header_signature
@@ -87,14 +75,16 @@ class HyperledgerAdapter(Adapter):
         #encode the batch in a batchlist
         batch_list_bytes = BatchList(batches=[batch]).SerializeToString()
 
-
         #Submitting Batches to the Validator
         try:
-            r=requests.post(
-             'http://localhost:8008/batches',
-             batch_list_bytes,
-             headers={'Content-Type': 'application/octet-stream'})
+            r = requests.post(
+                'http://localhost:8008/batches',
+                batch_list_bytes,
+                headers={'Content-Type': 'application/octet-stream'})
             response = json.loads(r.text)
+            print(
+                f"this is the tx id: {[txn.header_signature for txn in txns][0]}"
+            )
             print(f"response: {response}")
             return [txn.header_signature for txn in txns][0]
 
@@ -102,16 +92,18 @@ class HyperledgerAdapter(Adapter):
             response = e.file
         #get transaction id
 
-
     @staticmethod
     def add_transaction_to_database(transaction_hash):
         database.add_transaction(transaction_hash, Blockchain.HYPERLEDGER)
         return ""
 
+
 # ---Retrieve---
+
     @classmethod
     def get_transaction(cls, transaction_id):
-        r = requests.get(f"http://localhost:8008/transactions/{transaction_id}")
+        r = requests.get(
+            f"http://localhost:8008/transactions/{transaction_id}")
         result = json.loads(r.text)
         return result
 
