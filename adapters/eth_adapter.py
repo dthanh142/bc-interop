@@ -1,8 +1,8 @@
 from web3 import Web3, HTTPProvider
-from adapters.adapter import Adapter
-from config import AMOUNT, ENCODING
+from adapter import Adapter
+from db.config import AMOUNT, ENCODING
 from blockchain import Blockchain
-import database
+import db.database as database
 
 ENDPOINT_URI = 'http://localhost:8545'
 

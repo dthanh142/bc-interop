@@ -1,6 +1,6 @@
+from adapter import Adapter
 from blockchain import Blockchain
 import db.database as database
-from adapters.adapter import Adapter
 from stellar_base.builder import Builder
 from stellar_base.horizon import horizon_testnet, horizon_livenet
 
