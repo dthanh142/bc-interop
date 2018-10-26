@@ -297,13 +297,14 @@ https://github.com/CityOfZion/neo-python-rpc
 
 
 ### With docker
+https://hub.docker.com/r/cityofzion/neo-privatenet/
 cd to folder setup_helpers 
-timo$ docker-compose -f docker_neo.yaml up
+`docker-compose -f setup_helpers/docker_neo.yaml up`
 
 ##Postgres Database
 (1) Install Docker
 (2) Pull the postgres image with `docker pull postgres`
-(3) Run a postgres server in a docker container `docker run --name postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=test -p 127.0.0.1:5000:5432 -d postgres` The database will be reachable under localhost:5000
+(3) Run a postgres server in a docker container `docker run --name postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=test -p 127.0.0.1:5000:5432 -d postgres` The ≈database will be reachable under localhost:5000
 (4) 
 
 Sources:    

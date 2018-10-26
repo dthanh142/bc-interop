@@ -1,7 +1,5 @@
-import database
 from neorpc.Client import RPCClient
-from adapters.adapter import Adapter
-from blockchain import Blockchain
+
 
 class CustomRPCSettings:
 	def __init__(self):
@@ -9,9 +7,20 @@ class CustomRPCSettings:
 
 class NEOAdapter():	
     client = RPCClient(CustomRPCSettings(), True)
-    credentials = database.find_credentials(Blockchain.NEO)
-    address = credentials['address']
-    key = credentials['key']
+    client.
+    
+    @classmethod
+    def get_account(cls):
+        acc = cls.client.get_account("AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y")
+        print(f"This is the account: {acc}")
 
-    def get_transaction(cls, transaction_hash):
-        return cls.client.get_transaction(transaction_hash)
+    @classmethod
+    def make_transaction(cls):
+        tx = "bla"
+        cls.client.send_raw_tx(tx)
+
+
+   
+
+
+
