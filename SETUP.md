@@ -304,3 +304,44 @@ https://github.com/CityOfZion/neo-python-rpc
 Sources:    
 Psycopg: http://initd.org/psycopg/docs/install.html#binary-install-from-pypi
 https://pynative.com/python-postgresql-tutorial/
+
+
+##Stellar
+Install the stellar sdk:    
+`pip install stellar-sdk`
+
+
+###Run with local node
+Run a docker container and map port 8000 for REST requests.    
+`docker run --rm -it -p "8000:8000" --name stellar stellar/quickstart --testnet`    
+In stellar_adapter.py, enable the following line:   
+builder = Builder(secret=cls.key, horizon_uri="http://localhost:8000/")
+
+Sources:     
+Horizon server on docker: https://hub.docker.com/r/stellar/quickstart/    
+Python SDK to interact with horizon: https://github.com/StellarCN/py-stellar-base          
+API documentation: https://stellar-base.readthedocs.io/en/latest/api.html    
+
+Maximum size to save on stellar is 28 bytes.    
+https://www.stellar.org/developers/guides/concepts/transactions.html#memo    
+
+##Hyperledger Sawtooth
+https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
+
+Start:    
+`docker-compose -f setup_helpers/sawtooth-default.yaml up`
+Stop:    
+`docker-compose -f sawtooth-default.yaml down`
+Test if up:    
+`curl http://localhost:8008/blocks`
+
+`docker-compose -f /Users/timo/Documents/repos/bc-interop/setup_helpers/sawtooth-default.yaml up`
+
+###Install Python SDK locally
+
+As install with pip fails on any other version except 3.5      
+download and unpack: https://pypi.org/project/sawtooth-sdk/#files
+cd in the folder and run `python setup.py install`
+
+
+

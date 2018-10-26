@@ -21,6 +21,14 @@ BLOCKCHAINS = (
     blockchain(
         blockchain=Blockchain.POSTGRES,
         name='POSTGRES'
+    ),
+    blockchain(
+        blockchain=Blockchain.STELLAR,
+        name='STELLAR'
+    ),
+    blockchain(
+        blockchain=Blockchain.HYPERLEDGER,
+        name='HYPERLEDGER'
     )
 )
 CREDENTIALS = (
@@ -34,14 +42,14 @@ CREDENTIALS = (
         address='1MRQf6mYRDoXjtoKVBi8huxBC69zmSzheYN4yM',
         key='V7BFGjp4wrowNSJDSouXVFJQkwZxMFDScba4SkHYA9aYjEDhLrFBV2Nd',
         user='multichainrpc',
-        password='GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'
-    ),
+        password='GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'),
     credential(
         blockchain=Blockchain.BITCOIN,
         address='2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
         key='cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
         user='bitcoinrpc',
-        password='f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
+        password=
+        'f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
     ),
     credential(
         blockchain=Blockchain.POSTGRES,
@@ -50,8 +58,19 @@ CREDENTIALS = (
         # port number
         key='5000',
         user='test',
-        password='123456'
-    )
+        password='123456'),
+    credential(
+        blockchain=Blockchain.STELLAR,
+        address='GCCAETWXN5VYPOU4MYTUGTFPTSWWNFYMDZWHWS566PUXR5GCQ7SY7QHQ',
+        key='SBJF56A62FP7OEATJIDFYUTXORNJXWGXD5GBWW7TDVN2QMHDJMOXBLPK',
+        user='stellar (not used)',
+        password='stellar (not used)'),
+    credential(
+        blockchain=Blockchain.HYPERLEDGER,
+        address='will be generated from private key',
+        key='c2d0a398c3c3074e066b953b3bb15ae7053fd8aba1c2279b2f3ff058ab7e7661',
+        user='hyperledger (not used)',
+        password='hyperledger (not used)'),
 )
 TRANSACTIONS = (
     transaction(
@@ -63,4 +82,3 @@ TRANSACTIONS = (
         blockchain=Blockchain.BITCOIN
     )
 )
-
