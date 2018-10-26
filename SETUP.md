@@ -295,6 +295,11 @@ https://github.com/CityOfZion/neo-python-rpc
 (5) Start the rest and rpc server:      
 `np-api-server --testnet --port-rpc 10332 --port-rest 80`
 
+
+### With docker
+cd to folder setup_helpers 
+timo$ docker-compose -f docker_neo.yaml up
+
 ##Postgres Database
 (1) Install Docker
 (2) Pull the postgres image with `docker pull postgres`

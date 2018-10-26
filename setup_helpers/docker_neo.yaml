@@ -1,0 +1,8 @@
+version: "3"
+services:
+    neo-privatenet:
+        container_name: neo-privatenet
+        ports:
+            - '20333-20336:20333-20336/tcp'
+            - '30333-30336:30333-30336/tcp'
+        image: cityofzion/neo-privatenet
