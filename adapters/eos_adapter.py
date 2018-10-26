@@ -13,8 +13,8 @@ def get_tx_bin():
 		"args": {
 				"from": "eosio",
 				"to": "noprom",
-			"quantity": "1.0000 EOS",
-			"memo": "test successful"
+				"quantity": "1.0000 EOS",
+				"memo": "test successful"
 		}
 	}
 	r = requests.post(
@@ -40,35 +40,34 @@ def get_tx_dict():
 	tx = {}
 	tx["data"] = get_tx_bin()
 	tx["ref_block_num"] = get_head_block_num()
-	tx["ref_block_prefix"], tx["expiration"] = get_block_num_and_expiration(tx["ref_block_num"])
-	#increase timestamp by two minutes
-	tx["expiration"] = tx["expiration"][:14] + str(int(tx["expiration"][14:16])+2) + tx["expiration"][16:]
+	tx["ref_block_prefix"], tx["expiration"] = get_block_num_and_expiration(
+		tx["ref_block_num"])
+	# increase timestamp by two minutes
+	tx["expiration"] = tx["expiration"][:14] + \
+		str(int(tx["expiration"][14:16])+2) + tx["expiration"][16:]
 	return tx
 
 
-pprint.pprint(get_tx_dict())
-
-
-
 def sign_transaction():
+	tx_data = get_tx_dict()
 	data = [{
-		"expiration": "2018-10-26T15:30:32.000",
-		"ref_block_num": 21149807,
-		"ref_block_prefix": 3590041248,
-		"context_free_actions": [],
-		"actions": [{
-			"account": "eosio.token",
-			"name": "transfer",
-			"authorization": [{
-				"actor": "testertimohe",
-				"permission": "active"
+			"expiration": tx_data["expiration"],
+			"ref_block_num": tx_data["ref_block_num"],
+			"ref_block_prefix": tx_data["ref_block_prefix"],
+			"context_free_actions": [],
+			"actions": [{
+				"account": "eosio.token",
+				"name": "transfer",
+				"authorization": [{
+						"actor": "testertimohe",
+					"permission": "active"
+				}],
+				"data": tx_data["data"]
 			}],
-			"data": "0000000000ea305500000000487a2b9d102700000000000004454f53000000001163726561746564206279206e6f70726f6d"
-		}],
-		"signatures": []
-	},
-		["EOS6gXwNz2SKUNAZcyjzVvg6KdNgA1bSuVzCr8c5yWkGij52JKx8V"], ""
-	]
+			"signatures": []
+			},
+			["EOS6gXwNz2SKUNAZcyjzVvg6KdNgA1bSuVzCr8c5yWkGij52JKx8V"], ""
+			]
 	r = requests.post(
 		f'http://localhost:8888/v1/wallet/sign_transaction', json=data)
 	response = json.loads(r.text)
