@@ -344,4 +344,7 @@ download and unpack: https://pypi.org/project/sawtooth-sdk/#files
 cd in the folder and run `python setup.py install`
 
 
+## EOS
+1. cd to the setup_helpers folder
+2. `docker-compose up` will start a local nodeos and keos docker cointainer
 
