@@ -1,158 +1,49 @@
+from eosjs_python import Eos
 import requests
 import json
-import pprint
 
-JUNGLE_URL = "http://jungle.cryptolions.io:18888"
-LOCAL_EOS_URL = "http://localhost:8888"
+# 'private': '5KazRYnXDCNougrvuVtZFDMAiB3kr7M2tjGYNJtQQ2Wn3JFRdTM',
+# 'public': 'EOS8Vfg6ssQxj66wX9LrFq3EZY8z4EEkiyiQiDc7bwyn65K4YFVwW'}
+# jungletimohe
 
-# "https://github.com/r12543/pyeos"
-# "https://eosio.stackexchange.com/questions/2942/how-to-sign-a-transaction-locally-using-python/2965#2965"
-# https://eosio.stackexchange.com/questions/2065/where-is-wallet-rpc-api-documentation
-def create_wallet():
-	headers = {
-		'Cache-Control': 'no-cache',
-		'Content-Type': 'application/json',
-	}
-	# headers = {'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+eos = Eos({
+    'http_address': 'http://dev.cryptolions.io:38888',
+    'key_provider': '5KazRYnXDCNougrvuVtZFDMAiB3kr7M2tjGYNJtQQ2Wn3JFRdTM',
+    # get this using 'http://dev.cryptolions.io:38888/v1/chain/get_info'
+    # 'chainId': '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
+    'expireInSeconds': 60,
+    'broadcast': True,
+    'debug': True,
+    'sign': True,
+    'verbose': True,
+})
 
-	data = 'mywallet'
+# change needed in pushcontracttrasaction.js
+# eos = Eos({
+#   keyProvider: wif,
+#   httpEndpoint: httpEndpointAddress,
+#   chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',  <---Jungle chainId here
+# })
 
-	response = requests.post(
-		'http://localhost:9876/v1/wallet/create', headers=headers, data=data)
-
-def create_keys():
-	data = ["default", "K1"]
-	headers = {'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-	response = requests.post(url="http://127.0.0.1:9876/v1/wallet/create_key", data = data)
-	print(response.text)
-
-def listKeys():
-	import requests
-	url = "http://localhost:9876/v1/wallet/list_keys"
-	headers = {'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-	response = requests.request("POST", url, headers=headers)
-	print(response.text)
-
-def listWallet():
-	url = "http://127.0.0.1:9876/v1/wallet/list_wallets"
-	headers = {'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-	response = requests.request("POST", url, headers=headers)
-	print(response.text)
-
-listWallet()
-
-# nodeosd_1 | warn  ...  accepted network connection
-# nodeosd_1 | error ... incoming message length unexpected(1414745936), from 172.19.0.1: 39826
-
-listKeys()
-
-transaction = {
-    "code": "eosio.token",
-    "action": "transfer",
-    "args": {
-        "from": "eosio",
-        "to": "noprom",
+def make_transaction():
+    eos.push_transaction('eosio.token', 'transfer', 'jungletimohe', 'active', {
+        "from": "jungletimohe",
+        "to": "lioninjungle",
         "quantity": "1.0000 EOS",
-        "memo": "test successful"
+        "memo": "testtimo"
+    })
+
+def get_transaction(transaction_id):
+    data = {
+        id : transaction_id
     }
-}
 
-
-def get_tx_bin():
-    data = transaction
     r = requests.post(
-        f'{JUNGLE_URL}/v1/chain/abi_json_to_bin', json=data)
-    response = json.loads(r.text)
-    return response["binargs"]
-
-
-def get_head_block_num():
-    r = requests.get(f'{JUNGLE_URL}/v1/chain/get_info')
-    response = json.loads(r.text)
-    return response["head_block_num"]
-
-
-def get_block_num_and_expiration(block_nr):
-    data = {"block_num_or_id": block_nr}
-    r = requests.post(f'{JUNGLE_URL}/v1/chain/get_block', json=data)
-    response = json.loads(r.text)
-    return response["ref_block_prefix"], response["timestamp"]
-
-
-def get_tx_dict():
-    tx = {}
-    tx["data"] = get_tx_bin()
-    tx["ref_block_num"] = get_head_block_num()
-    tx["ref_block_prefix"], tx["expiration"] = get_block_num_and_expiration(
-        tx["ref_block_num"])
-    # increase timestamp by two minutes
-    tx["expiration"] = tx["expiration"][:14] + \
-        str(int(tx["expiration"][14:16])+2) + tx["expiration"][16:]
-    return tx
-
-
-def createWallet():
-    """
-    Creates a new wallet with the given name.
-        :param wallet_name(string): name of the wallet to create
-    """
-    url = self.base_url + WALLET_API_ENUM.get('CREATE_WALLET')
-    return make_post_request(url, json.dumps(wallet_name))
-
-
-# def get_required_keys():
-#     tx_data = get_tx_dict()
-#     data = {
-#         "available_keys": [
-#             "EOS5ySgzeHp9G7TqNDGpyzaCtahAeRcTvPRPJbFey5CmySL3vKYgE",
-#             "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
-#             "EOS6gXwNz2SKUNAZcyjzVvg6KdNgA1bSuVzCr8c5yWkGij52JKx8V"
-#         ],
-#         "transaction": {
-#             "ref_block_num": "100",
-#             "ref_block_prefix": "137469861",
-#             "expiration": "2017-09-25T06:28:49",
-#             "scope": ["initb", "initc"],
-#             "actions": [{
-#                 "code": "currency",
-#                 "type": "transfer",
-#                 "recipients": ["initb", "initc"],
-#                 "authorization": [{
-#                     "account": "initb",
-#                     "permission": "active"
-#                 }],
-#                 "data": "000000000041934b000000008041934be803000000000000"
-#             }],
-#             "signatures": [],
-#             "authorizations": []
-#         }
-#     }
-#     r = requests.post(f'{JUNGLE_URL}/v1/chain/get_required_keys', json=data)
-#     response = json.loads(r.text)
-#     print(response)
-
-
-def sign_transaction():
-    tx_data = get_tx_dict()
-    data = [{
-        "expiration": tx_data["expiration"],
-        "ref_block_num": tx_data["ref_block_num"],
-        "ref_block_prefix": tx_data["ref_block_prefix"],
-        "context_free_actions": [],
-        "actions": [{
-            "account": "eosio.token",
-            "name": "transfer",
-            "authorization": [{
-                "actor": "testertimohe",
-                "permission": "active"
-            }],
-            "data": tx_data["data"]
-        }],
-        "signatures": []
-    },
-        ["EOS6gXwNz2SKUNAZcyjzVvg6KdNgA1bSuVzCr8c5yWkGij52JKx8V"], ""
-    ]
-    r = requests.post(
-        f'http://localhost:8888/v1/wallet/sign_transaction', json=data)
+        f'http://dev.cryptolions.io:38888/v1/history/get_transaction', data = data)
     response = json.loads(r.text)
     return response
+
+
+make_transaction()
+# print(get_transaction("f7278edea06b657455fc41dafb5df044558cece31816996a47af9416dc11e648"))
+
