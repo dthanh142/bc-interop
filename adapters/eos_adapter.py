@@ -27,12 +27,12 @@ def make_transaction():
         "quantity": "1.0000 EOS",
         "memo": "testtimo"
     })
-    return response["transaction_id"], response["processed"]["block_num"]
+    return f"{response['transaction_id']};{response['processed']['block_num']}",
 
-def get_transaction(transaction_id):
+def get_transaction(transaction_id_and_block_num):
     data = {
-        "id": "ee2a44e0b389c1e3c4bc50851c13fbcc7f75fc5a4c06e7b72f6601a25deabe10",
-        "block_num_hint": 21819029
+        "id": transaction_id_and_block_num.strip(";").split(";")[0],
+        "block_num_hint": int(transaction_id_and_block_num.strip(";").split(";")[1])
     }
     r = requests.post(
         f'http://193.93.219.219:8888/v1/history/get_transaction', json=data)
@@ -40,6 +40,7 @@ def get_transaction(transaction_id):
     return response
 
 
-print(make_transaction())
-# print(get_transaction("tx_id"))
+# print(make_transaction())
+print(get_transaction(
+    "da436a0ecee41487addc3642a6625560f5294f4d225407a7a77c66cb6d6816b4;21824439"))
 
