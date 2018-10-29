@@ -26,7 +26,7 @@ eos = Eos({
 # })
 
 def make_transaction():
-    eos.push_transaction('eosio.token', 'transfer', 'jungletimohe', 'active', {
+    return eos.push_transaction('eosio.token', 'transfer', 'jungletimohe', 'active', {
         "from": "jungletimohe",
         "to": "lioninjungle",
         "quantity": "1.0000 EOS",
@@ -35,15 +35,16 @@ def make_transaction():
 
 def get_transaction(transaction_id):
     data = {
-        id : transaction_id
+        "id": "26cef29a0f19b58084be865e400ce6dbd779296a393a91dff323b17f73700b33"
     }
 
     r = requests.post(
-        f'http://dev.cryptolions.io:38888/v1/history/get_transaction', data = data)
+        f'http://jungle.eosmeso.io:8888/v1/history/get_transaction', json=data)
     response = json.loads(r.text)
     return response
 
 
-make_transaction()
+print(make_transaction())
+# print(get_transaction("tx_id"))
 # print(get_transaction("f7278edea06b657455fc41dafb5df044558cece31816996a47af9416dc11e648"))
 

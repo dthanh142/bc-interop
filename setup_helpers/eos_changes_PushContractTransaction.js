@@ -31,7 +31,7 @@ eos.transaction({
   ]
 }).then(function (value){
         // Added this line to get tx id back
-        console.log("This is the return from tx: " + value.transaction_id);
+        console.log(value.transaction_id);
         return value;
       }).catch(function (e) {
       console.error(e);
