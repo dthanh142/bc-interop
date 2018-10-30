@@ -40,7 +40,7 @@ def get_transaction(transaction_id_and_block_num):
     return response
 
 
-# print(make_transaction())
-print(get_transaction(
-    "da436a0ecee41487addc3642a6625560f5294f4d225407a7a77c66cb6d6816b4;21824439"))
+print(make_transaction())
+# print(get_transaction(
+    # "da436a0ecee41487addc3642a6625560f5294f4d225407a7a77c66cb6d6816b4;21824439"))
 
