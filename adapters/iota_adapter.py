@@ -7,29 +7,17 @@ from iota import Bundle
 # ADDRESS_WITH_CHECKSUM_SECURITY_LEVEL_2 = b"9TPHVCFLAZTZSDUWFBLCJOZICJKKPVDMAASWJZNFFBKRDDTEOUJHR9JVGTJNI9IYNVISZVXARWJFKUZWC"
 
 api = Iota('https://nodes.devnet.iota.org:443', testnet=True)
+bundle = api.get_bundles(
+    "IMLLFGKXGLFFTTAEBQIVFAWTMJVVKONKRXJBYQJDVWIPUYJOSEHYPGF9JAYJXXEIMZFRYBXTPOQWTW999")
 
+singleBundle =  bundle["bundles"][0]
 
-def get_tx():
-    # txhash = TransactionHash.from_string(
-    #     "CFXVRNNIVJTONAAUVLVKVTJUAJVHNIIC9TYSZLHECWNANLMNGKTVBL9NKWGOSMZJHGUTGBMHSEYGSW999")
-    # txstring = TryteString.from_string(
-    #     "CFXVRNNIVJTONAAUVLVKVTJUAJVHNIIC9TYSZLHECWNANLMNGKTVBL9NKWGOSMZJHGUTGBMHSEYGSW999")
-    return api.get_bundles("CFXVRNNIVJTONAAUVLVKVTJUAJVHNIIC9TYSZLHECWNANLMNGKTVBL9NKWGOSMZJHGUTGBMHSEYGSW999")
-# bundle = get_tx()["bundles"]
-# print(Bundle.as_json_compatible(bundle))
-# # print("test:")
-# # print(b'999999999999999999999999999999999999999999999999999999999999999999999999999999999')
-
-# print(bundle.get_messages())
-
-
-
-
+print(Bundle.as_json_compatible(singleBundle))
 
 
 # "https://github.com/iotaledger/iota.lib.py/blob/master/docs/addresses.rst"
 
-print(api.get_node_info())
+# print(api.get_node_info())
 # "https://github.com/iotaledger/iota.lib.py/blob/master/docs/types.rst"
 
 # Generate 1 address, starting with index 42:
