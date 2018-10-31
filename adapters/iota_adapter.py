@@ -1,48 +1,63 @@
-from iota import Iota
-from iota import Address, ProposedTransaction, Tag, Transaction, TryteString, TransactionHash
-from iota import Bundle
-
-# Generate a random seed.
-# ADDRESS_WITH_CHECKSUM_SECURITY_LEVEL_2 = b"9TPHVCFLAZTZSDUWFBLCJOZICJKKPVDMAASWJZNFFBKRDDTEOUJHR9JVGTJNI9IYNVISZVXARWJFKUZWC"
-# "https://github.com/iotaledger/iota.lib.py/blob/master/docs/addresses.rst"
-# print(api.get_node_info())
-# "https://github.com/iotaledger/iota.lib.py/blob/master/docs/types.rst"
-# Generate 1 address, starting with index 42:
-# https://medium.com/coinmonks/exploring-iota-2-retrieve-your-transaction-and-create-your-wallet-bc8e8c91fec9
+import sys
+import os
+sys.path.append("/Users/timo/Documents/repos/bc-interop")
+from adapters.adapter import Adapter
+from blockchain import Blockchain
+# import db.database as database
+from iota import Iota, Address, ProposedTransaction, Tag, Transaction, TryteString, TransactionHash, Bundle
 
 
-api = Iota('https://nodes.devnet.iota.org:443', testnet=True)
 
-def get_transaction():
-    
-    bundle = api.get_bundles(
-        "IMLLFGKXGLFFTTAEBQIVFAWTMJVVKONKRXJBYQJDVWIPUYJOSEHYPGF9JAYJXXEIMZFRYBXTPOQWTW999")
-    singleBundle =  bundle["bundles"][0]
-    print(Bundle.as_json_compatible(singleBundle))
+class IotaAdapter(Adapter):
 
+    api = Iota('https://nodes.devnet.iota.org:443', testnet=True)
+    # credentials = database.find_credentials(Blockchain.STELLAR)
+    # address = credentials['address']
+    # key = credentials['key']
 
-def create_address():
-    gna_result = api.get_new_addresses(index=42, security_level=2, checksum=True)
-    addresses = gna_result['addresses']
-    print(addresses)
+    # ---Store---
+    @classmethod
+    def create_transaction(cls, text):
+        tx = ProposedTransaction(
+            # Recipient
+            address=Address(
+                'GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA'),
+            value=0,
+            message=TryteString.from_string(text),
+        ),
+        return tx
 
-def transfer():
-    # "https://pyota.readthedocs.io/en/latest/api.html#send-transfer"
-    api.send_transfer(
-        depth=4,
-        transfers=[
-            ProposedTransaction(
-                # Recipient of the transfer.
-                address=Address(
-                    'GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA'
-                ),
-                value=0,
-                # Optional tag to attach to the transfer.
-                tag=Tag(b'ADAPT'),
-                # Optional message to include with the transfer.
-                message=TryteString.from_string("Hello!"),
-            ),
-        ],
-    )
+    @staticmethod
+    def sign_transaction(tx):
+        # tx will be signed and sent in send_raw_transaction
+        return tx
 
-transfer()
+    @classmethod
+    def send_raw_transaction(cls, tx):
+        # "https://pyota.readthedocs.io/en/latest/api.html#send-transfer"
+        cls.api.send_transfer(
+            depth=4,
+            transfers=[tx],
+        )
+        return hash
+
+    @staticmethod
+    def add_transaction_to_database(transaction_hash):
+        print(transaction_hash)
+
+    # ---Retrieve---
+    @classmethod
+    def get_transaction(cls, transaction_hash):
+        bundle = cls.api.get_bundles(hash)
+        return bundle["bundles"][0]
+
+    @staticmethod
+    def extract_data(bundle):
+        json = Bundle.as_json_compatible(bundle)
+        data = json[0]["signature_message_fragment"]
+        return data
+
+    @staticmethod
+    def to_text(data):
+        data = TryteString.decode(data)
+        return str(data)
