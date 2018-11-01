@@ -54,7 +54,6 @@ Run the database setup:
 
 ```python
 import database
-
 database.setup()
 ```
 
@@ -69,98 +68,12 @@ database.setup()
 
 ## Ethereum
 
-Docker image used from here:
+This command will start a docker node with a preconfigured account which holds 100 eth
+`docker-compose -f  docker/docker_compose_eth.yaml up`
+
+### Dependencies
+Docker image used from here:    
 https://hub.docker.com/r/trufflesuite/ganache-cli/
-
-
-Install the following package using your favourite package manager:
-
-```console
-# pacman -S go-ethereum
-```
-
-### Creating a Private Testnet
-
-Create the genesis block. For a private network, you usually want a custom genesis block. Here's an example of a custom `genesis.json` file:
-
-```json
-{
-    "config": {
-        "chainId": 15,
-        "homesteadBlock": 0,
-        "eip155Block": 0,
-        "eip158Block": 0
-    },
-    "difficulty": "51",
-    "gasLimit": "2100000"
-}
-```
-
-To create a database that uses this genesis block, run the following command. This will import and set the canonical genesis block for your chain:
-
-```console
-$ geth --datadir path/to/custom/data/folder init genesis.json
-```
-
-> Future runs of `geth` on this data directory will use the genesis block you have defined.
-
-Launch the `geth` client and allow rpc connections:
-
-```console
-$ geth --datadir path/to/custom/data/folder --networkid 3107 --fast --rpc --rpcapi eth,web3,personal,net,miner,admin
-```
-
-Enter interactive mode:
-
-```console
-$ geth attach http://127.0.0.1:8545
-```
-
-In interactive mode, add the private key to the node's keyichain, encrypted with a passphrase (to be able to receive mining rewards):
-
-```
-> personal.importRawKey("d54db06062615cf2fb8133b96aa8c2becf7524c7ea7bf7f0387ee9b903b6b662", "")
-
-"0xdeb92221fed1dfe74ea63c00aede6b31f02d6abe"
-```
-
-> This command returns the address of the imported account.
-
-> The private key can be removed from the node's keychain, after it has earned some ethers to spend in transactions.
-
-To convert the address to an address with an [EIP55](https://github.com/ethereum/EIPs/issues/55) checksum:
-
-```
-> web3.toChecksumAddress("0xdeb92221fed1dfe74ea63c00aede6b31f02d6abe")
-
-"0xDEB92221FED1Dfe74eA63c00AEde6b31F02d6ABe"
-```
-
-Set the account that will receive ether from the mining process:
-
-```
-> miner.setEtherbase(eth.accounts[0])
-
-true
-```
-
-Launch the mining process with 2 threads:
-
-```
-> miner.start(2)
-
-null
-```
-
-> Every transaction must be mined in your private network. Thus, it makes sense to always leave the miner running.
-
-To stop the mining process:
-
-```
-> miner.stop()
-
-true
-```
 
 ## MultiChain
 
