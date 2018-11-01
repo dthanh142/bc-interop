@@ -4,16 +4,14 @@ sys.path.append("/Users/timo/Documents/repos/bc-interop")
 from adapters.adapter import Adapter
 from blockchain import Blockchain
 # import db.database as database
-from iota import Iota, Address, ProposedTransaction, Tag, Transaction, TryteString, TransactionHash, Bundle
-
+from iota import Iota, Address, ProposedTransaction, TryteString, Bundle
 
 
 class IotaAdapter(Adapter):
-
-    api = Iota('https://nodes.devnet.iota.org:443', testnet=True)
-    # credentials = database.find_credentials(Blockchain.STELLAR)
-    # address = credentials['address']
-    # key = credentials['key']
+    client = Iota('https://nodes.devnet.iota.org:443', testnet=True)
+    credentials = "database.find_credentials(Blockchain.STELLAR)"
+    address = "credentials['address']"
+    key = "credentials['key']"
 
     # ---Store---
     @classmethod
@@ -35,7 +33,7 @@ class IotaAdapter(Adapter):
     @classmethod
     def send_raw_transaction(cls, tx):
         # "https://pyota.readthedocs.io/en/latest/api.html#send-transfer"
-        cls.api.send_transfer(
+        cls.client.send_transfer(
             depth=4,
             transfers=[tx],
         )
@@ -48,7 +46,7 @@ class IotaAdapter(Adapter):
     # ---Retrieve---
     @classmethod
     def get_transaction(cls, transaction_hash):
-        bundle = cls.api.get_bundles(hash)
+        bundle = cls.client.get_bundles(hash)
         return bundle["bundles"][0]
 
     @staticmethod
