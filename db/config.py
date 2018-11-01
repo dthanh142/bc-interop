@@ -29,6 +29,10 @@ BLOCKCHAINS = (
     blockchain(
         blockchain=Blockchain.HYPERLEDGER,
         name='HYPERLEDGER'
+    ),
+    blockchain(
+        blockchain=Blockchain.EOS,
+        name='EOS'
     )
 )
 CREDENTIALS = (
@@ -48,8 +52,7 @@ CREDENTIALS = (
         address='2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
         key='cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
         user='bitcoinrpc',
-        password=
-        'f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
+        password='f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
     ),
     credential(
         blockchain=Blockchain.POSTGRES,
@@ -71,6 +74,12 @@ CREDENTIALS = (
         key='c2d0a398c3c3074e066b953b3bb15ae7053fd8aba1c2279b2f3ff058ab7e7661',
         user='hyperledger (not used)',
         password='hyperledger (not used)'),
+    credential(
+        blockchain=Blockchain.EOS,
+        address='EOS8Vfg6ssQxj66wX9LrFq3EZY8z4EEkiyiQiDc7bwyn65K4YFVwW',
+        key='5KazRYnXDCNougrvuVtZFDMAiB3kr7M2tjGYNJtQQ2Wn3JFRdTM',
+        user='jungletimohe',
+        password='hyperledger (not used)')
 )
 TRANSACTIONS = (
     transaction(
