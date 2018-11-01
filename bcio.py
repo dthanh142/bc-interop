@@ -1,34 +1,25 @@
 #append the root project path to the pythonpath so that blockchain.py can be accessed
-# import sys
-# import os
-# sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-# import db.database as database
-# database.setup()
+# import sys, os
+# sys.path.append(os.path.dirname("/Users/timo/Documents/repos/bc-interop/"))
 
-
-# from adapters.eth_adapter import EthAdapter
-# from adapters.mc_adapter import MCAdapter
-# from adapters.btc_adapter import BTCAdapter
-# from adapters.psql_adapter import PostgresAdapter
-# from adapters.stellar_adapter import StellarAdapter
-# from adapters.hyperledger_adapter import HyperledgerAdapter
+from adapters.eth_adapter import EthAdapter
+from adapters.mc_adapter import MCAdapter
+from adapters.btc_adapter import BTCAdapter
+from adapters.psql_adapter import PostgresAdapter
+from adapters.stellar_adapter import StellarAdapter
+from adapters.hyperledger_adapter import HyperledgerAdapter
 from adapters.eos_adapter import EosAdapter
 from blockchain import Blockchain
 import db.database as database
 
 
-
-
-
-
-
 Adapter = {
-    # Blockchain.ETHEREUM: EthAdapter,
-    # Blockchain.MULTICHAIN: MCAdapter,
-    # Blockchain.BITCOIN: BTCAdapter,
-    # Blockchain.POSTGRES: PostgresAdapter,
-    # Blockchain.STELLAR: StellarAdapter,
-    # Blockchain.HYPERLEDGER: HyperledgerAdapter,
+    Blockchain.ETHEREUM: EthAdapter,
+    Blockchain.MULTICHAIN: MCAdapter,
+    Blockchain.BITCOIN: BTCAdapter,
+    Blockchain.POSTGRES: PostgresAdapter,
+    Blockchain.STELLAR: StellarAdapter,
+    Blockchain.HYPERLEDGER: HyperledgerAdapter,
     Blockchain.EOS: EosAdapter
 }
 

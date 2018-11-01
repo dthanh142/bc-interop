@@ -2,10 +2,6 @@ import sys
 import os
 from abc import ABC, abstractmethod
 
-#append the root project path to the pythonpath so that blockchain.py can be accessed
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-
 class Adapter(ABC):
 
     @property

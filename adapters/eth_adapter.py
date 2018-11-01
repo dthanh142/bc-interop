@@ -1,14 +1,14 @@
 from web3 import Web3, HTTPProvider
-from adapter import Adapter
+from adapters.adapter import Adapter
 from db.config import AMOUNT, ENCODING
 from blockchain import Blockchain
 import db.database as database
 
-ENDPOINT_URI = 'http://localhost:8545'
-
 
 class EthAdapter(Adapter):
 
+    ENDPOINT_URI = 'http://localhost:8545'
+    
     credentials = database.find_credentials(Blockchain.ETHEREUM)
     address = credentials['address']
     if not Web3.isChecksumAddress(address):
@@ -66,4 +66,3 @@ class EthAdapter(Adapter):
     @staticmethod
     def add_transaction_to_database(transaction_hash):
         database.add_transaction(transaction_hash, Blockchain.ETHEREUM)
-
