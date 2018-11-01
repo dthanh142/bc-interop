@@ -46,3 +46,6 @@ Print a nice, readable version of a dict:
 import pprint
 pprint.pprint(dict)
 ```
+
+Print object keys: 
+print(dir(obj))

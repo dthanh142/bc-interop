@@ -344,4 +344,7 @@ download and unpack: https://pypi.org/project/sawtooth-sdk/#files
 cd in the folder and run `python setup.py install`
 
 
-
+## EOS
+1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
+2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
+3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
