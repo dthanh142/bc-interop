@@ -69,6 +69,10 @@ database.setup()
 
 ## Ethereum
 
+Docker image used from here:
+https://hub.docker.com/r/trufflesuite/ganache-cli/
+
+
 Install the following package using your favourite package manager:
 
 ```console
