@@ -1,8 +1,12 @@
+import sys
+import os
+sys.path.append("/Users/timo/Documents/repos/bc-interop")
+
 import collections
 from abc import abstractmethod
 from binascii import unhexlify
 from adapters.adapter import Adapter
-from config import ENCODING
+from db.config import ENCODING
 
 
 class MCBTCAdapter(Adapter):

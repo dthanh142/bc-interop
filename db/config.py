@@ -2,8 +2,8 @@ from blockchain import Blockchain, blockchain
 from db.credential import credential
 from db.transaction import transaction
 
-# AMOUNT = 0
-# ENCODING = 'utf-8'
+AMOUNT = 0
+ENCODING = 'utf-8'
 DATABASE = 'db/bcio.db'
 BLOCKCHAINS = (
     blockchain(

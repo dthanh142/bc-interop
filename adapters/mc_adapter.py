@@ -1,9 +1,13 @@
+import sys
+import os
+sys.path.append("/Users/timo/Documents/repos/bc-interop")
+
 from binascii import hexlify
 from mcrpc import RpcClient
 from adapters.mc_btc_adapter import MCBTCAdapter
-from config import AMOUNT, ENCODING
+from db.config import AMOUNT, ENCODING
 from blockchain import Blockchain
-import database
+import db.database as database
 
 HOST = 'localhost'
 PORT = '7324'
