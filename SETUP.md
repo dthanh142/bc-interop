@@ -54,7 +54,6 @@ Run the database setup:
 
 ```python
 import database
-
 database.setup()
 ```
 
@@ -69,94 +68,12 @@ database.setup()
 
 ## Ethereum
 
-Install the following package using your favourite package manager:
+This command will start a docker node with a preconfigured account which holds 100 eth
+`docker-compose -f  docker/docker_compose_eth.yaml up`
 
-```console
-# pacman -S go-ethereum
-```
-
-### Creating a Private Testnet
-
-Create the genesis block. For a private network, you usually want a custom genesis block. Here's an example of a custom `genesis.json` file:
-
-```json
-{
-    "config": {
-        "chainId": 15,
-        "homesteadBlock": 0,
-        "eip155Block": 0,
-        "eip158Block": 0
-    },
-    "difficulty": "51",
-    "gasLimit": "2100000"
-}
-```
-
-To create a database that uses this genesis block, run the following command. This will import and set the canonical genesis block for your chain:
-
-```console
-$ geth --datadir path/to/custom/data/folder init genesis.json
-```
-
-> Future runs of `geth` on this data directory will use the genesis block you have defined.
-
-Launch the `geth` client and allow rpc connections:
-
-```console
-$ geth --datadir path/to/custom/data/folder --networkid 3107 --fast --rpc --rpcapi eth,web3,personal,net,miner,admin
-```
-
-Enter interactive mode:
-
-```console
-$ geth attach http://127.0.0.1:8545
-```
-
-In interactive mode, add the private key to the node's keyichain, encrypted with a passphrase (to be able to receive mining rewards):
-
-```
-> personal.importRawKey("d54db06062615cf2fb8133b96aa8c2becf7524c7ea7bf7f0387ee9b903b6b662", "")
-
-"0xdeb92221fed1dfe74ea63c00aede6b31f02d6abe"
-```
-
-> This command returns the address of the imported account.
-
-> The private key can be removed from the node's keychain, after it has earned some ethers to spend in transactions.
-
-To convert the address to an address with an [EIP55](https://github.com/ethereum/EIPs/issues/55) checksum:
-
-```
-> web3.toChecksumAddress("0xdeb92221fed1dfe74ea63c00aede6b31f02d6abe")
-
-"0xDEB92221FED1Dfe74eA63c00AEde6b31F02d6ABe"
-```
-
-Set the account that will receive ether from the mining process:
-
-```
-> miner.setEtherbase(eth.accounts[0])
-
-true
-```
-
-Launch the mining process with 2 threads:
-
-```
-> miner.start(2)
-
-null
-```
-
-> Every transaction must be mined in your private network. Thus, it makes sense to always leave the miner running.
-
-To stop the mining process:
-
-```
-> miner.stop()
-
-true
-```
+### Dependencies
+Docker image used from here:    
+https://hub.docker.com/r/trufflesuite/ganache-cli/
 
 ## MultiChain
 
@@ -344,4 +261,55 @@ download and unpack: https://pypi.org/project/sawtooth-sdk/#files
 cd in the folder and run `python setup.py install`
 
 
+## EOS
+1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
+2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
+3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
 
+
+
+
+# Bitcoin new:
+Configure testnet with electrum:
+https://bitzuma.com/posts/a-beginners-guide-to-the-electrum-bitcoin-wallet/#testnet-servers
+
+Configure electrum:
+http://docs.electrum.org/en/latest/merchant.html#jsonrpc-interface
+
+Install Electrum:
+-https://electrum.org/#download
+-create a new account:
+album oyster jealous pigeon help enjoy saddle feed net avoid useless elevator
+
+1. Set alias (only for Mac, not needed on Linux)
+`alias electrum='/Applications/Electrum.app/Contents/MacOS/Electrum'`
+
+2. Start Electrum Deamon with testnet flag:
+`electrum daemon start  --testnet`
+
+3. Set rpc port:
+`electrum --testnet setconfig rpcport 7777`
+
+4. Set rpc user:
+`electrum --testnet setconfig rpcuser bitcoinrpc`
+
+5. Set rpc password:
+`electrum --testnet setconfig rpcpassword bitcoinrpc`
+
+Test if settings are correct:
+`electrum --testnet getconfig rpcuser`
+`electrum --testnet getconfig rpcport`
+`electrum --testnet getconfig rpcpassword`
+
+6. Create Address
+`electrum --testnet listaddresses` testnet accounts start with "m"
+
+7. Fund testnet account
+https://coinfaucet.eu/en/btc-testnet/
+
+8. Make tx:
+https://bitcointalk.org/index.php?topic=1826277.0
+
+`curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"mwLmd5xMnKkf4bBUa6MDrg4HYQaazoHtkj", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
+
+`curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"2MwrKtjVPNUAZrHeQskv2TdcFt5AfLhE7kr", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
