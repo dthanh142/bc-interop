@@ -49,10 +49,10 @@ CREDENTIALS = (
         password='GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'),
     credential(
         blockchain=Blockchain.BITCOIN,
-        address='2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
-        key='cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
+        address='mqP7zQ7cVqaeCbXryhaDgqu8nWwuqdNrmC',
+        key='cNe5imcirLKwcb9kuP86qMiSjpVdb7HTfwQjEvRfSw9t264k7LLK',
         user='bitcoinrpc',
-        password='f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
+        password='bitcoinrpc'
     ),
     credential(
         blockchain=Blockchain.POSTGRES,

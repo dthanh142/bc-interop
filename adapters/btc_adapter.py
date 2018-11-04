@@ -1,19 +1,25 @@
+import sys
+import os
+sys.path.append("/Users/timo/Documents/repos/bc-interop")
+
 from binascii import hexlify
 from bitcoinrpc.authproxy import AuthServiceProxy
-from adapters.mc_btc_adapter import MCBTCAdapter
-from config import ENCODING
+# from adapters.mc_btc_adapter import MCBTCAdapter
+from db.config import ENCODING
 from blockchain import Blockchain
-import database
+import db.database as database
+from adapters.adapter import Adapter
+import collections
 
 
-class BTCAdapter(MCBTCAdapter):
+class BTCAdapter(Adapter):
 
     credentials = database.find_credentials(Blockchain.BITCOIN)
     address = credentials['address']
     key = credentials['key']
     rpcuser = credentials['user']
     rpcpassword = credentials['password']
-    endpoint_uri = 'http://%s:%s@127.0.0.1:18332' % (rpcuser, rpcpassword)
+    endpoint_uri = f"http://{rpcuser}:{rpcpassword}@localhost:7777"
     client = AuthServiceProxy(endpoint_uri)
 
     @classmethod
@@ -69,3 +75,40 @@ class BTCAdapter(MCBTCAdapter):
     def add_transaction_to_database(transaction_hash):
         database.add_transaction(transaction_hash, Blockchain.BITCOIN)
 
+    @staticmethod
+    def extract_output(transaction, output_index):
+        outputs = transaction['vout']
+        return outputs[output_index]
+
+    @staticmethod
+    def to_text(data_hex):
+        data = unhexlify(data_hex)
+        return data.decode(ENCODING)
+
+    @classmethod
+    def create_transaction(cls, text):
+        input_transaction_hash = cls.get_latest_transaction_from_database()
+        inputs = [{'txid': input_transaction_hash, 'vout': 0}]
+        data_hex = cls.to_hex(text)
+        output = cls.create_transaction_output(
+            data_hex, input_transaction_hash)
+        # Necessary so that the address is the first output of the TX
+        output = collections.OrderedDict(sorted(output.items()))
+        transaction_hex = cls.create_raw_transaction(inputs, output, data_hex)
+        return transaction_hex
+
+    @classmethod
+    def sign_transaction(cls, transaction_hex):
+        parent_outputs = []
+        signed = cls.client.signrawtransaction(
+            transaction_hex,
+            parent_outputs,
+            [cls.key]
+        )
+        assert signed['complete']
+        return signed['hex']
+
+    @classmethod
+    def send_raw_transaction(cls, transaction_hex):
+        transaction_hash = cls.client.sendrawtransaction(transaction_hex)
+        return transaction_hash
