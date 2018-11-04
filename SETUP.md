@@ -284,8 +284,9 @@ album oyster jealous pigeon help enjoy saddle feed net avoid useless elevator
 1. Set alias (only for Mac, not needed on Linux)
 `alias electrum='/Applications/Electrum.app/Contents/MacOS/Electrum'`
 
-2. Start Electrum Deamon with testnet flag:
+2. Start Electrum Deamon with testnet flag and load wallet:
 `electrum daemon start  --testnet`
+`electrum daemon load_wallet --testnet`
 
 3. Set rpc port:
 `electrum --testnet setconfig rpcport 7777`
@@ -310,4 +311,8 @@ https://coinfaucet.eu/en/btc-testnet/
 8. Make tx:
 https://bitcointalk.org/index.php?topic=1826277.0
 
-`curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"mwLmd5xMnKkf4bBUa6MDrg4HYQaazoHtkj", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
+`curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"mpuSFcoQKQwKqwtmerVQtjyPx2yRuiMZX5", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
+
+
+Info about api:
+http://chainquery.com/bitcoin-api/sendtoaddress
