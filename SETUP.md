@@ -119,7 +119,7 @@ https://hub.docker.com/r/trufflesuite/ganache-cli/
 ## Postgres
 `docker-compose -f docker/docker_compose_postgres.yaml up`
 
-More information:    
+#### More information:    
 Psycopg: http://initd.org/psycopg/docs/install.html#binary-install-from-pypi    
 https://pynative.com/python-postgresql-tutorial/
 
@@ -129,13 +129,13 @@ Install the stellar sdk:
 `pip install stellar-sdk`
 
 
-###Run with local node
+### To run with local node instead of public node
 Run a docker container and map port 8000 for REST requests.    
 `docker run --rm -it -p "8000:8000" --name stellar stellar/quickstart --testnet`    
 In stellar_adapter.py, enable the following line:   
 builder = Builder(secret=cls.key, horizon_uri="http://localhost:8000/")
 
-Sources:     
+### More Information:     
 Horizon server on docker: https://hub.docker.com/r/stellar/quickstart/    
 Python SDK to interact with horizon: https://github.com/StellarCN/py-stellar-base          
 API documentation: https://stellar-base.readthedocs.io/en/latest/api.html    
