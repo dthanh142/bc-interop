@@ -141,6 +141,18 @@ API documentation: https://stellar-base.readthedocs.io/en/latest/api.html
 Maximum size to save on stellar is 28 bytes.    
 https://www.stellar.org/developers/guides/concepts/transactions.html#memo    
 
+files
+cd in the folder and run `python setup.py install`
+
+
+## EOS
+1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
+2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
+3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
+
+## IOTA
+Note:  IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
+
 ## Hyperledger Sawtooth
 
 ### Install secp256k1 for Hyperledger installation
@@ -174,14 +186,4 @@ Test if up:
 ###Install Python SDK locally
 
 As install with pip fails on any other version except 3.5      
-download and unpack: https://pypi.org/project/sawtooth-sdk/#files
-cd in the folder and run `python setup.py install`
-
-
-## EOS
-1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
-2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
-3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
-
-## IOTA
-Note:  IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
+download and unpack: https://pypi.org/project/sawtooth-sdk/#
