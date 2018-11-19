@@ -133,6 +133,9 @@ Run a docker container and map port 8000 for REST requests.
 In stellar_adapter.py, enable the following line:   
 builder = Builder(secret=cls.key, horizon_uri="http://localhost:8000/")
 
+### Account creation
+An account on the testnet can be created by running account_creation/createStellarAccount
+
 ### More Information:     
 Horizon server on docker: https://hub.docker.com/r/stellar/quickstart/    
 Python SDK to interact with horizon: https://github.com/StellarCN/py-stellar-base          
@@ -148,7 +151,9 @@ cd in the folder and run `python setup.py install`
 ## EOS
 1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
 2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
-3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
+
+### Account creation
+An account can be created using http://jungle.cryptolions.io/#home
 
 ## IOTA
 Note:  IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
