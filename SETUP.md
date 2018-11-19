@@ -145,7 +145,7 @@ API documentation: https://stellar-base.readthedocs.io/en/latest/api.html
 Maximum size to save on stellar is 28 bytes.    
 https://www.stellar.org/developers/guides/concepts/transactions.html#memo    
 
-##Hyperledger Sawtooth
+## Hyperledger Sawtooth
 ### Install secp256k1 for Hyperledger installation
 Because python 3.6 is not compatible with secp256k1, you need to pull it from another repo and manually install it.    
 
