@@ -117,13 +117,10 @@ Docker image used from here:
 https://hub.docker.com/r/trufflesuite/ganache-cli/
 
 ## Postgres
-(1) Install Docker
-(2) Pull the postgres image with `docker pull postgres`
-(3) Run a postgres server in a docker container `docker run --name postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=test -p 127.0.0.1:5000:5432 -d postgres` The database will be reachable under localhost:5000
-(4) 
+`docker-compose -f docker/docker_compose_postgres.yaml up`
 
-Sources:    
-Psycopg: http://initd.org/psycopg/docs/install.html#binary-install-from-pypi
+More information:    
+Psycopg: http://initd.org/psycopg/docs/install.html#binary-install-from-pypi    
 https://pynative.com/python-postgresql-tutorial/
 
 
