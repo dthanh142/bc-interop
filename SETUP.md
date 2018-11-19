@@ -1,14 +1,47 @@
 # Setup
 
+## Bitcoin
 
-## Ethereum
+Install the following packages using your favourite package manager:
 
-This command will start a docker node with a preconfigured account which holds 100 eth
-`docker-compose -f  docker/docker_compose_eth.yaml up`
+```console
+# pacman -S bitcoind bitcoin-cli
+```
 
-### Dependencies
-Docker image used from here:    
-https://hub.docker.com/r/trufflesuite/ganache-cli/
+> A GUI client is available in `bitcoin-qt`.
+
+### Connecting to the Public Testnet
+
+To connect to the public testnet of Bitcoin (`testnet3`), the following settings are required in the `~/.bitcoin/bitcoin.conf` file:
+
+```
+testnet = 1
+rpcuser = 'bitcoinrpc'
+rpcpassword = 'password'
+```
+
+> An example configuration file is available [here](https://github.com/bitcoin/bitcoin/blob/master/contrib/debian/examples/bitcoin.conf).
+
+> In `bitcoind` rpc connections are allowed by default, in `bitcoin-qt` `server = 1` is required in the configuration file to allow rpc connections.
+
+To sync the node with the public testnet:
+
+```console
+$ bitcoind
+```
+
+The progress of the syncing process can be monitored with:
+
+```console
+$ tail -f ~/.bitcoin/testnet3/debug.log
+```
+
+To stop the blockchain:
+
+```console
+$ bitcoin-cli stop
+```
+
 
 ## MultiChain
 
@@ -73,47 +106,15 @@ Stop the blockchain:
 > stop
 ```
 
-## Bitcoin
 
-Install the following packages using your favourite package manager:
+## Ethereum
 
-```console
-# pacman -S bitcoind bitcoin-cli
-```
+This command will start a docker node with a preconfigured account which holds 100 eth
+`docker-compose -f  docker/docker_compose_eth.yaml up`
 
-> A GUI client is available in `bitcoin-qt`.
-
-### Connecting to the Public Testnet
-
-To connect to the public testnet of Bitcoin (`testnet3`), the following settings are required in the `~/.bitcoin/bitcoin.conf` file:
-
-```
-testnet = 1
-rpcuser = 'bitcoinrpc'
-rpcpassword = 'password'
-```
-
-> An example configuration file is available [here](https://github.com/bitcoin/bitcoin/blob/master/contrib/debian/examples/bitcoin.conf).
-
-> In `bitcoind` rpc connections are allowed by default, in `bitcoin-qt` `server = 1` is required in the configuration file to allow rpc connections.
-
-To sync the node with the public testnet:
-
-```console
-$ bitcoind
-```
-
-The progress of the syncing process can be monitored with:
-
-```console
-$ tail -f ~/.bitcoin/testnet3/debug.log
-```
-
-To stop the blockchain:
-
-```console
-$ bitcoin-cli stop
-```
+### Dependencies
+Docker image used from here:    
+https://hub.docker.com/r/trufflesuite/ganache-cli/
 
 ##Postgres Database
 (1) Install Docker
@@ -146,6 +147,7 @@ Maximum size to save on stellar is 28 bytes.
 https://www.stellar.org/developers/guides/concepts/transactions.html#memo    
 
 ## Hyperledger Sawtooth
+
 ### Install secp256k1 for Hyperledger installation
 Because python 3.6 is not compatible with secp256k1, you need to pull it from another repo and manually install it.    
 
@@ -186,15 +188,5 @@ cd in the folder and run `python setup.py install`
 2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
 3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
 
-
-
-
-
-
-
 ## IOTA
-Not that IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
-## EOS
-1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
-2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
-3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
+Note:  IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.

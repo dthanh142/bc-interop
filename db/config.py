@@ -83,7 +83,7 @@ CREDENTIALS = (
         address='EOS8Vfg6ssQxj66wX9LrFq3EZY8z4EEkiyiQiDc7bwyn65K4YFVwW',
         key='5KazRYnXDCNougrvuVtZFDMAiB3kr7M2tjGYNJtQQ2Wn3JFRdTM',
         user='jungletimohe',
-        password='hyperledger (not used)')
+        password='hyperledger (not used)'),
     credential(
         blockchain=Blockchain.IOTA,
         address='GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA',
