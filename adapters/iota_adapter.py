@@ -4,25 +4,29 @@ sys.path.append("/Users/timo/Documents/repos/bc-interop")
 from adapters.adapter import Adapter
 from blockchain import Blockchain
 # import db.database as database
-from iota import Iota, Address, ProposedTransaction, TryteString, Bundle
+from iota import Iota, Address, ProposedTransaction, TryteString, Bundle, Tag
 
 
 class IotaAdapter(Adapter):
-    client = Iota('https://nodes.devnet.iota.org:443', testnet=True)
-    credentials = "database.find_credentials(Blockchain.STELLAR)"
+    client = Iota('https://nodes.devnet.thetangle.org:443', testnet=True)
+    credentials = "database.find_credentials(Blockchain.IOTA)"
     address = "credentials['address']"
     key = "credentials['key']"
 
     # ---Store---
     @classmethod
     def create_transaction(cls, text):
-        tx = ProposedTransaction(
+        tx = [
+            ProposedTransaction(
             # Recipient
             address=Address(
-                'GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA'),
+                'GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA'
+            ),
             value=0,
+            tag=Tag(b'TAG'),
             message=TryteString.from_string(text),
-        ),
+            ),
+        ]
         return tx
 
     @staticmethod
@@ -35,9 +39,9 @@ class IotaAdapter(Adapter):
         # "https://pyota.readthedocs.io/en/latest/api.html#send-transfer"
         cls.client.send_transfer(
             depth=4,
-            transfers=[tx],
+            transfers=tx
         )
-        return hash
+        return "hash"
 
     @staticmethod
     def add_transaction_to_database(transaction_hash):

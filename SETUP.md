@@ -269,7 +269,7 @@ cd in the folder and run `python setup.py install`
 
 
 
-# Bitcoin new:
+## Bitcoin new:
 Configure testnet with electrum:
 https://bitzuma.com/posts/a-beginners-guide-to-the-electrum-bitcoin-wallet/#testnet-servers
 
@@ -313,3 +313,6 @@ https://bitcointalk.org/index.php?topic=1826277.0
 `curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"mwLmd5xMnKkf4bBUa6MDrg4HYQaazoHtkj", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
 
 `curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"2MwrKtjVPNUAZrHeQskv2TdcFt5AfLhE7kr", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
+
+
+## IOTA
