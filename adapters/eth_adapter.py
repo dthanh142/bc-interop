@@ -29,8 +29,6 @@ class EthAdapter(Adapter):
             'to': cls.address,
             'gasPrice': cls.client.gasPrice,
             'value': 0,
-            # TODO: Fix to enable this. problem is with ganache.
-            # https://github.com/trufflesuite/ganache-core/issues/117
             'data': bytes(text, 'utf-8'),
             'nonce': cls.get_transaction_count()
         }
