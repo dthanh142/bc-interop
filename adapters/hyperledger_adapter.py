@@ -18,6 +18,7 @@ import db.database as database
 from blockchain import Blockchain
 from random import randint
 
+
 class HyperledgerAdapter(Adapter):
     context = create_context('secp256k1')
     credentials = database.find_credentials(Blockchain.HYPERLEDGER)
@@ -26,14 +27,15 @@ class HyperledgerAdapter(Adapter):
     signer = CryptoFactory(context).new_signer(
         context.new_random_private_key().from_hex(key))
     # ---Store---
+
     @classmethod
     def create_transaction(cls, text):
-        #encode the payload
+        # encode the payload
         # Value needs to be random, because else it would be the exact same tx and same hash every time
         payload = {'Verb': 'set', 'Name': text, 'Value': randint(0, 999999999)}
         payload_bytes = cbor.dumps(payload)
 
-        #create the transaction header:
+        # create the transaction header:
         txn_header_bytes = TransactionHeader(
             family_name='intkey',
             family_version='1.0',
@@ -63,29 +65,29 @@ class HyperledgerAdapter(Adapter):
 
     @classmethod
     def send_raw_transaction(cls, txn):
-        #create batch header
+        # create batch header
         txns = [txn]
         batch_header_bytes = BatchHeader(
             signer_public_key=cls.signer.get_public_key().as_hex(),
             transaction_ids=[txn.header_signature for txn in txns],
         ).SerializeToString()
-        #create the batch
-        ### !!!Change here to header_signature
+        # create the batch
+        # !!!Change here to header_signature
         header_signature = cls.signer.sign(batch_header_bytes)
         batch = Batch(
             header=batch_header_bytes,
             header_signature=header_signature,
             transactions=txns)
-        #encode the batch in a batchlist
+        # encode the batch in a batchlist
         batch_list_bytes = BatchList(batches=[batch]).SerializeToString()
 
-        #Submitting Batches to the Validator
+        # Submitting Batches to the Validator
         try:
             r = requests.post(
                 'http://localhost:8008/batches',
                 batch_list_bytes,
                 headers={'Content-Type': 'application/octet-stream'})
-            # response is not needed, because the tx hash is created locally    
+            # response is not needed, because the tx hash is created locally
             response = json.loads(r.text)
             return [txn.header_signature for txn in txns][0]
 
@@ -99,6 +101,7 @@ class HyperledgerAdapter(Adapter):
 
 
 # ---Retrieve---
+
 
     @classmethod
     def get_transaction(cls, transaction_id):

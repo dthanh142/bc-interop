@@ -1,8 +1,3 @@
-import sys
-import os
-sys.path.append("/Users/timo/Documents/repos/bc-interop")
-
-
 from web3 import Web3, HTTPProvider
 from adapters.adapter import Adapter
 from blockchain import Blockchain

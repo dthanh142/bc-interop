@@ -2,6 +2,7 @@ import sys
 import os
 from abc import ABC, abstractmethod
 
+
 class Adapter(ABC):
 
     @property

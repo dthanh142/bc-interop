@@ -26,8 +26,10 @@ class MCBTCAdapter(Adapter):
         input_transaction_hash = cls.get_latest_transaction_from_database()
         inputs = [{'txid': input_transaction_hash, 'vout': 0}]
         data_hex = cls.to_hex(text)
-        output = cls.create_transaction_output(data_hex, input_transaction_hash)
-        output = collections.OrderedDict(sorted(output.items())) # Necessary so that the address is the first output of the TX
+        output = cls.create_transaction_output(
+            data_hex, input_transaction_hash)
+        # Necessary so that the address is the first output of the TX
+        output = collections.OrderedDict(sorted(output.items()))
         transaction_hex = cls.create_raw_transaction(inputs, output, data_hex)
         return transaction_hex
 
@@ -66,4 +68,3 @@ class MCBTCAdapter(Adapter):
     def send_raw_transaction(cls, transaction_hex):
         transaction_hash = cls.client.sendrawtransaction(transaction_hex)
         return transaction_hash
-

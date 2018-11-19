@@ -1,6 +1,3 @@
-import sys
-import os
-sys.path.append("/Users/timo/Documents/repos/bc-interop")
 from adapters.adapter import Adapter
 from blockchain import Blockchain
 import db.database as database
@@ -20,12 +17,12 @@ class IotaAdapter(Adapter):
     def create_transaction(cls, text):
         tx = [
             ProposedTransaction(
-            # Recipient
-            address=Address(cls.address
-            ),
-            value=0,
-            tag=Tag(b'TAG'),
-            message=TryteString.from_string(text),
+                # Recipient
+                address=Address(cls.address
+                                ),
+                value=0,
+                tag=Tag(b'TAG'),
+                message=TryteString.from_string(text),
             ),
         ]
         return tx

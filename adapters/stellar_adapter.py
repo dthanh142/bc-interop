@@ -4,6 +4,7 @@ import db.database as database
 from stellar_base.builder import Builder
 from stellar_base.horizon import horizon_testnet, horizon_livenet
 
+
 class StellarAdapter(Adapter):
 
     credentials = database.find_credentials(Blockchain.STELLAR)

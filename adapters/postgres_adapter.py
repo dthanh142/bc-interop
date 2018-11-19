@@ -3,6 +3,7 @@ from blockchain import Blockchain
 import db.database as database
 from adapters.adapter import Adapter
 
+
 class PostgresAdapter(Adapter):
 
     credentials = database.find_credentials(Blockchain.POSTGRES)
@@ -38,27 +39,27 @@ class PostgresAdapter(Adapter):
     @classmethod
     def connect(cls):
         try:
-                # connect and print version or error
-                cls.connection = psycopg2.connect(
-                    user=cls.credentials['user'],
-                    password=cls.credentials['password'],
-                    host="localhost",
-                    port=cls.credentials['key'],
-                    database=cls.credentials['address'])
-                cls.cursor = cls.connection.cursor()
-                cls.cursor.execute("SELECT version();")
-                version = cls.cursor.fetchone()
-                # print(f"Connected to {version}")
-                # create table if not exists
-                cls.cursor.execute(
-                    '''CREATE TABLE IF NOT EXISTS test (id SERIAL PRIMARY KEY, value text)'''
-                )
-                cls.connection.commit()
+            # connect and print version or error
+            cls.connection = psycopg2.connect(
+                user=cls.credentials['user'],
+                password=cls.credentials['password'],
+                host="localhost",
+                port=cls.credentials['key'],
+                database=cls.credentials['address'])
+            cls.cursor = cls.connection.cursor()
+            cls.cursor.execute("SELECT version();")
+            version = cls.cursor.fetchone()
+            # print(f"Connected to {version}")
+            # create table if not exists
+            cls.cursor.execute(
+                '''CREATE TABLE IF NOT EXISTS test (id SERIAL PRIMARY KEY, value text)'''
+            )
+            cls.connection.commit()
         except (Exception, psycopg2.DatabaseError) as error:
-                print("Error while connecting to PostgreSQL", error)
-
+            print("Error while connecting to PostgreSQL", error)
 
     # ---Retrieve---
+
     @classmethod
     def get_transaction(cls, transaction_hash):
         cls.connect()
