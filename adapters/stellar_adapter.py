@@ -1,4 +1,4 @@
-from adapter import Adapter
+from adapters.adapter import Adapter
 from blockchain import Blockchain
 import db.database as database
 from stellar_base.builder import Builder

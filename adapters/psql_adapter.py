@@ -3,41 +3,11 @@ from blockchain import Blockchain
 import db.database as database
 from adapters.adapter import Adapter
 
-# TODO: Close connections after doing stuff. At the moment there is only one instance so this is not possible.
-# Maybe look for an alternative solution in the future or just leave it like this.
-
-
 class PostgresAdapter(Adapter):
 
     credentials = database.find_credentials(Blockchain.POSTGRES)
-
-    @property
-    def address(self):
-        raise NotImplementedError
-
-    @property
-    def key(self):
-        raise NotImplementedError
-
-    try:
-        # connect and print version or error
-        connection = psycopg2.connect(
-            user=credentials['user'],
-            password=credentials['password'],
-            host="localhost",
-            port=credentials['key'],
-            database=credentials['address'])
-        cursor = connection.cursor()
-        cursor.execute("SELECT version();")
-        version = cursor.fetchone()
-        # print(f"Connected to {version}")
-        # create table if not exists
-        cursor.execute(
-            '''CREATE TABLE IF NOT EXISTS test (id SERIAL PRIMARY KEY, value text)'''
-        )
-        connection.commit()
-    except (Exception, psycopg2.DatabaseError) as error:
-        print("Error while connecting to PostgreSQL", error)
+    address = "not necessary for psql"
+    key = "not necessary for psql"
 
     # ---Store---
     @staticmethod
@@ -52,6 +22,7 @@ class PostgresAdapter(Adapter):
 
     @classmethod
     def send_raw_transaction(cls, transaction):
+        cls.connect()
         try:
             cls.cursor.execute(transaction)
             cls.connection.commit()
@@ -60,19 +31,37 @@ class PostgresAdapter(Adapter):
         except (Exception, psycopg2.DatabaseError) as error:
             print(f"Error while sending transaction: {error}")
 
-        # finally:
-        #     if (cls.connection):
-        #         cls.cursor.close()
-        #         cls.connection.close()
-        #         print("PostgreSQL connection was closed")
-
     @staticmethod
     def add_transaction_to_database(transaction_hash):
         database.add_transaction(transaction_hash, Blockchain.POSTGRES)
 
+    @classmethod
+    def connect(cls):
+        try:
+                # connect and print version or error
+                cls.connection = psycopg2.connect(
+                    user=cls.credentials['user'],
+                    password=cls.credentials['password'],
+                    host="localhost",
+                    port=cls.credentials['key'],
+                    database=cls.credentials['address'])
+                cls.cursor = cls.connection.cursor()
+                cls.cursor.execute("SELECT version();")
+                version = cls.cursor.fetchone()
+                # print(f"Connected to {version}")
+                # create table if not exists
+                cls.cursor.execute(
+                    '''CREATE TABLE IF NOT EXISTS test (id SERIAL PRIMARY KEY, value text)'''
+                )
+                cls.connection.commit()
+        except (Exception, psycopg2.DatabaseError) as error:
+                print("Error while connecting to PostgreSQL", error)
+
+
     # ---Retrieve---
     @classmethod
     def get_transaction(cls, transaction_hash):
+        cls.connect()
         try:
             query = f"select value from test WHERE id = {transaction_hash}"
             cls.cursor.execute(query)
