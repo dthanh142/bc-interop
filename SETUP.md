@@ -125,9 +125,7 @@ https://pynative.com/python-postgresql-tutorial/
 
 
 ## Stellar
-Install the stellar sdk:    
-`pip install stellar-sdk`
-
+No local node is needed
 
 ### To run with local node instead of public node
 Run a docker container and map port 8000 for REST requests.    
