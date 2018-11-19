@@ -87,7 +87,7 @@ CREDENTIALS = (
     credential(
         blockchain=Blockchain.IOTA,
         address='GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA',
-        key='tbd',
+        key='iota (not used)',
         user='iota (not used)',
         password='iota (not used)'),
 )
