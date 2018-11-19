@@ -11,7 +11,8 @@ class IotaAdapter(Adapter):
     client = Iota('https://nodes.devnet.thetangle.org:443', testnet=True)
     credentials = database.find_credentials(Blockchain.IOTA)
     address = credentials['address']
-    # There needs to be no key because it is a zero-value transfer
+    # There needs to be no key because zero-value transfers do not have a sender
+    # https://iota.stackexchange.com/questions/1266/can-one-send-a-zero-value-transaction-from-any-address-to-any-address
     key = credentials['key']
 
     # ---Store---

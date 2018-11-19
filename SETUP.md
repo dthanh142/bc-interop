@@ -316,3 +316,4 @@ https://bitcointalk.org/index.php?topic=1826277.0
 
 
 ## IOTA
+Not that IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
