@@ -45,22 +45,17 @@ class IotaAdapter(Adapter):
         bundle = Bundle.as_json_compatible(bundle)
         bundle = bundle[0]
         tx_hash = bundle["hash_"]
-        print(type(tx_hash))
+        tx_hash = str(tx_hash)
         return tx_hash
 
     @staticmethod
     def add_transaction_to_database(transaction_hash):
-        # print(transaction_hash)
-        # print(transaction_hash.decode(errors='ignore', strip_padding=False))
-        # # print(transaction_hash.as_string())
-        # print(type(transaction_hash))
-        # database.add_transaction(transaction_hash, Blockchain.IOTA)
-        pass
+        database.add_transaction(transaction_hash, Blockchain.IOTA)
 
     # ---Retrieve---
     @classmethod
     def get_transaction(cls, transaction_hash):
-        bundle = cls.client.get_bundles(hash)
+        bundle = cls.client.get_bundles(transaction_hash)
         return bundle["bundles"][0]
 
     @staticmethod
