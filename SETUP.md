@@ -125,7 +125,7 @@ https://pynative.com/python-postgresql-tutorial/
 
 
 ## Stellar
-No local node is needed
+Uses public node, no local node is needed
 
 ### To run with local node instead of public node
 Run a docker container and map port 8000 for REST requests.    
@@ -149,6 +149,9 @@ cd in the folder and run `python setup.py install`
 
 
 ## EOS
+
+Uses public node, no local node is needed    
+
 1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
 2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
 
