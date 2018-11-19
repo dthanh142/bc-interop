@@ -30,7 +30,7 @@ class PostgresAdapter(Adapter):
         cursor = connection.cursor()
         cursor.execute("SELECT version();")
         version = cursor.fetchone()
-        print(f"Connected to {version}")
+        # print(f"Connected to {version}")
         # create table if not exists
         cursor.execute(
             '''CREATE TABLE IF NOT EXISTS test (id SERIAL PRIMARY KEY, value text)'''
