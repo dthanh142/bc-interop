@@ -47,8 +47,8 @@ def retrieve(transaction_hash):
     text = adapter.retrieve(transaction_hash)
     return text
 
-store("helloworld", Blockchain.IOTA)
+store("test_neu", Blockchain.IOTA)
 # print(
-#     retrieve(
-#         "bb288f324bcce9335fa4f87a07e56e582521f90f6a0c6a25c1894e1b6e5ac5e27f1c20f8c92df1affb62382a1a5b7e4359329ec865a20bf022cd09b4930abbd4"
+#     retrieve( 
+#         "TOSYESPD9SLAAHMQNBLIMVUAHHMCNJRCEUSNRISUT9QPCA9OMRAHKKAMSBUMYGCPLBHV9T9PGYHPKV999"
 #     ))

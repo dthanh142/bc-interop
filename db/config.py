@@ -31,7 +31,7 @@ BLOCKCHAINS = (
         name='HYPERLEDGER'
     ),
     blockchain(
-        blockchain=Blockchain.HYPERLEDGER,
+        blockchain=Blockchain.IOTA,
         name='IOTA'
     )
 )
@@ -77,7 +77,7 @@ CREDENTIALS = (
         password='hyperledger (not used)'),
     credential(
         blockchain=Blockchain.IOTA,
-        address='tbd',
+        address='GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA',
         key='tbd',
         user='iota (not used)',
         password='iota (not used)'),

@@ -14,11 +14,13 @@ from iota import Bundle
 api = Iota('https://nodes.devnet.iota.org:443', testnet=True)
 
 def get_transaction():
-    
     bundle = api.get_bundles(
-        "IMLLFGKXGLFFTTAEBQIVFAWTMJVVKONKRXJBYQJDVWIPUYJOSEHYPGF9JAYJXXEIMZFRYBXTPOQWTW999")
+        "VKDOSQGWTYXWAYW9UVQBRTLIACAJOQNUAYOYNGFLIFSSE9KGUTSHGVZSWDZADVAXJIUIOZJGNNGXXZ999")
     singleBundle =  bundle["bundles"][0]
-    print(Bundle.as_json_compatible(singleBundle))
+    json = Bundle.as_json_compatible(singleBundle)
+    data = json[0]["signature_message_fragment"]
+    data = TryteString.decode(data)
+    print(data)
 
 
 def create_address():
@@ -45,4 +47,5 @@ def transfer():
         ],
     )
 
-transfer()
+
+get_transaction()
