@@ -9,7 +9,7 @@ from adapters.postgres_adapter import PostgresAdapter
 from adapters.stellar_adapter import StellarAdapter
 from adapters.eos_adapter import EosAdapter
 from adapters.iota_adapter import IotaAdapter
-# from adapters.hyperledger_adapter import HyperledgerAdapter
+from adapters.hyperledger_adapter import HyperledgerAdapter
 
 from blockchain import Blockchain
 import db.database as database
@@ -17,14 +17,14 @@ import sys, os
 
 
 Adapter = {
-    Blockchain.ETHEREUM: EthAdapter,
-    # Blockchain.MULTICHAIN: MCAdapter,
     # Blockchain.BITCOIN: BTCAdapter,
+    # Blockchain.MULTICHAIN: MCAdapter,
+    Blockchain.ETHEREUM: EthAdapter,
     Blockchain.POSTGRES: PostgresAdapter,
     Blockchain.STELLAR: StellarAdapter,
     Blockchain.EOS: EosAdapter,
     Blockchain.IOTA: IotaAdapter,
-    # Blockchain.HYPERLEDGER: HyperledgerAdapter
+    Blockchain.HYPERLEDGER: HyperledgerAdapter
     
 }
 
@@ -53,8 +53,8 @@ def retrieve(transaction_hash):
     text = adapter.retrieve(transaction_hash)
     return text
 
-# print(store("this is timo", Blockchain.IOTA))
+# print(store("greeting from timoh", Blockchain.HYPERLEDGER))
 print(
     retrieve(
-        "FFZVODTEOWVMJARNFXDGQXJBTEXGSGIMEHFGUJXVBKHIIVFQCNLLPFMAYFBASATSBIPSCXFJQBAVGN999"
+        "10725e71e8ea5c8292741c7169276906790c135354de1e7d218a949a5da3a55a44e6ff9f6b10950175327ff422c9877045125606a7f4cbfe7b0ad35fa346ab68"
     ))

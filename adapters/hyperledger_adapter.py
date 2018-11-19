@@ -16,13 +16,10 @@ import json
 import base64
 import db.database as database
 from blockchain import Blockchain
-
+from random import randint
 
 class HyperledgerAdapter(Adapter):
     context = create_context('secp256k1')
-
-
-
     credentials = database.find_credentials(Blockchain.HYPERLEDGER)
     # address = credentials['address']
     key = credentials['key']
@@ -32,7 +29,8 @@ class HyperledgerAdapter(Adapter):
     @classmethod
     def create_transaction(cls, text):
         #encode the payload
-        payload = {'Verb': 'set', 'Name': text, 'Value': 42}
+        # Value needs to be random, because else it would be the exact same tx and same hash every time
+        payload = {'Verb': 'set', 'Name': text, 'Value': randint(0, 999999999)}
         payload_bytes = cbor.dumps(payload)
 
         #create the transaction header:
@@ -87,16 +85,12 @@ class HyperledgerAdapter(Adapter):
                 'http://localhost:8008/batches',
                 batch_list_bytes,
                 headers={'Content-Type': 'application/octet-stream'})
+            # response is not needed, because the tx hash is created locally    
             response = json.loads(r.text)
-            print(
-                f"this is the tx id: {[txn.header_signature for txn in txns][0]}"
-            )
-            print(f"response: {response}")
             return [txn.header_signature for txn in txns][0]
 
         except HTTPError as e:
             response = e.file
-        #get transaction id
 
     @staticmethod
     def add_transaction_to_database(transaction_hash):
