@@ -5,10 +5,11 @@ version: "3"
 services:
     # basenode:
     #     build: ./base
-    #     stdin_open: true
-    #     tty: true
+        #  stdin_open: true
+        #  tty: true
     masternode:
-        build: ./master
+        # build: ./docker_multichain/master
+        image: kunstmaan/master-multichain
         stdin_open: true
         tty: true
         expose:

@@ -188,3 +188,16 @@ After that it should be possible to install the hyperledger sawtooth python sdk 
 To test if local node is running: `curl http://localhost:8008/blocks`
 https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
    
+## Multichain new
+
+`apt-get update`
+`apt-get install nano`
+
+`create chain2`
+`multichaind chain2 -daemon`
+`nano /root/.multichain/chain2/params.dat`
+
+multichain-util create blk2 
+
+
+`docker-compose -f docker/docker_multichain.yaml up`
