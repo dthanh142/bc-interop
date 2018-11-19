@@ -5,7 +5,7 @@ sys.path.append("/Users/timo/Documents/repos/bc-interop")
 # from adapters.btc_adapter import BTCAdapter
 # from adapters.mc_adapter import MCAdapter
 from adapters.eth_adapter import EthAdapter
-from adapters.psql_adapter import PostgresAdapter
+from adapters.postgres_adapter import PostgresAdapter
 from adapters.stellar_adapter import StellarAdapter
 # from adapters.hyperledger_adapter import HyperledgerAdapter
 # from adapters.eos_adapter import EosAdapter
