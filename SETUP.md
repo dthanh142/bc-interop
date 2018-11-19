@@ -1,70 +1,5 @@
 # Setup
 
-## Python
-
-Install the following packages using your favourite package manager:
-
-```console
-# pacman -S python python-pip
-```
-
-### With virtual environment
-
-Create a virtual environment within the project (for `python >= 3.3`):
-
-```console
-$ python -m venv venv
-```
-
-Activate virtual environment:
-
-```console
-$ source venv/bin/activate
-```
-
-Install dependencies:
-
-```
-(venv) $ pip install web3 mcrpc python-bitcoinrpc
-```
-
-Deactivate virtual environment:
-
-```
-(venv) $ deactivate
-```
-
-### Without virtual environment
-
-Install dependencies:
-
-```console
-$ pip install --user web3 mcrpc python-bitcoinrpc
-```
-
-## Database
-
-Install the following package using your favourite package manager:
-
-```console
-# pacman -S sqlite
-```
-
-Run the database setup:
-
-```python
-import database
-database.setup()
-```
-
-> Calling the `setup` function of the [`database`](database.py) module will:
->
-> 1. drop `credentials` and `transactions` tables if they already exist
-> 2. create tables for storing `credentials` and `transactions`
-> 3. seed the `credentials` table with credentials for Ethereum, MultiChain and Bitcoin
-> 4. seed the `transactions` table with input transactions for MultiChain and Bitcoin
-
-> Seed values are read from the [`config`](config.py) module.
 
 ## Ethereum
 
@@ -211,6 +146,23 @@ Maximum size to save on stellar is 28 bytes.
 https://www.stellar.org/developers/guides/concepts/transactions.html#memo    
 
 ##Hyperledger Sawtooth
+### Install secp256k1 for Hyperledger installation
+Because python 3.6 is not compatible with secp256k1, you need to pull it from another repo and manually install it.    
+
+Make sure those are installed on your machine by running (mac):     
+`brew install autoconf automake libtool`
+
+IF there is a certification error installing secp256k1:    
+`/Applications/Python\ 3.6/Install\ Certificates.command`
+
+Download the source from the repo:
+https://github.com/stfairy/secp256k1-py
+cd into this directory and then run `python3 setup.py install` to install secp256k1.     
+After that it should be possible to install the hyperledger sawtooth python sdk (`pip install sawtooth-sdk`, will be run from  requirements.txt)
+
+### General setup
+
+
 https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
 
 Start:    
