@@ -2,9 +2,11 @@
 import sys, os
 sys.path.append("/Users/timo/Documents/repos/bc-interop")
 
-from adapters.eth_adapter import EthAdapter
-# from adapters.mc_adapter import MCAdapter
 # from adapters.btc_adapter import BTCAdapter
+# from adapters.mc_adapter import MCAdapter
+from adapters.eth_adapter import EthAdapter
+
+
 # from adapters.psql_adapter import PostgresAdapter
 # from adapters.stellar_adapter import StellarAdapter
 # from adapters.hyperledger_adapter import HyperledgerAdapter
@@ -49,8 +51,8 @@ def retrieve(transaction_hash):
     text = adapter.retrieve(transaction_hash)
     return text
 
-store("this is timo", Blockchain.ETHEREUM)
-# print(
-#     retrieve(
-#         "0x7a44df728dd324fddc80597812db5c1b1d0c3b9199f717a85cd1ecae16c6d65b"
-#     ))
+# print(store("this is timo", Blockchain.ETHEREUM))
+print(
+    retrieve(
+        "0xbf5d3bfb4623546b3c994298a5c63792698746dfc7832166accbaaacf4902bfd"
+    ))

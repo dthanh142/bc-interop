@@ -31,7 +31,7 @@ class EthAdapter(Adapter):
             'value': 0,
             # TODO: Fix to enable this. problem is with ganache.
             # https://github.com/trufflesuite/ganache-core/issues/117
-            # 'data': bytes(text, 'utf-8'),
+            'data': bytes(text, 'utf-8'),
             'nonce': cls.get_transaction_count()
         }
         transaction['gas'] = cls.estimate_gas(transaction)
@@ -66,7 +66,7 @@ class EthAdapter(Adapter):
 
     @staticmethod
     def extract_data(transaction):
-        print(transaction)
+        # print(transaction)
         # Note that 'input' might be replaced with 'data' in a future release,
         # see here for more detailed information:
         # https://github.com/ethereum/web3.py/issues/901
