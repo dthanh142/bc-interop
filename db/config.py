@@ -33,6 +33,10 @@ BLOCKCHAINS = (
     blockchain(
         blockchain=Blockchain.EOS,
         name='EOS'
+    ),
+    blockchain(
+        blockchain=Blockchain.IOTA,
+        name='IOTA'
     )
 )
 CREDENTIALS = (
@@ -80,6 +84,12 @@ CREDENTIALS = (
         key='5KazRYnXDCNougrvuVtZFDMAiB3kr7M2tjGYNJtQQ2Wn3JFRdTM',
         user='jungletimohe',
         password='hyperledger (not used)')
+    credential(
+        blockchain=Blockchain.IOTA,
+        address='GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA',
+        key='tbd',
+        user='iota (not used)',
+        password='iota (not used)'),
 )
 TRANSACTIONS = (
     transaction(

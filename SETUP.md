@@ -265,3 +265,59 @@ cd in the folder and run `python setup.py install`
 1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
 2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
 3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home
+
+
+
+
+## Bitcoin new:
+Configure testnet with electrum:
+https://bitzuma.com/posts/a-beginners-guide-to-the-electrum-bitcoin-wallet/#testnet-servers
+
+Configure electrum:
+http://docs.electrum.org/en/latest/merchant.html#jsonrpc-interface
+
+Install Electrum:
+-https://electrum.org/#download
+-create a new account:
+album oyster jealous pigeon help enjoy saddle feed net avoid useless elevator
+
+1. Set alias (only for Mac, not needed on Linux)
+`alias electrum='/Applications/Electrum.app/Contents/MacOS/Electrum'`
+
+2. Start Electrum Deamon with testnet flag:
+`electrum daemon start  --testnet`
+
+3. Set rpc port:
+`electrum --testnet setconfig rpcport 7777`
+
+4. Set rpc user:
+`electrum --testnet setconfig rpcuser bitcoinrpc`
+
+5. Set rpc password:
+`electrum --testnet setconfig rpcpassword bitcoinrpc`
+
+Test if settings are correct:
+`electrum --testnet getconfig rpcuser`
+`electrum --testnet getconfig rpcport`
+`electrum --testnet getconfig rpcpassword`
+
+6. Create Address
+`electrum --testnet listaddresses` testnet accounts start with "m"
+
+7. Fund testnet account
+https://coinfaucet.eu/en/btc-testnet/
+
+8. Make tx:
+https://bitcointalk.org/index.php?topic=1826277.0
+
+`curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"mwLmd5xMnKkf4bBUa6MDrg4HYQaazoHtkj", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
+
+`curl --data-binary '{"id":"curltext","method":"payto","params":{"destination":"2MwrKtjVPNUAZrHeQskv2TdcFt5AfLhE7kr", "amount":"0.001"}}' http://bitcoinrpc:bitcoinrpc@localhost:7777`
+
+
+## IOTA
+Not that IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
+## EOS
+1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
+2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
+3. create an account on the jungle testnet using http://jungle.cryptolions.io/#home

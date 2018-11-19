@@ -11,6 +11,7 @@ from adapters.eth_adapter import EthAdapter
 # from adapters.eos_adapter import EosAdapter
 from blockchain import Blockchain
 import db.database as database
+import sys, os
 
 
 Adapter = {
