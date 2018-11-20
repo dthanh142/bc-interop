@@ -3,7 +3,7 @@ from blockchain import Blockchain
 AMOUNT = 0
 ENCODING = 'utf-8'
 DATABASE_PATH = 'db/bcio.db'
-WAIT_FOR_CONFIRMATION = True
+WAIT_FOR_CONFIRMATION = False
 
 # Set how long to wait until checking if tx arrived
 CONFIRMATION_WAITING_TIMES = {
