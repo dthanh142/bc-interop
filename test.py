@@ -1,12 +1,2 @@
-from blockchain import Blockchain
+from db.config import CONFIRMATION_WAITING_TIMES
 
-print(Blockchain["ETHEREUM"].value)
-
-# for bc in Blockchain:
-#         connection.execute(
-#             '''
-#         INSERT INTO blockchains
-#         VALUES (?, ?)
-#         ''',
-#             (bc.value, bc.name)
-#         )

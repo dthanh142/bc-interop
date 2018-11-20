@@ -7,7 +7,7 @@ import json
 
 
 class EosAdapter(Adapter):
-
+    chain = Blockchain.EOS
     credentials = database.find_credentials(Blockchain.EOS)
     address = credentials['address']
     key = credentials['key']

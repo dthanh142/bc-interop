@@ -3,6 +3,19 @@ from blockchain import Blockchain
 AMOUNT = 0
 ENCODING = 'utf-8'
 DATABASE_PATH = 'db/bcio.db'
+WAIT_FOR_CONFIRMATION = True
+
+# Set how long to wait until checking if tx arrived
+CONFIRMATION_WAITING_TIMES = {
+    Blockchain.ETHEREUM.value: max(105, 20),
+    Blockchain.MULTICHAIN.value: max(15, 20),
+    Blockchain.BITCOIN.value: max(3600, 20),
+    Blockchain.POSTGRES.value: max(5, 20),
+    Blockchain.STELLAR.value: max(5, 20),
+    Blockchain.HYPERLEDGER.value: max(20, 20),
+    Blockchain.EOS.value: max(0.5, 20),
+    Blockchain.IOTA.value: max(60, 20),
+}
 
 CREDENTIALS = [
     {
