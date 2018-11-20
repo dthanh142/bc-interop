@@ -9,7 +9,3 @@ class Blockchain(Enum):
     HYPERLEDGER = auto()
     EOS = auto()
     IOTA = auto()
-
-
-def blockchain(blockchain, name):
-    return {'blockchain': blockchain, 'name': name}

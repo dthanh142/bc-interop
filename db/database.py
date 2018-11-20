@@ -1,9 +1,9 @@
 from sqlite3 import connect, Row
 from datetime import datetime
 from blockchain import Blockchain
-from db.config import DATABASE, BLOCKCHAINS, CREDENTIALS, TRANSACTIONS
+from db.config import DATABASE_PATH, CREDENTIALS, TRANSACTIONS
 
-connection = connect(DATABASE)
+connection = connect(DATABASE_PATH)
 # Rows wrapped with the Row class can be accessed both by index (like tuples)
 # and case-insensitively by name
 connection.row_factory = Row
@@ -64,58 +64,52 @@ def create_tables():
     )
 
 
-def seed_blockchains():
-    for blockchain in BLOCKCHAINS:
-        add_blockchain(**blockchain)
-
-
-def seed_credentials():
-    for credentials in CREDENTIALS:
-        add_credentials(**credentials)
-
-
-def seed_transactions():
-    for transaction in TRANSACTIONS:
-        add_transaction(**transaction)
-
-
 @with_connection
-def add_blockchain(blockchain, name):
-    blockchain_id = blockchain.value
-    connection.execute(
-        '''
+def seed_blockchains():
+    for bc in Blockchain:
+        print("Loop started bc is")
+        connection.execute(
+            '''
         INSERT INTO blockchains
         VALUES (?, ?)
         ''',
-        (blockchain_id, name)
+            (bc.value, bc.name)
+        )
+
+
+@with_connection
+def seed_credentials():
+    for creds in CREDENTIALS:
+        connection.execute(
+            '''
+            INSERT INTO credentials (blockchain_id, address, key, user, password) 
+            VALUES (?, ?, ?, ?, ?)
+            ''',
+            (creds["id"], creds["address"], creds["key"],
+             creds["user"], creds["password"])
+        )
+
+
+@with_connection
+def seed_transactions():
+    for tx in TRANSACTIONS:
+        now = datetime.now()
+        connection.execute(
+            'INSERT INTO transactions VALUES (?, ?, ?)',
+            (tx["transaction_hash"], tx["blockchain"], now)
+        )
+
+
+@with_connection
+def add_transaction(transaction_hash, chain):
+    now = datetime.now()
+    connection.execute(
+        'INSERT INTO transactions VALUES (?, ?, ?)',
+        (transaction_hash, chain.value, now)
     )
 
 
 @with_connection
-def add_credentials(blockchain, address, key, user, password):
-    blockchain_id = blockchain.value
-    connection.execute(
-        '''
-        INSERT INTO credentials (blockchain_id, address, key, user, password) 
-        VALUES (?, ?, ?, ?, ?)
-        ''',
-        (blockchain_id, address, key, user, password)
-    )
-
-
-@with_connection
-def update_credentials(blockchain, address, key, user='', password=''):
-    blockchain_id = blockchain.value
-    connection.execute(
-        '''
-        UPDATE credentials 
-        SET address=?, key=?, user=?, password=? 
-        WHERE id=?
-        ''',
-        (address, key, user, password, blockchain_id)
-    )
-
-
 def find_credentials(blockchain):
     blockchain_id = blockchain.value
     cursor = connection.execute(
@@ -131,15 +125,6 @@ def find_credentials(blockchain):
 
 
 @with_connection
-def add_transaction(transaction_hash, blockchain):
-    blockchain_id = blockchain.value
-    now = datetime.now()
-    connection.execute(
-        'INSERT INTO transactions VALUES (?, ?, ?)',
-        (transaction_hash, blockchain_id, now)
-    )
-
-
 def find_latest_transaction(blockchain):
     blockchain_id = blockchain.value
     cursor = connection.execute(
@@ -156,6 +141,7 @@ def find_latest_transaction(blockchain):
     return row['hash']
 
 
+@with_connection
 def find_blockchain(transaction_hash):
     cursor = connection.execute(
         'SELECT blockchain_id FROM transactions WHERE hash=?',
@@ -165,3 +151,14 @@ def find_blockchain(transaction_hash):
     blockchain_id = row['blockchain_id']
     return Blockchain(blockchain_id)
 
+# @with_connection
+# def update_credentials(blockchain, address, key, user='', password=''):
+#     blockchain_id = blockchain.value
+#     connection.execute(
+#         '''
+#         UPDATE credentials
+#         SET address=?, key=?, user=?, password=?
+#         WHERE id=?
+#         ''',
+#         (address, key, user, password, blockchain_id)
+#     )
