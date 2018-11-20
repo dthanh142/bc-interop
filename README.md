@@ -1,5 +1,18 @@
 # Blockchain Interoperability
 
+## Usage
+
+```python
+from bcio import store, retrieve, migrate, Blockchain
+
+tx_hash = store('Some Data', Blockchain.STELLAR)    
+
+data = retrieve('[Transaction_Hash]')    
+
+tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
+```
+
+
 ## Setup
 
 ### Python Setup

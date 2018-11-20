@@ -53,6 +53,18 @@ def retrieve(transaction_hash):
     text = adapter.retrieve(transaction_hash)
     return text
 
+
+def migrate(transaction_hash, blockchain):
+    """Copy a value from a transaction to another Blockchain:
+        Args:
+            Transaction hash
+        Returns:
+            string: The transaction hash from the new transaction.
+    """
+    value = retrieve(transaction_hash)
+    new_hash = store(value, blockchain)
+    return new_hash
+
 # print(store("greeting from timoh", Blockchain.HYPERLEDGER))
 print(
     retrieve(
