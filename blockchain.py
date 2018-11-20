@@ -7,8 +7,8 @@ class Blockchain(Enum):
     POSTGRES = auto()
     STELLAR = auto()
     HYPERLEDGER = auto()
-    IOTA = auto()
     EOS = auto()
+    IOTA = auto()
 
 
 def blockchain(blockchain, name):
