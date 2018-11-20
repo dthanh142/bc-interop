@@ -65,8 +65,11 @@ def migrate(transaction_hash, blockchain):
     new_hash = store(value, blockchain)
     return new_hash
 
-# print(store("greeting from timoh", Blockchain.HYPERLEDGER))
+
+# print(store("greeting from timojjßh", Blockchain.EOS))
 print(
     retrieve(
-        "10725e71e8ea5c8292741c7169276906790c135354de1e7d218a949a5da3a55a44e6ff9f6b10950175327ff422c9877045125606a7f4cbfe7b0ad35fa346ab68"
+        "170d2895f0cbd89f9ec55fd3a30baa78d1f0dfc5b0ee3ce84edcf22c568ceebd"
     ))
+# print(migrate("f12cc0275e47d8040c04d0ea0d26bf8117f25e0628697da338f73e1eb3d39cad;25316099",
+#         Blockchain.STELLAR))
