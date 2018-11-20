@@ -43,7 +43,7 @@ CREDENTIALS = (
     credential(
         blockchain=Blockchain.ETHEREUM,
         address='0xf717e2d05037d13d6bfd0d783d6f4ebd68dd5b46',
-        key='0xec7a5eb646075cc16dd842381489614a49eda87e1f600d8780bbb3012288a98f'
+        key='0xec7a5eb646075cc16dd842381489614a49eda87e1f600d8780bbb3012288a98f',
         user='ethereum (not used)',
         password='ethereum (not used)'),
     ),
