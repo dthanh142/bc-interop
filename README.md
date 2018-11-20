@@ -3,7 +3,7 @@
 ## Usage
 
 ```python
-from bcio import store, retrieve, migrate, Blockchain
+from api import store, retrieve, migrate, Blockchain
 
 tx_hash = store('Some Data', Blockchain.STELLAR)    
 
