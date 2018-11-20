@@ -1,6 +1,7 @@
-import sys
-import os
 from abc import ABC, abstractmethod
+import db.database as db
+from db.config import CONFIRMATION_WAITING_TIMES, WAIT_FOR_CONFIRMATION
+import time
 
 
 class Adapter(ABC):
@@ -57,8 +58,28 @@ class Adapter(ABC):
         transaction = cls.create_transaction(text)
         signed_transaction = cls.sign_transaction(transaction)
         transaction_hash = cls.send_raw_transaction(signed_transaction)
-        cls.add_transaction_to_database(transaction_hash)
-        return transaction_hash
+        if(WAIT_FOR_CONFIRMATION):
+            if(cls.confirmation_check(transaction_hash)):
+                cls.add_transaction_to_database(transaction_hash)
+                return transaction_hash
+            else:
+                raise LookupError(
+                    'Transaction was not confirmed and therefore not added in DB')
+        else:
+            cls.add_transaction_to_database(transaction_hash)
+            return transaction_hash
+
+
+    @classmethod
+    def confirmation_check(cls, transaction_hash):
+        bc_id = cls.chain.value
+        waiting_time = CONFIRMATION_WAITING_TIMES[bc_id]
+        time.sleep(waiting_time)
+        value = cls.retrieve(transaction_hash)
+        if(type(value) == str):
+            return True
+        else:    
+            return False
 
     @staticmethod
     @abstractmethod

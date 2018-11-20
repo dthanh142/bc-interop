@@ -1,5 +1,6 @@
-#append the root project path to the pythonpath so that blockchain.py can be accessed
-import sys, os
+# append the root project path to the pythonpath so that blockchain.py can be accessed
+import sys
+import os
 sys.path.append("/Users/timo/Documents/repos/bc-interop")
 
 # from adapters.btc_adapter import BTCAdapter
@@ -13,7 +14,10 @@ from adapters.hyperledger_adapter import HyperledgerAdapter
 
 from blockchain import Blockchain
 import db.database as database
-import sys, os
+import sys
+import os
+import string
+import random
 
 
 Adapter = {
@@ -25,7 +29,7 @@ Adapter = {
     Blockchain.EOS: EosAdapter,
     Blockchain.IOTA: IotaAdapter,
     Blockchain.HYPERLEDGER: HyperledgerAdapter
-    
+
 }
 
 
@@ -66,10 +70,16 @@ def migrate(transaction_hash, blockchain):
     return new_hash
 
 
-# print(store("greeting from timojjßh", Blockchain.EOS))
-print(
-    retrieve(
-        "170d2895f0cbd89f9ec55fd3a30baa78d1f0dfc5b0ee3ce84edcf22c568ceebd"
-    ))
+base_chars = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3']
+word_length = 10  # change this to the desired word length
+
+
+print(store([random.choice(base_chars) for _ in range(word_length)], Blockchain.EOS))
+
+
+# print(
+#     retrieve(
+#         "170d2895f0cbd89f9ec55fd3a30baa78d1f0dfc5b0ee3ce84edcf22c568ceebd"
+#     ))
 # print(migrate("f12cc0275e47d8040c04d0ea0d26bf8117f25e0628697da338f73e1eb3d39cad;25316099",
 #         Blockchain.STELLAR))
