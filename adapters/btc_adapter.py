@@ -77,7 +77,7 @@ class BTCAdapter(Adapter):
 
     @classmethod
     def extract_data(cls, transaction):
-        output = cls.extract_output(transaction, output_index=1)
+        output = transaction['vout'][1]
         asm = output['scriptPubKey']['asm']
         _, data = asm.split()
         return data
@@ -86,26 +86,3 @@ class BTCAdapter(Adapter):
     def to_text(data_hex):
         data = unhexlify(data_hex)
         return data.decode(ENCODING)
-
-   
-
-    
-
-    
-
-    
-    ##############STUFF FROM OTHER ADAPTER##################
-    @staticmethod
-    def extract_output(transaction, output_index):
-        outputs = transaction['vout']
-        return outputs[output_index]
-
-    @staticmethod
-    def to_text(data_hex):
-        data = unhexlify(data_hex)
-        return data.decode(ENCODING)
-
-    
-
-
-    

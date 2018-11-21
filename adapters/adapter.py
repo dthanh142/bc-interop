@@ -64,7 +64,7 @@ class Adapter(ABC):
                 return transaction_hash
             else:
                 raise LookupError(
-                    'Transaction was not confirmed and therefore not added in DB')
+                    'Transaction not confirmed and not added to DB')
         else:
             cls.add_transaction_to_database(transaction_hash)
             return transaction_hash
