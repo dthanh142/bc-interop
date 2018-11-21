@@ -29,8 +29,8 @@ CREDENTIALS = [
     {
         "blockchain": Blockchain.MULTICHAIN,
         "id": Blockchain.MULTICHAIN.value,
-        "address": '1awPUbKdpGnkuU28zryRyYoPeMoaWgUDU38EWJ',
-        "key": 'VBjTqsd4d6HHCUpEVCAu7fmb5ZgevpQJjV8BvxcLPiVSodepZNz9fKf1',
+        "address": '1CPjuZgFhej7wnDzuWucpwRXwkDoAJT1Ksp2z7',
+        "key": 'V9wTfPbB8VHN2i8m99egUeZ3tyANZkm6RjW2p2KBZkVj3wdw5ETUfvpn',
         "user": 'multichainrpc',
         "password": '79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz'
     },
@@ -88,7 +88,7 @@ CREDENTIALS = [
 TRANSACTIONS = [
     {
         "blockchain": Blockchain.MULTICHAIN.value,
-        "transaction_hash": '023e6c427c637fa9f3c0738b2eeeed81be2c61042845f5213886902eddb807af',
+        "transaction_hash": '74b90c221d3fa5dc4117b1f4f510650b4d8e8013e28bfcbb21a517bc911efe1e',
     },
     {
         "blockchain": Blockchain.BITCOIN.value,
