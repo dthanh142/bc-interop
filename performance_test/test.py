@@ -12,7 +12,6 @@ from numpy import genfromtxt
 
 
 def check_sample_size(blockchain_name):
-	# Load
 	my_data = genfromtxt(
 		f"/Users/timo/Documents/repos/bc-interop/performance_test/data/{blockchain_name}.csv", delimiter=',')
 	print(f"Sample size is now: {my_data.size}")
@@ -27,8 +26,4 @@ def run_test(blockchain_name):
 		i += 1
 	check_sample_size(blockchain_name.name)
 
-run_test(Blockchain.EOS)
-
-
-
-
+run_test(Blockchain.STELLAR)
