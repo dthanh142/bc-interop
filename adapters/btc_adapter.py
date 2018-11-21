@@ -1,12 +1,13 @@
-from binascii import hexlify
+from binascii import hexlify, unhexlify
 from bitcoinrpc.authproxy import AuthServiceProxy
-from adapters.mc_btc_adapter import MCBTCAdapter
-from config import ENCODING
+from db.config import ENCODING
 from blockchain import Blockchain
-import database
+from adapters.adapter import Adapter
+import db.database as database
+import collections
 
 
-class BTCAdapter(MCBTCAdapter):
+class BTCAdapter(Adapter):
     chain = Blockchain.BITCOIN
     credentials = database.find_credentials(Blockchain.BITCOIN)
     address = credentials['address']
@@ -16,6 +17,59 @@ class BTCAdapter(MCBTCAdapter):
     endpoint_uri = 'http://%s:%s@127.0.0.1:18332' % (rpcuser, rpcpassword)
     client = AuthServiceProxy(endpoint_uri)
 
+    # ---Store---
+    @classmethod
+    def create_transaction(cls, text):
+        input_transaction_hash = database.find_latest_transaction(Blockchain.BITCOIN)
+        inputs = [{'txid': input_transaction_hash, 'vout': 0}]
+        data_hex = cls.to_hex(text)
+        output = cls.create_transaction_output(data_hex, input_transaction_hash)
+        # Necessary so that the address is the first output of the TX
+        output = collections.OrderedDict(sorted(output.items()))
+        transaction_hex = cls.client.createrawtransaction(inputs, output)
+        return transaction_hex
+
+    @classmethod
+    def create_transaction_output(cls, data_hex, input_transaction_hash):
+        balance = cls.extract_balance(input_transaction_hash)
+        relay_fee = cls.client.getnetworkinfo()['relayfee']
+        change = balance - relay_fee
+        return {cls.address: change, 'data': data_hex}
+
+    @classmethod
+    def extract_balance(cls, transaction_hash):
+        transaction = cls.get_transaction(transaction_hash)
+        output = cls.extract_output(transaction, output_index=0)
+        return output['value']    
+
+    @staticmethod
+    def to_hex(text):
+        data = bytes(text, ENCODING)
+        data_hex = hexlify(data)
+        return data_hex.decode(ENCODING)
+
+    @classmethod
+    def sign_transaction(cls, transaction_hex):
+        parent_outputs = []
+        signed = cls.client.signrawtransaction(
+            transaction_hex,
+            parent_outputs,
+            [cls.key]
+        )
+        assert signed['complete']
+        return signed['hex']
+
+    @classmethod
+    def send_raw_transaction(cls, transaction_hex):
+        transaction_hash = cls.client.sendrawtransaction(transaction_hex)
+        return transaction_hash
+
+    @staticmethod
+    def add_transaction_to_database(transaction_hash):
+        database.add_transaction(transaction_hash, Blockchain.BITCOIN)
+
+
+    # ---Receive---
     @classmethod
     def get_transaction(cls, transaction_hash):
         transaction_hex = cls.client.getrawtransaction(transaction_hash)
@@ -29,42 +83,29 @@ class BTCAdapter(MCBTCAdapter):
         return data
 
     @staticmethod
-    def get_latest_transaction_from_database():
-        return database.find_latest_transaction(Blockchain.BITCOIN)
+    def to_text(data_hex):
+        data = unhexlify(data_hex)
+        return data.decode(ENCODING)
+
+   
+
+    
+
+    
+
+    
+    ##############STUFF FROM OTHER ADAPTER##################
+    @staticmethod
+    def extract_output(transaction, output_index):
+        outputs = transaction['vout']
+        return outputs[output_index]
 
     @staticmethod
-    def to_hex(text):
-        data = bytes(text, ENCODING)
-        data_hex = hexlify(data)
-        return data_hex.decode(ENCODING)
+    def to_text(data_hex):
+        data = unhexlify(data_hex)
+        return data.decode(ENCODING)
 
-    @classmethod
-    def create_transaction_output(cls, data_hex, input_transaction_hash):
-        change = cls.get_change(input_transaction_hash)
-        return {cls.address: change, 'data': data_hex}
+    
 
-    @classmethod
-    def get_change(cls, transaction_hash):
-        balance = cls.extract_balance(transaction_hash)
-        relay_fee = cls.get_relay_fee()
-        return balance - relay_fee
 
-    @classmethod
-    def extract_balance(cls, transaction_hash):
-        transaction = cls.get_transaction(transaction_hash)
-        output = cls.extract_output(transaction, output_index=0)
-        return output['value']
-
-    @classmethod
-    def get_relay_fee(cls):
-        network_info = cls.client.getnetworkinfo()
-        return network_info['relayfee']
-
-    @classmethod
-    def create_raw_transaction(cls, inputs, output, data_hex):
-        transaction_hex = cls.client.createrawtransaction(inputs, output)
-        return transaction_hex
-
-    @staticmethod
-    def add_transaction_to_database(transaction_hash):
-        database.add_transaction(transaction_hash, Blockchain.BITCOIN)
+    
