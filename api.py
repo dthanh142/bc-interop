@@ -80,9 +80,9 @@ def migrate(transaction_hash, blockchain):
 print(store("timoishere", Blockchain.BITCOIN))
 
 
-print(
-    retrieve(
-        "924e4f85eb10ec0876b4af7a5035e8160a87acf36845743cabbe0839a21cf028"
-    ))
+# print(
+#     retrieve(
+#         "e229c47f66d3ed3b9076e86a37862738a2e5770009654e8a3cc75458924851da"
+#     ))
 # print(migrate("f12cc0275e47d8040c04d0ea0d26bf8117f25e0628697da338f73e1eb3d39cad;25316099",
 #         Blockchain.STELLAR))

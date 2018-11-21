@@ -14,8 +14,7 @@ class BTCAdapter(Adapter):
     key = credentials['key']
     rpcuser = credentials['user']
     rpcpassword = credentials['password']
-    endpoint_uri = 'http://%s:%s@130.60.156.148:18332/' % (
-        rpcuser, rpcpassword)
+    endpoint_uri = f"http://{rpcuser}:{rpcpassword}@130.60.156.148:18332/"
     client = AuthServiceProxy(endpoint_uri)
 
     # ---Store---
@@ -40,8 +39,8 @@ class BTCAdapter(Adapter):
     @classmethod
     def extract_balance(cls, transaction_hash):
         transaction = cls.get_transaction(transaction_hash)
-        output = cls.extract_output(transaction, output_index=0)
-        return output['value']    
+        output = transaction['vout'][0]['value']
+        return output
 
     @staticmethod
     def to_hex(text):
