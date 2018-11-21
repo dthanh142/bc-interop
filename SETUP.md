@@ -190,7 +190,7 @@ https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/doc
    
 ## Multichain new
 
-`apt-get update`
+<!-- `apt-get update`
 `apt-get install nano`
 
 `create chain2`
@@ -200,4 +200,17 @@ https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/doc
 multichain-util create blk2 
 
 
-`docker-compose -f docker/docker_multichain.yaml up`
+`docker-compose -f docker/docker_multichain.yaml up` -->
+
+
+
+`docker-compose -f docker/docker_multichain/docker-compose.yml up`
+`multichain-cli dockerchain`
+
+Save the result of this in the DB file. 
+`>createkeypairs`
+
+This use the address field for this command: 
+`grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`
+
+Save the resulting transaction hash in de database as transaction.

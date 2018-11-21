@@ -47,10 +47,10 @@ CREDENTIALS = (
     ),
     credential(
         blockchain=Blockchain.MULTICHAIN,
-        address='1MRQf6mYRDoXjtoKVBi8huxBC69zmSzheYN4yM',
-        key='V7BFGjp4wrowNSJDSouXVFJQkwZxMFDScba4SkHYA9aYjEDhLrFBV2Nd',
+        address='1awPUbKdpGnkuU28zryRyYoPeMoaWgUDU38EWJ',
+        key='VBjTqsd4d6HHCUpEVCAu7fmb5ZgevpQJjV8BvxcLPiVSodepZNz9fKf1',
         user='multichainrpc',
-        password='GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'),
+        password='79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz'),
     credential(
         blockchain=Blockchain.BITCOIN,
         address='2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
@@ -93,7 +93,7 @@ CREDENTIALS = (
 )
 TRANSACTIONS = (
     transaction(
-        transaction_hash='826e7100deeef7def0bfed7f5160ae6ac55a3a0cc8fca660a30488c1755e370d',
+        transaction_hash='023e6c427c637fa9f3c0738b2eeeed81be2c61042845f5213886902eddb807af',
         blockchain=Blockchain.MULTICHAIN
     ),
     transaction(
