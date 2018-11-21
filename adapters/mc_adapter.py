@@ -28,23 +28,12 @@ class MCAdapter(Adapter):
 
     @classmethod
     def create_transaction(cls, text):
-        input_transaction_hash = database.find_latest_transaction(
-            Blockchain.MULTICHAIN)
+        input_transaction_hash = database.find_latest_transaction(Blockchain.MULTICHAIN)
         inputs = [{'txid': input_transaction_hash, 'vout': 0}]
         data_hex = cls.to_hex(text)
-        output = cls.create_transaction_output(
-            data_hex, input_transaction_hash)
+        output = {cls.address: AMOUNT}
         # Necessary so that the address is the first output of the TX
         output = collections.OrderedDict(sorted(output.items()))
-        transaction_hex = cls.create_raw_transaction(inputs, output, data_hex)
-        return transaction_hex
-
-    @classmethod
-    def create_transaction_output(cls, data_hex, input_transaction_hash):
-        return {cls.address: AMOUNT}
-
-    @classmethod
-    def create_raw_transaction(cls, inputs, output, data_hex):
         transaction_hex = cls.client.createrawtransaction(
             inputs,
             output,
