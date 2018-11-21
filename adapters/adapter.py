@@ -55,12 +55,15 @@ class Adapter(ABC):
 
     @classmethod
     def store(cls, text):
+        start = int(round(time.time() * 1000))  # Milliseconds
         transaction = cls.create_transaction(text)
         signed_transaction = cls.sign_transaction(transaction)
         transaction_hash = cls.send_raw_transaction(signed_transaction)
         if(WAIT_FOR_CONFIRMATION):
             if(cls.confirmation_check(transaction_hash)):
                 cls.add_transaction_to_database(transaction_hash)
+                end = int(round(time.time() * 1000))
+                print(end - start)
                 return transaction_hash
             else:
                 raise LookupError(
@@ -68,7 +71,6 @@ class Adapter(ABC):
         else:
             cls.add_transaction_to_database(transaction_hash)
             return transaction_hash
-
 
     @classmethod
     def confirmation_check(cls, transaction_hash):
@@ -78,7 +80,7 @@ class Adapter(ABC):
         value = cls.retrieve(transaction_hash)
         if(type(value) == str):
             return True
-        else:    
+        else:
             return False
 
     @staticmethod
