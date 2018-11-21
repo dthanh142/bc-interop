@@ -77,10 +77,11 @@ class MCAdapter(Adapter):
         # workaround needed because potentially multiple output addresses in
         # single transaction (and also potentially multiple data items)
         output = transaction['vout'][1]
-        print(output)
-        return output['data'][0]
+        # print(output)
+        return output['scriptPubKey']['hex']
 
     @staticmethod
     def to_text(data_hex):
         data = unhexlify(data_hex)
-        return data.decode(ENCODING)
+        # print(data)
+        return data.decode(ENCODING)[2:]

@@ -53,8 +53,8 @@ def retrieve(transaction_hash):
     text = adapter.retrieve(transaction_hash)
     return text
 
-# print(store("greeting from mctimo", Blockchain.MULTICHAIN))
+print(store("timsakldjfadsfljlsdkflkjalsdjfljasjfothe", Blockchain.MULTICHAIN))
 print(
     retrieve(
-        "70160cdefe75a7b6d465eda2b604a3943ae7259936466695f3c463341b567249"
+        "311b3e771be3efddc31093d19bfddf5d0a894265d1027dd4a5a55f07da42d549"
     ))
