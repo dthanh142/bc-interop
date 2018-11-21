@@ -74,8 +74,7 @@ class MCAdapter(Adapter):
 
     @classmethod
     def extract_data(cls, transaction):
-        # workaround needed because potentially multiple output addresses in
-        # single transaction (and also potentially multiple data items)
+        # workaround needed because potentially multiple output addresses in single tx
         output = transaction['vout'][1]
         # print(output)
         return output['scriptPubKey']['hex']

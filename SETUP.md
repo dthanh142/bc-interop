@@ -189,28 +189,17 @@ To test if local node is running: `curl http://localhost:8008/blocks`
 https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
    
 ## Multichain new
+Build and start the docker container:    
+`docker-compose -f docker/docker_multichain/docker-compose.yml up`    
+Enter container:
+`docker exec -it docker_multichain_masternode_1_5454208681af sh`, replace with name of container
 
-<!-- `apt-get update`
-`apt-get install nano`
+Start CLI tool with preconfigured blockchain dockerchain:     
+`multichain-cli dockerchain`    
 
-`create chain2`
-`multichaind chain2 -daemon`
-`nano /root/.multichain/chain2/params.dat`
-
-multichain-util create blk2 
-
-
-`docker-compose -f docker/docker_multichain.yaml up` -->
-
-
-
-`docker-compose -f docker/docker_multichain/docker-compose.yml up`
-`multichain-cli dockerchain`
-
-Save the result of this in the DB file. 
+Create keys and save the result of this in the DB file:    
 `>createkeypairs`
 
-This use the address field for this command: 
+Grant the new address send and receive rights: 
 `grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`
-
-Save the resulting transaction hash in de database as transaction.
+Save the resulting transaction hash in de database as transaction (will be used as input).
