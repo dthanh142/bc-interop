@@ -1,7 +1,3 @@
-import sys
-import os
-sys.path.append("/Users/timo/Documents/repos/bc-interop")
-
 from adapters.adapter import Adapter
 from binascii import hexlify, unhexlify
 from mcrpc import RpcClient

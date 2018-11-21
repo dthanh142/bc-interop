@@ -19,71 +19,70 @@ CONFIRMATION_WAITING_TIMES = {
 
 CREDENTIALS = [
     {
-        "blockchain" : Blockchain.ETHEREUM.name,
+        "blockchain": Blockchain.ETHEREUM.name,
         "id": Blockchain.ETHEREUM.value,
-        "address" : '0xf717e2d05037d13d6bfd0d783d6f4ebd68dd5b46',
-        "key" : '0xec7a5eb646075cc16dd842381489614a49eda87e1f600d8780bbb3012288a98f',
-        "user" : 'ethereum (not used)',
-        "password" : 'ethereum (not used)',
+        "address": '0xf717e2d05037d13d6bfd0d783d6f4ebd68dd5b46',
+        "key": '0xec7a5eb646075cc16dd842381489614a49eda87e1f600d8780bbb3012288a98f',
+        "user": 'ethereum (not used)',
+        "password": 'ethereum (not used)',
     },
     {
-        "blockchain" : Blockchain.MULTICHAIN,
+        "blockchain": Blockchain.MULTICHAIN,
         "id": Blockchain.MULTICHAIN.value,
-        "address" : '1MRQf6mYRDoXjtoKVBi8huxBC69zmSzheYN4yM',
-        "key" : 'V7BFGjp4wrowNSJDSouXVFJQkwZxMFDScba4SkHYA9aYjEDhLrFBV2Nd',
-        "user" : 'multichainrpc',
-        "password" : 'GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'
+        "address": '1MRQf6mYRDoXjtoKVBi8huxBC69zmSzheYN4yM',
+        "key": 'V7BFGjp4wrowNSJDSouXVFJQkwZxMFDScba4SkHYA9aYjEDhLrFBV2Nd',
+        "user": 'multichainrpc',
+        "password": 'GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'
     },
     {
-        "blockchain" : Blockchain.BITCOIN,
+        "blockchain": Blockchain.BITCOIN,
         "id": Blockchain.BITCOIN.value,
-        "address" : '2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
-        "key" : 'cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
-        "user" : 'bitcoinrpc',
-        "password" : 'f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
+        "address": '2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
+        "key": 'cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
+        "user": 'bitcoinrpc',
+        "password": 'f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
     },
     {
-        "blockchain" : Blockchain.POSTGRES,
+        "blockchain": Blockchain.POSTGRES,
         "id": Blockchain.POSTGRES.value,
         # database name
-        "address" : 'test',
+        "address": 'test',
         # port number
-        blockchain=Blockchain.IOTA,
-        "key" : '5000',
-        "user" : 'test',
-        "password" : '123456'
+        "key": '5000',
+        "user": 'test',
+        "password": '123456'
     },
     {
-        "blockchain" : Blockchain.STELLAR,
+        "blockchain": Blockchain.STELLAR,
         "id": Blockchain.STELLAR.value,
-        "address" : 'GCCAETWXN5VYPOU4MYTUGTFPTSWWNFYMDZWHWS566PUXR5GCQ7SY7QHQ',
-        "key" : 'SBJF56A62FP7OEATJIDFYUTXORNJXWGXD5GBWW7TDVN2QMHDJMOXBLPK',
-        "user" : 'stellar (not used)',
-        "password" : 'stellar (not used)'
+        "address": 'GCCAETWXN5VYPOU4MYTUGTFPTSWWNFYMDZWHWS566PUXR5GCQ7SY7QHQ',
+        "key": 'SBJF56A62FP7OEATJIDFYUTXORNJXWGXD5GBWW7TDVN2QMHDJMOXBLPK',
+        "user": 'stellar (not used)',
+        "password": 'stellar (not used)'
     },
     {
-        "blockchain" : Blockchain.HYPERLEDGER,
+        "blockchain": Blockchain.HYPERLEDGER,
         "id": Blockchain.HYPERLEDGER.value,
-        "address" : 'will be generated from private key',
-        "key" : 'c2d0a398c3c3074e066b953b3bb15ae7053fd8aba1c2279b2f3ff058ab7e7661',
-        "user" : 'hyperledger (not used)',
-        "password" : 'hyperledger (not used)'
+        "address": 'will be generated from private key',
+        "key": 'c2d0a398c3c3074e066b953b3bb15ae7053fd8aba1c2279b2f3ff058ab7e7661',
+        "user": 'hyperledger (not used)',
+        "password": 'hyperledger (not used)'
     },
     {
-        "blockchain" : Blockchain.EOS,
+        "blockchain": Blockchain.EOS,
         "id": Blockchain.EOS.value,
-        "address" : 'EOS8Vfg6ssQxj66wX9LrFq3EZY8z4EEkiyiQiDc7bwyn65K4YFVwW',
-        "key" : '5KazRYnXDCNougrvuVtZFDMAiB3kr7M2tjGYNJtQQ2Wn3JFRdTM',
-        "user" : 'jungletimohe',
-        "password" : 'eos (not used)'
+        "address": 'EOS8Vfg6ssQxj66wX9LrFq3EZY8z4EEkiyiQiDc7bwyn65K4YFVwW',
+        "key": '5KazRYnXDCNougrvuVtZFDMAiB3kr7M2tjGYNJtQQ2Wn3JFRdTM',
+        "user": 'jungletimohe',
+        "password": 'eos (not used)'
     },
     {
-        "blockchain" : Blockchain.IOTA,
+        "blockchain": Blockchain.IOTA,
         "id": Blockchain.IOTA.value,
-        "address" : 'GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA',
-        "key" : 'iota (not used)',
-        "user" : 'iota (not used)',
-        "password" : 'iota (not used)',
+        "address": 'GVMOWHRPLRAQMTMDWKDFNGOCLRYHPHWUSYOTSUUSVVEXLZCHFYANXERRPJPOAVSXEPSTUNEOHIFQYZSEYRNUANOMYA',
+        "key": 'iota (not used)',
+        "user": 'iota (not used)',
+        "password": 'iota (not used)',
     }
 ]
 TRANSACTIONS = [

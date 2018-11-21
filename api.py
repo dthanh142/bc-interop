@@ -4,7 +4,7 @@ import os
 sys.path.append("/Users/timo/Documents/repos/bc-interop")
 
 # from adapters.btc_adapter import BTCAdapter
-# from adapters.mc_adapter import MCAdapter
+from adapters.mc_adapter import MCAdapter
 from adapters.eth_adapter import EthAdapter
 from adapters.postgres_adapter import PostgresAdapter
 from adapters.stellar_adapter import StellarAdapter
@@ -22,7 +22,7 @@ import random
 
 Adapter = {
     # Blockchain.BITCOIN: BTCAdapter,
-    # Blockchain.MULTICHAIN: MCAdapter,
+    Blockchain.MULTICHAIN: MCAdapter,
     Blockchain.ETHEREUM: EthAdapter,
     Blockchain.POSTGRES: PostgresAdapter,
     Blockchain.STELLAR: StellarAdapter,
@@ -70,11 +70,14 @@ def migrate(transaction_hash, blockchain):
     return new_hash
 
 
-base_chars = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3']
-word_length = 10  # change this to the desired word length
+def make_random_string():
+    # Not working yet
+    base_chars = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3']
+    word_length = 10  # change this to the desired word length
+    print([random.choice(base_chars) for _ in range(word_length)])
 
 
-print(store([random.choice(base_chars) for _ in range(word_length)], Blockchain.EOS))
+print(store("timo is here", Blockchain.MULTICHAIN))
 
 
 # print(
