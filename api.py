@@ -80,9 +80,9 @@ def migrate(transaction_hash, blockchain):
 print(store("timoishere", Blockchain.MULTICHAIN))
 
 
-# print(
-#     retrieve(
-#         "170d2895f0cbd89f9ec55fd3a30baa78d1f0dfc5b0ee3ce84edcf22c568ceebd"
-#     ))
+print(
+    retrieve(
+        "924e4f85eb10ec0876b4af7a5035e8160a87acf36845743cabbe0839a21cf028"
+    ))
 # print(migrate("f12cc0275e47d8040c04d0ea0d26bf8117f25e0628697da338f73e1eb3d39cad;25316099",
 #         Blockchain.STELLAR))
