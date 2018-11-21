@@ -88,10 +88,11 @@ CREDENTIALS = [
 TRANSACTIONS = [
     {
         "blockchain": Blockchain.MULTICHAIN.value,
-        "transaction_hash": '826e7100deeef7def0bfed7f5160ae6ac55a3a0cc8fca660a30488c1755e370d',
+        "transaction_hash": '023e6c427c637fa9f3c0738b2eeeed81be2c61042845f5213886902eddb807af',
     },
     {
         "blockchain": Blockchain.BITCOIN.value,
         "transaction_hash": '151d65141a9a4a9c37fc0c8ac7aa23feb0981876b8198a970fb9956ca34e467c',
     }
 ]
+

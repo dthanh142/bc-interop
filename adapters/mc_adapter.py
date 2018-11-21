@@ -26,6 +26,7 @@ class MCAdapter(Adapter):
     def create_transaction(cls, text):
         input_transaction_hash = database.find_latest_transaction(
             Blockchain.MULTICHAIN)
+        print(input_transaction_hash)
         inputs = [{'txid': input_transaction_hash, 'vout': 0}]
         data_hex = cls.to_hex(text)
         output = {cls.address: AMOUNT}
