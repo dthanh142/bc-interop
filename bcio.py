@@ -54,7 +54,7 @@ def retrieve(transaction_hash):
     return text
 
 print(store("timsakldjfadsfljlsdkflkjalsdjfljasjfothe", Blockchain.MULTICHAIN))
-print(
-    retrieve(
-        "311b3e771be3efddc31093d19bfddf5d0a894265d1027dd4a5a55f07da42d549"
-    ))
+# print(
+#     retrieve(
+#         "311b3e771be3efddc31093d19bfddf5d0a894265d1027dd4a5a55f07da42d549"
+#     ))
