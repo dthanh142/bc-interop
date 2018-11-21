@@ -5,9 +5,8 @@ import db.database as database
 
 
 class EthAdapter(Adapter):
-
+    chain = Blockchain.ETH
     ENDPOINT_URI = 'http://localhost:8545'
-
     credentials = database.find_credentials(Blockchain.ETHEREUM)
     address = credentials['address']
     key = credentials['key']

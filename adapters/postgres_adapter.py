@@ -5,7 +5,7 @@ from adapters.adapter import Adapter
 
 
 class PostgresAdapter(Adapter):
-
+    chain = Blockchain.POSTGRES
     credentials = database.find_credentials(Blockchain.POSTGRES)
     address = "not necessary for psql"
     key = "not necessary for psql"

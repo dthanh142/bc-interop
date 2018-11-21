@@ -20,6 +20,7 @@ from random import randint
 
 
 class HyperledgerAdapter(Adapter):
+    chain = Blockchain.HYPERLEDGER
     context = create_context('secp256k1')
     credentials = database.find_credentials(Blockchain.HYPERLEDGER)
     # address = credentials['address']

@@ -12,7 +12,7 @@ PORT = '8000'
 
 
 class MCAdapter(Adapter):
-
+    chain = Blockchain.MULTICHAIN
     credentials = database.find_credentials(Blockchain.MULTICHAIN)
     address = credentials['address']
     key = credentials['key']

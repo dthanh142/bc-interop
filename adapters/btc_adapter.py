@@ -7,7 +7,7 @@ import database
 
 
 class BTCAdapter(MCBTCAdapter):
-
+    chain = Blockchain.BITCOIN
     credentials = database.find_credentials(Blockchain.BITCOIN)
     address = credentials['address']
     key = credentials['key']

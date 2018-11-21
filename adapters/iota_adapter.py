@@ -5,6 +5,7 @@ from iota import Iota, Address, ProposedTransaction, TryteString, Bundle, Tag, T
 
 
 class IotaAdapter(Adapter):
+    chain = Blockchain.IOTA
     client = Iota('https://nodes.devnet.thetangle.org:443', testnet=True)
     credentials = database.find_credentials(Blockchain.IOTA)
     address = credentials['address']

@@ -6,7 +6,7 @@ from stellar_base.horizon import horizon_testnet, horizon_livenet
 
 
 class StellarAdapter(Adapter):
-
+    chain = Blockchain.STELLAR
     credentials = database.find_credentials(Blockchain.STELLAR)
     address = credentials['address']
     key = credentials['key']
