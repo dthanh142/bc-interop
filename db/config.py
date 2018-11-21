@@ -48,6 +48,7 @@ CREDENTIALS = [
         # database name
         "address" : 'test',
         # port number
+        blockchain=Blockchain.IOTA,
         "key" : '5000',
         "user" : 'test',
         "password" : '123456'

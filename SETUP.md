@@ -188,3 +188,18 @@ After that it should be possible to install the hyperledger sawtooth python sdk 
 To test if local node is running: `curl http://localhost:8008/blocks`
 https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
    
+## Multichain new
+Build and start the docker container:    
+`docker-compose -f docker/docker_multichain/docker-compose.yml up`    
+Enter container:
+`docker exec -it docker_multichain_masternode_1_5454208681af sh`, replace with name of container
+
+Start CLI tool with preconfigured blockchain dockerchain:     
+`multichain-cli dockerchain`    
+
+Create keys and save the result of this in the DB file:    
+`>createkeypairs`
+
+Grant the new address send and receive rights: 
+`grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`
+Save the resulting transaction hash in de database as transaction (will be used as input).

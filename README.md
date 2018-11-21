@@ -62,6 +62,8 @@ See descriptions in SETUP.md
 ### Misc 
 #### Stop and remove all docker container: 
 `docker rm -f $(docker ps -a -q)`
+##### Delete all images
+`docker rmi $(docker images -q)`
 
 
 #### Print a nice, readable version of a dict:     
