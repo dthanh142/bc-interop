@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.append("/Users/timo/Documents/repos/bc-interop")
 
-# from adapters.btc_adapter import BTCAdapter
+from adapters.btc_adapter import BTCAdapter
 from adapters.mc_adapter import MCAdapter
 from adapters.eth_adapter import EthAdapter
 from adapters.postgres_adapter import PostgresAdapter
@@ -21,7 +21,7 @@ import random
 
 
 Adapter = {
-    # Blockchain.BITCOIN: BTCAdapter,
+    Blockchain.BITCOIN: BTCAdapter,
     Blockchain.MULTICHAIN: MCAdapter,
     Blockchain.ETHEREUM: EthAdapter,
     Blockchain.POSTGRES: PostgresAdapter,
@@ -77,12 +77,12 @@ def migrate(transaction_hash, blockchain):
 #     print([random.choice(base_chars) for _ in range(word_length)])
 
 
-print(store("timoishere", Blockchain.MULTICHAIN))
+print(store("timoishere", Blockchain.BITCOIN))
 
 
-print(
-    retrieve(
-        "924e4f85eb10ec0876b4af7a5035e8160a87acf36845743cabbe0839a21cf028"
-    ))
+# print(
+#     retrieve(
+#         "e229c47f66d3ed3b9076e86a37862738a2e5770009654e8a3cc75458924851da"
+#     ))
 # print(migrate("f12cc0275e47d8040c04d0ea0d26bf8117f25e0628697da338f73e1eb3d39cad;25316099",
 #         Blockchain.STELLAR))
