@@ -29,10 +29,10 @@ CREDENTIALS = [
     {
         "blockchain": Blockchain.MULTICHAIN,
         "id": Blockchain.MULTICHAIN.value,
-        "address": '1MRQf6mYRDoXjtoKVBi8huxBC69zmSzheYN4yM',
-        "key": 'V7BFGjp4wrowNSJDSouXVFJQkwZxMFDScba4SkHYA9aYjEDhLrFBV2Nd',
+        "address": '1awPUbKdpGnkuU28zryRyYoPeMoaWgUDU38EWJ',
+        "key": 'VBjTqsd4d6HHCUpEVCAu7fmb5ZgevpQJjV8BvxcLPiVSodepZNz9fKf1',
         "user": 'multichainrpc',
-        "password": 'GkHfnch8QBgqvZJeMLyb57h42h6TZREr25Uhp5iZ8T2E'
+        "password": '79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz'
     },
     {
         "blockchain": Blockchain.BITCOIN,
