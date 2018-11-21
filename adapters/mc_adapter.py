@@ -28,7 +28,8 @@ class MCAdapter(Adapter):
 
     @classmethod
     def create_transaction(cls, text):
-        input_transaction_hash = database.find_latest_transaction(Blockchain.MULTICHAIN)
+        input_transaction_hash = database.find_latest_transaction(
+            Blockchain.MULTICHAIN)
         inputs = [{'txid': input_transaction_hash, 'vout': 0}]
         data_hex = cls.to_hex(text)
         output = {cls.address: AMOUNT}
@@ -40,6 +41,11 @@ class MCAdapter(Adapter):
             [data_hex]
         )
         return transaction_hex
+
+    @staticmethod
+    def to_hex(text):
+        data = bytes(text, ENCODING)
+        return hexlify(data)
 
     @classmethod
     def sign_transaction(cls, transaction_hex):
@@ -70,19 +76,9 @@ class MCAdapter(Adapter):
     def extract_data(cls, transaction):
         # workaround needed because potentially multiple output addresses in
         # single transaction (and also potentially multiple data items)
-        output = cls.extract_output(transaction, output_index=1)
+        output = transaction['vout'][1]
         print(output)
         return output['data'][0]
-
-    @staticmethod
-    def to_hex(text):
-        data = bytes(text, ENCODING)
-        return hexlify(data)
-
-    @staticmethod
-    def extract_output(transaction, output_index):
-        outputs = transaction['vout']
-        return outputs[output_index]
 
     @staticmethod
     def to_text(data_hex):
