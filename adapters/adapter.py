@@ -74,6 +74,7 @@ class Adapter(ABC):
 
     @classmethod
     def save_measurement(cls, measured_time):
+        bc_id = cls.chain.name
         dictionary = {'bitcoin_data': [1, 2, 3, 4, 5, 6, 7]}
         np.save('my_file.npy', dictionary)
 

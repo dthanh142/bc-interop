@@ -3,9 +3,7 @@ import matplotlib.pyplot as plt
 from numpy import genfromtxt
 
 
-# Save
-dictionary = {'bitcoin_data': [1,2,3,4,5,6,7]}
-np.save('my_file.npy', dictionary)
+
 
 # Load
 read_dictionary = np.load('my_file.npy').item()
