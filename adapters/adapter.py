@@ -77,7 +77,7 @@ class Adapter(ABC):
         print(f"This was measured: {measured_time}")
         bc_id = cls.chain.name
         with open(f"performance_test/data/{bc_id}.csv", 'a') as fd:
-            fd.write(f"{measured_time};")
+            fd.write(f"{measured_time},")
 
     @classmethod
     def confirmation_check(cls, transaction_hash):

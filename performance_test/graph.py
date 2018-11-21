@@ -6,8 +6,9 @@ from numpy import genfromtxt
 
 
 # Load
-read_dictionary = np.load('my_file.npy').item()
-print(read_dictionary['bitcoin_data'])
+my_data = genfromtxt(
+	'/Users/timo/Documents/repos/bc-interop/performance_test/data/EOS.csv', delimiter=',')
+print(my_data.size)
 
 
 
