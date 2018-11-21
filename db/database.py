@@ -67,7 +67,6 @@ def create_tables():
 @with_connection
 def seed_blockchains():
     for bc in Blockchain:
-        print("Loop started bc is")
         connection.execute(
             '''
         INSERT INTO blockchains

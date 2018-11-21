@@ -1,4 +1,4 @@
-# append the root project path to the pythonpath so that blockchain.py can be accessed
+# append the root project path to the pythonpath so that blockchain.py can be accessed by every adapter
 import sys
 import os
 sys.path.append("/Users/timo/Documents/repos/bc-interop")
@@ -70,14 +70,14 @@ def migrate(transaction_hash, blockchain):
     return new_hash
 
 
-def make_random_string():
-    # Not working yet
-    base_chars = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3']
-    word_length = 10  # change this to the desired word length
-    print([random.choice(base_chars) for _ in range(word_length)])
+# def make_random_string():
+#     # Not working yet
+#     base_chars = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3']
+#     word_length = 10  # change this to the desired word length
+#     print([random.choice(base_chars) for _ in range(word_length)])
 
 
-print(store("timo is here", Blockchain.MULTICHAIN))
+print(store("timoishere", Blockchain.MULTICHAIN))
 
 
 # print(
