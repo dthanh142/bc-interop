@@ -61,22 +61,23 @@ class Adapter(ABC):
         transaction_hash = cls.send_raw_transaction(signed_transaction)
         if(WAIT_FOR_CONFIRMATION):
             if(cls.confirmation_check(transaction_hash)):
-                cls.add_transaction_to_database(transaction_hash)
-                end = int(round(time.time() * 1000))
-                cls.save_measurement(end - start)                
+                cls.add_transaction_to_database(transaction_hash)           
                 return transaction_hash
             else:
                 raise LookupError(
                     'Transaction not confirmed and not added to DB')
         else:
             cls.add_transaction_to_database(transaction_hash)
+            end = int(round(time.time() * 1000))
+            cls.save_measurement(end - start)
             return transaction_hash
 
     @classmethod
     def save_measurement(cls, measured_time):
+        print(f"This was measured: {measured_time}")
         bc_id = cls.chain.name
-        dictionary = {'bitcoin_data': [1, 2, 3, 4, 5, 6, 7]}
-        np.save('my_file.npy', dictionary)
+        with open(f"performance_test/data/{bc_id}.csv", 'a') as fd:
+            fd.write(f"{measured_time};")
 
     @classmethod
     def confirmation_check(cls, transaction_hash):
