@@ -74,13 +74,16 @@ class MCAdapter(Adapter):
 
     @classmethod
     def extract_data(cls, transaction):
-        # workaround needed because potentially multiple output addresses in single tx
+        # workaround needed because potentially multiple output addresses in single tx        
         output = transaction['vout'][1]
-        print(output)
+        # for version 2.0+ use
+        # return output['data'][0]
         return output['scriptPubKey']['hex']
 
     @staticmethod
     def to_text(data_hex):
         data = unhexlify(data_hex)
         print(data)
+        # for version 2.0+ use
+        # return data.decode(ENCODING)
         return data.decode(ENCODING)[2:]
