@@ -13,7 +13,7 @@ from numpy import genfromtxt
 
 def check_sample_size(blockchain_name):
 	my_data = genfromtxt(
-		f"/Users/timo/Documents/repos/bc-interop/performance_test/data/{blockchain_name}.csv", delimiter=',')
+		f"/Users/timo/Documents/repos/bc-interop/performance_test/data/{blockchain_name.name}.csv", delimiter=',')
 	print(f"Sample size is now: {my_data.size}")
 
 def generate_random_string(length):
@@ -26,4 +26,7 @@ def run_test(blockchain_name):
 		i += 1
 	check_sample_size(blockchain_name.name)
 
-run_test(Blockchain.STELLAR)
+
+# STELLAR and IOTA and BITCOIN
+# run_test(Blockchain.STELLAR)
+check_sample_size(Blockchain.BITCOIN)
