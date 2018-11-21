@@ -42,71 +42,6 @@ To stop the blockchain:
 $ bitcoin-cli stop
 ```
 
-
-## MultiChain
-
-On Arch Linux, a package is available from the Arch User Repository. Install the following package using your favourite AUR helper:
-
-```console
-$ yay -S multichain-alpha
-```
-
-### Creating a Private Testnet
-
-First we will create a new blockchain named `chain1`:
-
-```console
-$ multichain-util create chain1
-```
-
-> The API credentials for the blockchain are stored in the `~/.multichain/chain1/multichain.conf` file.
-> The blockchain's settings are stored in the `~/.multichain/chain1/params.dat` file.
-
-> Once the blockchain is initialized, **these parameters cannot be changed**.
-
-Initialize the blockchain, including creating the genesis block:
-
-```console
-$ multichaind chain1 -daemon
-```
-
-Enter interactive mode:
-
-```console
-$ multichain-cli chain1
-```
-
-In interactive mode, generate public/private key pairs that are not stored in the wallet or drawn from the node's key pool (for external key management):
-
-```
-> createkeypairs
-
-[
-    {
-        "address" : "1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y",
-        "pubkey" : "0323187cd83c9dde13f223b5df1fb2899e645e8b0cd1fa73ae61c41b07ce9cd7a6",
-        "privkey" : "VHrFLuvdBeb1oVTmKD48Sdm1ovoc8mS5pbrk2gpKhCUWh72LavvAF8jx"
-    }
-]
-```
-
-Before, we can use the generated address in transactions, we have to grant it permission to send and receive within the blockchain:
-
-```
-> grant 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y send,receive
-
-ddcca7c4d57bb185443914cdac7a6a9d3b93743d8f39cd61a989b8bdfd09e49b
-```
-
-> This command will return a transaction hash (which can be used as seed transaction).
-
-Stop the blockchain:
-
-```
-> stop
-```
-
-
 ## Ethereum
 
 This command will start a docker node with a preconfigured account which holds 100 eth
@@ -188,7 +123,7 @@ After that it should be possible to install the hyperledger sawtooth python sdk 
 To test if local node is running: `curl http://localhost:8008/blocks`
 https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
    
-## Multichain new
+## Multichain
 Build and start the docker container:    
 `docker-compose -f docker/docker_multichain/docker-compose.yml up`    
 Enter container:
@@ -198,8 +133,14 @@ Start CLI tool with preconfigured blockchain dockerchain:
 `multichain-cli dockerchain`    
 
 Create keys and save the result of this in the DB file:    
-`>createkeypairs`
-
+`>createkeypairs` will return something like this:
+[
+    {
+        "address" : "1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y",
+        "pubkey" : "0323187cd83c9dde13f223b5df1fb2899e645e8b0cd1fa73ae61c41b07ce9cd7a6",
+        "privkey" : "VHrFLuvdBeb1oVTmKD48Sdm1ovoc8mS5pbrk2gpKhCUWh72LavvAF8jx"
+    }
+]
 Grant the new address send and receive rights: 
 `grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`
 Save the resulting transaction hash in de database as transaction (will be used as input).
