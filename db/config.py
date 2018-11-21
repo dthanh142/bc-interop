@@ -39,8 +39,8 @@ CREDENTIALS = [
         "id": Blockchain.BITCOIN.value,
         "address": '2NGMq7iBuJTeDMQPxSaEQVqMtdt3VQxuN7B',
         "key": 'cS6kdk7zxTCij8HpXHE8Kdnh1uAM46PU5LNtQxpBZ6YjP3t3zgWL',
-        "user": 'bitcoinrpc',
-        "password": 'f7efda5c189b999524f151318c0c86$d5b51b3beffbc02b724e5d095828e0bc8b2456e9ac8757ae3211a5d9b16a22ae'
+        "user": 'bc4cc',
+        "password": 'bc4cc112358'
     },
     {
         "blockchain": Blockchain.POSTGRES,
@@ -92,7 +92,7 @@ TRANSACTIONS = [
     },
     {
         "blockchain": Blockchain.BITCOIN.value,
-        "transaction_hash": '151d65141a9a4a9c37fc0c8ac7aa23feb0981876b8198a970fb9956ca34e467c',
+        "transaction_hash": 'fd712ad8f279574b3a0cbe706a03f6d39b2a31c63420a42bf49c2d7035036a7f',
     }
 ]
 
