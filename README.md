@@ -15,36 +15,30 @@ tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 
 ## Setup
 
-### Python Setup
-Linux: https://askubuntu.com/questions/682869/how-do-i-install-a-different-python-version-using-apt-get
+Python 3.6.6 was used for this project. It is both compatible with linux and windows.
 
-### Python Setup
-
-#### Linux
-Install docker from https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`
-
-#### Mac
-https://docs.docker.com/docker-for-mac/install/ (compose will be installed)
+#### Install Docker
+(Linux) https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`
+(Mac) Install from https://docs.docker.com/docker-for-mac/install/
 
 
 #### How to use venv
-(On linux)
-`sudo apt-get install python3-venv`
-Create environment:
-`python3 -m venv venv` (on mac)
-`python3.5 -m venv --without-pip venv` and `curl https://bootstrap.pypa.io/get-pip.py | python` (on linux, venv is broken on 3.5 for ubuntu)
-Activate environment:
-`source venv/bin/activate`
-The python version of the environment will be the one with which the environment is created.
-Deactivate environment:
-`(venv) $ deactivate`
+Create environment:    
+`python3 -m venv venv`    
+Activate environment:    
+`source venv/bin/activate`    
+The python version of the environment will be the one with which the environment is created.    
+Deactivate environment:    
+`(venv) $ deactivate`    
   
 #### Export and import dependencies
-`venv/bin/pip freeze > requirements.txt`
-`pip freeze > requirements.txt` (linux)
-`venv/bin/pip install -r requirements.txt`
-Installing the requirements will most likely fail due to sawtooth-sdk incompatibility issues with python 3.6.      
-Look at the Sawtooth section of setup.md to fix this.
+Export: `venv/bin/pip freeze > requirements.txt`    
+Import/Install: `venv/bin/pip install -r requirements.txt`
+
+##### Hyperledger Sawtooth Adapter
+The Hyperledger Sawtooth adapter does not support python 3.6.      
+It was therefore removed from the requirements.txt.     
+To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. f"{}") or use the workaround listed in setup.md (only tested on MacOS).
 
 #### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
@@ -74,19 +68,17 @@ db.database.setup()
 See descriptions in SETUP.md
 
 
+### Useful commands 
+Stop and remove all docker container:     
+`docker rm -f $(docker ps -a -q)`    
+Delete all images:    
+`docker rmi $(docker images -q)`    
 
-### Misc 
-#### Stop and remove all docker container: 
-`docker rm -f $(docker ps -a -q)`
-##### Delete all images
-`docker rmi $(docker images -q)`
-
-
-#### Print a nice, readable version of a dict:     
+Print a nice, readable version of a dict:         
 ```python
 import pprint
 pprint.pprint(dict)
 ```
 
-#### Print object keys: 
-print(dir(obj))
+Print python object keys:     
+print(dir(obj))    
