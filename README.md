@@ -18,6 +18,8 @@ tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 ### Python Setup
 
 #### How to use venv
+(On linux)
+`sudo apt-get install python3-venv`
 Create environment:
 `python3 -m venv venv`    
 Activate environment:
