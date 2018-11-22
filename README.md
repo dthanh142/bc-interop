@@ -31,6 +31,8 @@ Deactivate environment:
 #### Export and import dependencies
 `venv/bin/pip freeze > requirements.txt`
 `venv/bin/pip install -r requirements.txt`
+Installing the requirements will most likely fail due to sawtooth-sdk incompatibility issues with python 3.6.      
+Look at the Sawtooth section of setup.md to fix this.
 
 #### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
