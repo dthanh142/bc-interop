@@ -22,7 +22,8 @@ Linux: https://askubuntu.com/questions/682869/how-do-i-install-a-different-pytho
 (On linux)
 `sudo apt-get install python3-venv`
 Create environment:
-`python3 -m venv venv`    
+`python3 -m venv venv` (on mac)
+`python3.5 -m venv --without-pip venv` and `curl https://bootstrap.pypa.io/get-pip.py | python` (on linux, venv is broken on 3.5 for ubuntu)
 Activate environment:
 `source venv/bin/activate`
 The python version of the environment will be the one with which the environment is created.
@@ -31,6 +32,7 @@ Deactivate environment:
   
 #### Export and import dependencies
 `venv/bin/pip freeze > requirements.txt`
+`pip freeze > requirements.txt` (linux)
 `venv/bin/pip install -r requirements.txt`
 Installing the requirements will most likely fail due to sawtooth-sdk incompatibility issues with python 3.6.      
 Look at the Sawtooth section of setup.md to fix this.
