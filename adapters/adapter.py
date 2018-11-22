@@ -68,12 +68,12 @@ class Adapter(ABC):
                     'Transaction not confirmed and not added to DB')
         else:
             cls.add_transaction_to_database(transaction_hash)
-            end = int(round(time.time() * 1000))
-            cls.save_measurement(end - start)
+            cls.save_measurement(int(round(time.time() * 1000)) - start)
             return transaction_hash
 
     @classmethod
     def save_measurement(cls, measured_time):
+        # remove this line after all data gathered
         print(f"This was measured: {measured_time}")
         bc_id = cls.chain.name
         with open(f"performance_test/data/{bc_id}.csv", 'a') as fd:
