@@ -18,6 +18,15 @@ tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 ### Python Setup
 Linux: https://askubuntu.com/questions/682869/how-do-i-install-a-different-python-version-using-apt-get
 
+### Python Setup
+
+#### Linux
+Install docker from https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`
+
+#### Mac
+https://docs.docker.com/docker-for-mac/install/ (compose will be installed)
+
+
 #### How to use venv
 (On linux)
 `sudo apt-get install python3-venv`
