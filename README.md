@@ -16,8 +16,11 @@ tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 ## Setup
 
 ### Python Setup
+Linux: https://askubuntu.com/questions/682869/how-do-i-install-a-different-python-version-using-apt-get
 
 #### How to use venv
+(On linux)
+`sudo apt-get install python3-venv`
 Create environment:
 `python3 -m venv venv`    
 Activate environment:
@@ -29,6 +32,8 @@ Deactivate environment:
 #### Export and import dependencies
 `venv/bin/pip freeze > requirements.txt`
 `venv/bin/pip install -r requirements.txt`
+Installing the requirements will most likely fail due to sawtooth-sdk incompatibility issues with python 3.6.      
+Look at the Sawtooth section of setup.md to fix this.
 
 #### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
