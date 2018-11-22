@@ -16,6 +16,7 @@ tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 ## Setup
 
 ### Python Setup
+Linux: https://askubuntu.com/questions/682869/how-do-i-install-a-different-python-version-using-apt-get
 
 #### How to use venv
 (On linux)
