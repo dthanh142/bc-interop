@@ -70,14 +70,7 @@ def migrate(transaction_hash, blockchain):
     return new_hash
 
 
-# def make_random_string():
-#     # Not working yet
-#     base_chars = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3']
-#     word_length = 10  # change this to the desired word length
-#     print([random.choice(base_chars) for _ in range(word_length)])
-
-
-print(store("timoishere", Blockchain.BITCOIN))
+# print(store("timoishere", Blockchain.STELLAR))
 
 
 # print(
