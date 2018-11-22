@@ -10,7 +10,7 @@ from adapters.postgres_adapter import PostgresAdapter
 from adapters.stellar_adapter import StellarAdapter
 from adapters.eos_adapter import EosAdapter
 from adapters.iota_adapter import IotaAdapter
-from adapters.hyperledger_adapter import HyperledgerAdapter
+#from adapters.hyperledger_adapter import HyperledgerAdapter
 
 from blockchain import Blockchain
 import db.database as database
@@ -28,7 +28,7 @@ Adapter = {
     Blockchain.STELLAR: StellarAdapter,
     Blockchain.EOS: EosAdapter,
     Blockchain.IOTA: IotaAdapter,
-    Blockchain.HYPERLEDGER: HyperledgerAdapter
+    #Blockchain.HYPERLEDGER: HyperledgerAdapter
 
 }
 
@@ -70,7 +70,7 @@ def migrate(transaction_hash, blockchain):
     return new_hash
 
 
-# print(store("timoishere", Blockchain.STELLAR))
+print(store("timoishere", Blockchain.STELLAR))
 
 
 # print(
