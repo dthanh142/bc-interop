@@ -70,7 +70,7 @@ def migrate(transaction_hash, blockchain):
     return new_hash
 
 
-print(store("timoishere", Blockchain.STELLAR))
+# print(store("timoishere", Blockchain.STELLAR))
 
 
 # print(
