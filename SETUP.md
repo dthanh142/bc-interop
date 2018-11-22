@@ -87,9 +87,6 @@ cd in the folder and run `python setup.py install`
 
 Uses public node, no local node is needed    
 
-1. `pip install git+https://github.com/EvaCoop/eosjs_python.git` (Until my changes are published to pip)
-2. `cd venv/lib/python3.6/site-packages/eosjs_python/js && npm i --save eosjs@16.0.9`
-
 ### Account creation
 An account can be created using http://jungle.cryptolions.io/#home
 
