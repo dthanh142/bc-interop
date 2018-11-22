@@ -101,20 +101,33 @@ Note:  IOTA does not need a sender for zero-value transactions. This means there
 `docker-compose -f docker/docker-compose_hyperledger.yaml up`    
 
 
-### Fix SDK installation issues
+### Fix Sawtooth SDK installation issues
+Sawtooth only supports version 3.5.
+Thus, when installing requirements there will be some errors while installing sawtooth-sdk.
 
-As install with pip fails on any other version except 3.5, download and unpack: https://pypi.org/project/sawtooth-sdk/#
+#### Linux
+`apt-get install autoconf automake libtool` (linux)
+`sudo apt install libsecp256k1-dev`
+`sudo apt install python3-pip`
+`sudo -H pip3 install secp256k1`
+`sudo apt-get install libssl-dev`
+`sudo pip3 install sawtooth-sdk`
 
-Because python 3.6 is not compatible with secp256k1, you need to pull it from another repo and manually install it:
+See:    
+https://github.com/ludbb/secp256k1-py/issues/24#issuecomment-397505150
 
-Make sure those are installed on your machine by running (mac):     
-`brew install autoconf automake libtool`
+#### Mac
 
+download and unpack: https://pypi.org/project/sawtooth-sdk/#
+Make sure those are installed on your machine by running:         
+`brew install autoconf automake libtool`    
 IF there is a certification error installing secp256k1:    
 `/Applications/Python\ 3.6/Install\ Certificates.command`
 
 Download the source from the repo:
 https://github.com/stfairy/secp256k1-py
+`sudo apt-get install python3-setuptools` (only needed on linux, preinstalled with python3 on mac)     
+`sudo apt-get install -y pkg-config` (only needed on linux)    
 cd into this directory and then run `python3 setup.py install` to install secp256k1.     
 After that it should be possible to install the hyperledger sawtooth python sdk (`pip install sawtooth-sdk`, will be run from  requirements.txt)
 
