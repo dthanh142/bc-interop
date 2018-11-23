@@ -59,8 +59,8 @@ db.database.setup()
 >
 > 1. drop `credentials` and `transactions` tables if they already exist
 > 2. create tables for storing `credentials` and `transactions`
-> 3. seed the `credentials` table with credentials for Ethereum, MultiChain and Bitcoin
-> 4. seed the `transactions` table with input transactions for MultiChain and Bitcoin
+> 3. seed the `credentials` table with credentials 
+> 4. seed the `transactions` table with input transactions
 
 > Seed values are read from the [`config`](config.py) module.
 
