@@ -35,14 +35,14 @@ def save_to_plot():
 	ax.boxplot(data_to_plot)
 	# Set labels etc.
 	ax.set_xticklabels(['BITCOIN', 'ETHEREUM', 'MULTICHAIN', 'STELLAR', 'EOS', 'IOTA', 'HYPERLEDGER', 'POSTGRES'])
-	ax.set_ylabel('Average time for 1000 transactions')
+	ax.set_ylabel('Average time per transaction using 1000 samples')
 	ax.set_yscale('log')
 	ax.set_xlabel('Blockchain')
 	ax.set_title('Performance Comparison')
 	ax.yaxis.grid(True)
 	# Save the figure and show
 	plt.tight_layout()
-	plt.savefig('performance_test/Graph.eps', format='eps')
+	plt.savefig('performance_test/performance.eps', format='eps')
 	# plt.savefig('performance_test/Graph.png')
 
 save_to_plot()
