@@ -24,8 +24,6 @@ def run_test(blockchain_name):
 	while i < 25:
 		print(f"Number {i} : {store(generate_random_string(10), blockchain_name)}")
 		i += 1
-	check_sample_size(blockchain_name.name)
 
-# iota stellar
-run_test(Blockchain.IOTA)
-# check_sample_size(Blockchain.IOTA)
+# run_test(Blockchain.IOTA)
+check_sample_size(Blockchain.IOTA)
