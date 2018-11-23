@@ -3,23 +3,26 @@ import matplotlib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
+divider = 1000
+
 BITCOIN_data = np.genfromtxt('performance_test/data/BITCOIN.csv', delimiter=',')
-# remove nan values and limit to first 1000 samples
-BITCOIN_data = BITCOIN_data[~np.isnan(BITCOIN_data)][0:1000]
+# remove nan values and limit to first 1000 samples and divide by 1000 to get seconds
+BITCOIN_data = BITCOIN_data[~np.isnan(BITCOIN_data)][0:1000]/divider
 ETHEREUM_data = np.genfromtxt('performance_test/data/ETHEREUM.csv', delimiter=',')
-ETHEREUM_data = ETHEREUM_data[~np.isnan(ETHEREUM_data)][0:1000]
+ETHEREUM_data = ETHEREUM_data[~np.isnan(ETHEREUM_data)][0:1000]/divider
 MULTICHAIN_data = np.genfromtxt('performance_test/data/MULTICHAIN.csv', delimiter=',')
-MULTICHAIN_data = MULTICHAIN_data[~np.isnan(MULTICHAIN_data)][0:1000]
+MULTICHAIN_data = MULTICHAIN_data[~np.isnan(MULTICHAIN_data)][0:1000]/divider
 STELLAR_data = np.genfromtxt('performance_test/data/STELLAR.csv', delimiter=',')
-STELLAR_data = STELLAR_data[~np.isnan(STELLAR_data)][0:1000]
+STELLAR_data = STELLAR_data[~np.isnan(STELLAR_data)][0:1000]/divider
 EOS_data = np.genfromtxt('performance_test/data/EOS.csv', delimiter=',')
-EOS_data = EOS_data[~np.isnan(EOS_data)][0:1000]
+EOS_data = EOS_data[~np.isnan(EOS_data)][0:1000]/divider
 IOTA_data = np.genfromtxt('performance_test/data/IOTA.csv', delimiter=',')
-IOTA_data = IOTA_data[~np.isnan(IOTA_data)][0:1000]
+IOTA_data = IOTA_data[~np.isnan(IOTA_data)][0:1000]/divider
 HYPERLEDGER_data = np.genfromtxt('performance_test/data/HYPERLEDGER.csv', delimiter=',')
-HYPERLEDGER_data = HYPERLEDGER_data[~np.isnan(HYPERLEDGER_data)][0:1000]
+HYPERLEDGER_data = HYPERLEDGER_data[~np.isnan(
+	HYPERLEDGER_data)][0:1000]/divider
 POSTGRES_data = np.genfromtxt('performance_test/data/POSTGRES.csv', delimiter=',')
-POSTGRES_data = POSTGRES_data[~np.isnan(POSTGRES_data)][0:1000]
+POSTGRES_data = POSTGRES_data[~np.isnan(POSTGRES_data)][0:1000]/divider
 
 
 def save_to_plot():
@@ -35,7 +38,7 @@ def save_to_plot():
 	ax.boxplot(data_to_plot)
 	# Set labels etc.
 	ax.set_xticklabels(['BITCOIN', 'ETHEREUM', 'MULTICHAIN', 'STELLAR', 'EOS', 'IOTA', 'HYPERLEDGER', 'POSTGRES'])
-	ax.set_ylabel('Average time per transaction using 1000 samples')
+	ax.set_ylabel('Average time per transaction using 1000 samples (in seconds)')
 	ax.set_yscale('log')
 	ax.set_xlabel('Blockchain')
 	ax.set_title('Performance Comparison')
