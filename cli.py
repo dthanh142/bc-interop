@@ -64,7 +64,7 @@ if(action == 'Store'):
 	answer = prompt(questions)
 	print(f"{answer} and method was store")
 
-if(action == 'Retrieve'):
+elif(action == 'Retrieve'):
 	questions = [
 		{
 			'type': 'input',
@@ -75,7 +75,7 @@ if(action == 'Retrieve'):
 	answer = prompt(questions)
 	print(f"{answer} and method was retrieve")
 
-if(action == 'Retrieve'):
+elif(action == 'Retrieve'):
 	questions = [
 		{
 			'type': 'list',
