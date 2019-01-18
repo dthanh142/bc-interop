@@ -68,7 +68,8 @@ class Adapter(ABC):
                     'Transaction not confirmed and not added to DB')
         else:
             cls.add_transaction_to_database(transaction_hash)
-            cls.save_measurement(int(round(time.time() * 1000)) - start)
+            # cls.save_measurement(int(round(time.time() * 1000)) - start)
+            print(transaction_hash)
             return transaction_hash
 
     @classmethod

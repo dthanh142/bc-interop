@@ -1,4 +1,10 @@
+# append the root project path to the pythonpath so that blockchain.py can be accessed by every adapter
+import sys
+import os
+sys.path.append("/Users/timo/Documents/repos/bc-interop")
 from PyInquirer import prompt, print_json, style_from_dict, Token, Separator
+from blockchain import Blockchain
+import api
 
 questions = [
 	{
@@ -30,28 +36,36 @@ if(action == 'Store'):
 			'name': 'blockchain',
 			'choices': [
 				{
-					'name': 'Bitcoin'
+					'name': 'Bitcoin',
+					'value': Blockchain.BITCOIN,
 				},
 				{
-					'name': 'Ethereum'
+					'name': 'Ethereum',
+					'value': Blockchain.ETHEREUM,
 				},
 				{
-					'name': 'Stellar'
+					'name': 'Stellar',
+					'value': Blockchain.STELLAR,
 				},
 				{
-					'name': 'EOS'
+					'name': 'EOS',
+					'value': Blockchain.EOS,
 				},
 				{
-					'name': 'IOTA'
+					'name': 'IOTA',
+					'value': Blockchain.IOTA,
 				},
 				{
-					'name': 'Hyperledger'
+					'name': 'Hyperledger',
+					'value': Blockchain.HYPERLEDGER,
 				},
 				{
-					'name': 'Multichain'
+					'name': 'Multichain',
+					'value': Blockchain.MULTICHAIN,
 				},
 				{
-					'name': 'Postgres'
+					'name': 'Postgres',
+					'value': Blockchain.POSTGRES,
 				},
 			],
 		},
@@ -62,7 +76,7 @@ if(action == 'Store'):
 		}
 	]
 	answer = prompt(questions)
-	print(f"{answer} and method was store")
+	api.store(answer['data'], answer['blockchain'])
 
 elif(action == 'Retrieve'):
 	questions = [
@@ -73,66 +87,57 @@ elif(action == 'Retrieve'):
 		}
 	]
 	answer = prompt(questions)
-	print(f"{answer} and method was retrieve")
+	api.retrieve(answer['hash'])
 
-elif(action == 'Retrieve'):
+elif(action == 'Migrate'):
 	questions = [
 		{
+			'type': 'input',
+			'name': 'hash',
+			'message': 'Please input the hash of the transaction connected to the data',
+		},
+		{
 			'type': 'list',
-			'message': 'Select action',
 			'name': 'blockchain',
+			'message': 'Please select which Blockchain to migrate to',
 			'choices': [
 				{
-					'name': 'Bitcoin'
+					'name': 'Bitcoin',
+					'value': Blockchain.BITCOIN,
 				},
 				{
-					'name': 'Ethereum'
+					'name': 'Ethereum',
+					'value': Blockchain.ETHEREUM,
 				},
 				{
-					'name': 'Stellar'
+					'name': 'Stellar',
+					'value': Blockchain.STELLAR,
 				},
 				{
-					'name': 'EOS'
+					'name': 'EOS',
+					'value': Blockchain.EOS,
 				},
 				{
-					'name': 'IOTA'
+					'name': 'IOTA',
+					'value': Blockchain.IOTA,
 				},
 				{
-					'name': 'Hyperledger'
+					'name': 'Hyperledger',
+					'value': Blockchain.HYPERLEDGER,
 				},
 				{
-					'name': 'Multichain'
+					'name': 'Multichain',
+					'value': Blockchain.MULTICHAIN,
 				},
 				{
-					'name': 'Postgres'
+					'name': 'Postgres',
+					'value': Blockchain.POSTGRES,
 				},
 			],
 		},
-		{
-			'type': 'input',
-			'name': 'hash',
-			'message': 'Please input the transaction hash',
-		}
 	]
 	answer = prompt(questions)
-	print(f"{answer} and method was migrate")
-
+	api.migrate(answer['hash'], answer['blockchain'])
 
 else:
 	print(f"This was a strange input: {action}... please try again")
-
-# answers = prompt(questions)
-
-
-# print(answers)
-
-
-# print(store("timoishere", Blockchain.STELLAR))
-
-
-# print(
-#     retrieve(
-#         "e229c47f66d3ed3b9076e86a37862738a2e5770009654e8a3cc75458924851da"
-#     ))
-# print(migrate("f12cc0275e47d8040c04d0ea0d26bf8117f25e0628697da338f73e1eb3d39cad;25316099",
-#         Blockchain.STELLAR))
