@@ -12,10 +12,15 @@ data = retrieve('[Transaction_Hash]')
 tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 ```
 
+Or use the CLI:
+`source venv/bin/activate``
+
+
+
 
 ## Setup
 
-Python 3.6.6 was used for this project. It is both compatible with linux and windows.
+Python 3.6.6 was used for this project. It is compatible with Mac, Linux and Windows.
 
 #### Install Docker
 (Linux) https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`
