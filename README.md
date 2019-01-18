@@ -12,6 +12,11 @@ data = retrieve('[Transaction_Hash]')
 tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 ```
 
+Or use the CLI:
+`source venv/bin/activate``
+
+
+
 
 ## Setup
 
