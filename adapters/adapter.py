@@ -55,7 +55,7 @@ class Adapter(ABC):
 
     @classmethod
     def store(cls, text):
-        start = int(round(time.time() * 1000))  # Milliseconds
+        # start = int(round(time.time() * 1000))  # Milliseconds
         transaction = cls.create_transaction(text)
         signed_transaction = cls.sign_transaction(transaction)
         transaction_hash = cls.send_raw_transaction(signed_transaction)
@@ -69,7 +69,6 @@ class Adapter(ABC):
         else:
             cls.add_transaction_to_database(transaction_hash)
             # cls.save_measurement(int(round(time.time() * 1000)) - start)
-            print(transaction_hash)
             return transaction_hash
 
     @classmethod

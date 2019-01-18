@@ -42,6 +42,7 @@ def store(text, blockchain):
     """
     adapter = Adapter[blockchain]
     transaction_hash = adapter.store(text)
+    print(transaction_hash)
     return transaction_hash
 
 
@@ -55,6 +56,7 @@ def retrieve(transaction_hash):
     blockchain = database.find_blockchain(transaction_hash)
     adapter = Adapter[blockchain]
     text = adapter.retrieve(transaction_hash)
+    print(text)
     return text
 
 
@@ -67,6 +69,7 @@ def migrate(transaction_hash, blockchain):
     """
     value = retrieve(transaction_hash)
     new_hash = store(value, blockchain)
+    print(new_hash)
     return new_hash
 
 
