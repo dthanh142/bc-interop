@@ -47,18 +47,17 @@ Import/Install: `venv/bin/pip install -r requirements.txt`
 ##### Hyperledger Sawtooth Adapter
 The Hyperledger Sawtooth adapter does not support python 3.6.      
 It was therefore removed from the requirements.txt.     
-To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. `f"{}") or use the workaround listed in setup.md (only tested on MacOS).
+To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. `f"{}"`) or use the workaround listed in setup.md (only tested on MacOS).
 
 #### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
 
 ### Database Setup
-Install sqlite:    
+Install sqlite:        
 `pip install sqlite`
 
-Run the database setup:
-
+Run the database setup:    
 ```python
 import db.database
 db.database.setup()
@@ -74,20 +73,10 @@ db.database.setup()
 > Seed values are read from the [`config`](config.py) module.
 
 ### Blockchain Setup
-See descriptions in SETUP.md
+See descriptions in SETUP.md for instruction to setup the local nodes.
 
-
-### Useful commands 
+### Useful docker commands 
 Stop and remove all docker container:     
 `docker rm -f $(docker ps -a -q)`    
 Delete all images:    
-`docker rmi $(docker images -q)`    
-
-Print a nice, readable version of a dict:         
-```python
-import pprint
-pprint.pprint(dict)
-```
-
-Print python object keys:     
-print(dir(obj))    
+`docker rmi $(docker images -q)`     
