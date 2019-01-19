@@ -50,10 +50,11 @@ https://hub.docker.com/r/trufflesuite/ganache-cli/
 
 ## Postgres
 This will start a postgres server on docker with the following configuration:
-* User = test
-* Password = 123456
-* Port 5432
-
+```
+User = test
+Password = 123456
+Port 5432
+```
 The DB structure will be automatically build when using the adapter.
 `docker-compose -f docker/docker_compose_postgres.yaml up`
 
