@@ -43,7 +43,7 @@ Deactivate environment:
 Export: `venv/bin/pip freeze > requirements.txt`    
 Import/Install: `venv/bin/pip install -r requirements.txt`
 
-*Upgrade pip on <3.6*    
+*Upgrade pip on <3.6:*    
 Use this command if upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
 
