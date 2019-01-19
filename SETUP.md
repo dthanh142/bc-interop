@@ -88,19 +88,18 @@ cd in the folder and run `python setup.py install`
 
 
 ## EOS
-
 Uses public node, no local node is needed    
 
 ### Account creation
 An account can be created using http://jungle.cryptolions.io/#home
 
 ## IOTA
-Note:  IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
+Uses public node, no local node is needed.    
+IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
 
 ## Hyperledger Sawtooth
-
+Start the node:    
 `docker-compose -f docker/docker-compose_hyperledger.yaml up`    
-
 
 ### Fix Sawtooth SDK installation issues
 Sawtooth only supports version 3.5.
