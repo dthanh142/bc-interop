@@ -30,7 +30,6 @@ Python 3.6.6 was used for this project. It is compatible with Mac, Linux and Win
 (Linux) https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`    
 (Mac) Install from https://docs.docker.com/docker-for-mac/install/
 
-
 #### How to use venv
 Create environment:    
 `python3 -m venv venv`    
@@ -44,14 +43,10 @@ Deactivate environment:
 Export: `venv/bin/pip freeze > requirements.txt`    
 Import/Install: `venv/bin/pip install -r requirements.txt`
 
-##### Hyperledger Sawtooth Adapter
-The Hyperledger Sawtooth adapter does not support python 3.6.      
-It was therefore removed from the requirements.txt.     
-To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. `f"{}"`) or use the workaround listed in setup.md (only tested on MacOS).
-
-#### Upgrade pip on <3.6
+##### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
+
 
 ### Database Setup
 Install sqlite:        
@@ -73,7 +68,13 @@ Calling the `setup` function of the [`database`](database.py) module will:
 Seed values are read from the [`config`](config.py) module.
 
 ### Blockchain Setup
-See descriptions in SETUP.md for instruction to setup the local nodes.
+
+See descriptions in [SETUP.md](SETUP.md) for instruction to setup the local nodes.
+
+#### Hyperledger Sawtooth Adapter
+The Hyperledger Sawtooth adapter does not support python 3.6.      
+It was therefore removed from the requirements.txt.     
+To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. `f"{}"`) or use the workaround listed in setup.md (only tested on MacOS).
 
 ### Useful docker commands 
 Stop and remove all docker container:     
