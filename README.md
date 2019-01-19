@@ -26,11 +26,11 @@ python3 cli.py
 
 Python 3.6.6 was used for this project. It is compatible with Mac, Linux and Windows.
 
-#### Install Docker
+### Install Docker
 (Linux) https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`    
 (Mac) Install from https://docs.docker.com/docker-for-mac/install/
 
-#### How to use venv
+### How to use venv
 Create environment:    
 `python3 -m venv venv`    
 Activate environment:    
@@ -39,11 +39,11 @@ The python version of the environment will be the one with which the environment
 Deactivate environment:    
 `(venv) $ deactivate`    
   
-#### Export and import dependencies
+### Import/Export and install dependencies
 Export: `venv/bin/pip freeze > requirements.txt`    
 Import/Install: `venv/bin/pip install -r requirements.txt`
 
-##### Upgrade pip on <3.6
+*Upgrade pip on <3.6*    
 Use this command if upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
 
