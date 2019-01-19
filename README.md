@@ -65,12 +65,12 @@ db.database.setup()
 
 Calling the `setup` function of the [`database`](database.py) module will:
 
-> 1. drop `credentials` and `transactions` tables if they already exist
-> 2. create tables for storing `credentials` and `transactions`
-> 3. seed the `credentials` table with credentials 
-> 4. seed the `transactions` table with input transactions
+1. drop `credentials` and `transactions` tables if they already exist
+2. create tables for storing `credentials` and `transactions`
+3. seed the `credentials` table with credentials 
+4. seed the `transactions` table with input transactions
 
-> Seed values are read from the [`config`](config.py) module.
+Seed values are read from the [`config`](config.py) module.
 
 ### Blockchain Setup
 See descriptions in SETUP.md for instruction to setup the local nodes.
