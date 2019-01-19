@@ -24,7 +24,7 @@ python3 cli.py
 
 ## Setup
 
-Python 3.6.6 was used for this project. It is compatible with Mac, Linux and Windows.
+Python 3.6.6 (also tested with 3.6.5) was used for this project. It is compatible with Mac, Linux and Windows.
 
 ### Install Docker
 (Linux) Follow [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) or [this](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1) manual and then do `sudo apt-get install docker-compose` or follow [this](https://linuxize.com/post/how-to-install-and-use-docker-compose-on-ubuntu-18-04/)    
