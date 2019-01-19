@@ -6,19 +6,6 @@ from PyInquirer import prompt, print_json, style_from_dict, Token, Separator
 from blockchain import Blockchain
 import api
 
-
-
-# questions = [
-#     {
-#     		'type': 'input',
-#     		'message': 'how old are you?',
-#     		'name': 'action',
-#     		'validate': lambda output: True if (output=="a") else False
-#     },
-
-#     ]
-# answer = prompt(questions)['action']
-
 def askForMethod():
 	questions = [
 		{
