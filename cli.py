@@ -8,156 +8,164 @@ import api
 
 
 
-questions = [
-    {
-    		'type': 'input',
-    		'message': 'how old are you?',
-    		'name': 'action',
-    		'validate': lambda output: True if (output=="a") else False
-    },
-
-    ]
-answer = prompt(questions)['action']
-
-
 # questions = [
-# 	{
-# 		'type': 'list',
-# 		'message': 'Select action',
-# 		'name': 'action',
-# 		'choices': [
-# 			{
-# 				'name': 'Store'
-# 			},
-# 			{
-# 				'name': 'Retrieve'
-# 			},
-# 			{
-# 				'name': 'Migrate'
-# 			},
-# 		],
-# 		'validate': lambda action: 'You must choose at least one topping.'
-#             if not action else True
-# 	},
+#     {
+#     		'type': 'input',
+#     		'message': 'how old are you?',
+#     		'name': 'action',
+#     		'validate': lambda output: True if (output=="a") else False
+#     },
 
-# ]
+#     ]
 # answer = prompt(questions)['action']
 
+def askForMethod():
+	questions = [
+		{
+			'type': 'list',
+			'message': 'Select action',
+			'name': 'action',
+			'choices': [
+				{
+					'name': 'Store'
+				},
+				{
+					'name': 'Retrieve'
+				},
+				{
+					'name': 'Migrate'
+				},
+			],
+			# 'validate': lambda output: True if (output == "Store") else False
+		},
 
-# if(answer == 'Store'):
-# 	questions = [
-# 		{
-# 			'type': 'list',
-# 			'message': 'Select action',
-# 			'name': 'blockchain',
-# 			'choices': [
-# 				{
-# 					'name': 'Bitcoin',
-# 					'value': Blockchain.BITCOIN,
-# 				},
-# 				{
-# 					'name': 'Ethereum',
-# 					'value': Blockchain.ETHEREUM,
-# 				},
-# 				{
-# 					'name': 'Stellar',
-# 					'value': Blockchain.STELLAR,
-# 				},
-# 				{
-# 					'name': 'EOS',
-# 					'value': Blockchain.EOS,
-# 				},
-# 				{
-# 					'name': 'IOTA',
-# 					'value': Blockchain.IOTA,
-# 				},
-# 				{
-# 					'name': 'Hyperledger',
-# 					'value': Blockchain.HYPERLEDGER,
-# 				},
-# 				{
-# 					'name': 'Multichain',
-# 					'value': Blockchain.MULTICHAIN,
-# 				},
-# 				{
-# 					'name': 'Postgres',
-# 					'value': Blockchain.POSTGRES,
-# 				},
-# 			],
-# 			'validate': lambda answer: 'You must choose at least one topping.'
-#                     if not answer['blockchain'] else True
-# 		},
-# 		{
-# 			'type': 'input',
-# 			'name': 'data',
-# 			'message': 'Please input the data to store',
-# 			'validate': lambda answer: 'You must choose at least one topping.'
-#                     if not answer['data'] else True
-# 		}
-# 	]
-# 	answer = prompt(questions)
-# 	api.store(answer['data'], answer['blockchain'])
+	]
+	try:
+		answer = prompt(questions)['action']
+		if(answer == 'Store'):
+			caseStore()
+		elif(answer == 'Retrieve'):
+			caseRetrieve()
+		elif(answer == 'Migrate'):
+			caseMigrate()
+	except (KeyboardInterrupt, SystemExit):
+		raise
+	except (KeyError):
+		print('Please do not click! Starting over...')
+		askForMethod()
 
-# elif(answer == 'Retrieve'):
-# 	questions = [
-# 		{
-# 			'type': 'input',
-# 			'name': 'hash',
-# 			'message': 'Please input the transaction hash',
-# 		}
-# 	]
-# 	answer = prompt(questions)
-# 	api.retrieve(answer['hash'])
 
-# elif(answer == 'Migrate'):
-# 	questions = [
-# 		{
-# 			'type': 'input',
-# 			'name': 'hash',
-# 			'message': 'Please input the hash of the transaction connected to the data',
-# 		},
-# 		{
-# 			'type': 'list',
-# 			'name': 'blockchain',
-# 			'message': 'Please select which Blockchain to migrate to',
-# 			'choices': [
-# 				{
-# 					'name': 'Bitcoin',
-# 					'value': Blockchain.BITCOIN,
-# 				},
-# 				{
-# 					'name': 'Ethereum',
-# 					'value': Blockchain.ETHEREUM,
-# 				},
-# 				{
-# 					'name': 'Stellar',
-# 					'value': Blockchain.STELLAR,
-# 				},
-# 				{
-# 					'name': 'EOS',
-# 					'value': Blockchain.EOS,
-# 				},
-# 				{
-# 					'name': 'IOTA',
-# 					'value': Blockchain.IOTA,
-# 				},
-# 				{
-# 					'name': 'Hyperledger',
-# 					'value': Blockchain.HYPERLEDGER,
-# 				},
-# 				{
-# 					'name': 'Multichain',
-# 					'value': Blockchain.MULTICHAIN,
-# 				},
-# 				{
-# 					'name': 'Postgres',
-# 					'value': Blockchain.POSTGRES,
-# 				},
-# 			],
-# 		},
-# 	]
-# 	answer = prompt(questions)
-# 	api.migrate(answer['hash'], answer['blockchain'])
+def caseStore():
+	questions = [
+		{
+			'type': 'list',
+			'message': 'Select action',
+			'name': 'blockchain',
+			'choices': [
+				{
+					'name': 'Bitcoin',
+					'value': Blockchain.BITCOIN,
+				},
+				{
+					'name': 'Ethereum',
+					'value': Blockchain.ETHEREUM,
+				},
+				{
+					'name': 'Stellar',
+					'value': Blockchain.STELLAR,
+				},
+				{
+					'name': 'EOS',
+					'value': Blockchain.EOS,
+				},
+				{
+					'name': 'IOTA',
+					'value': Blockchain.IOTA,
+				},
+				{
+					'name': 'Hyperledger',
+					'value': Blockchain.HYPERLEDGER,
+				},
+				{
+					'name': 'Multichain',
+					'value': Blockchain.MULTICHAIN,
+				},
+				{
+					'name': 'Postgres',
+					'value': Blockchain.POSTGRES,
+				},
+			],
+		},
+		{
+			'type': 'input',
+			'name': 'data',
+			'message': 'Please input the data to store',
+		}
+	]
+	answer = prompt(questions)
+	api.store(answer['data'], answer['blockchain'])
 
-# else:
-# 	print(f"This was a strange input: {answer}... please try again")
+
+
+def caseRetrieve():	
+	questions = [
+		{
+			'type': 'input',
+			'name': 'hash',
+			'message': 'Please input the transaction hash',
+		}
+	]
+	answer = prompt(questions)
+	api.retrieve(answer['hash'])
+
+def caseMigrate():
+	questions = [
+		{
+			'type': 'input',
+			'name': 'hash',
+			'message': 'Please input the hash of the transaction connected to the data',
+		},
+		{
+			'type': 'list',
+			'name': 'blockchain',
+			'message': 'Please select which Blockchain to migrate to',
+			'choices': [
+				{
+					'name': 'Bitcoin',
+					'value': Blockchain.BITCOIN,
+				},
+				{
+					'name': 'Ethereum',
+					'value': Blockchain.ETHEREUM,
+				},
+				{
+					'name': 'Stellar',
+					'value': Blockchain.STELLAR,
+				},
+				{
+					'name': 'EOS',
+					'value': Blockchain.EOS,
+				},
+				{
+					'name': 'IOTA',
+					'value': Blockchain.IOTA,
+				},
+				{
+					'name': 'Hyperledger',
+					'value': Blockchain.HYPERLEDGER,
+				},
+				{
+					'name': 'Multichain',
+					'value': Blockchain.MULTICHAIN,
+				},
+				{
+					'name': 'Postgres',
+					'value': Blockchain.POSTGRES,
+				},
+			],
+		},
+	]
+	answer = prompt(questions)
+	api.migrate(answer['hash'], answer['blockchain'])
+
+askForMethod()
