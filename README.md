@@ -47,7 +47,7 @@ Import/Install: `venv/bin/pip install -r requirements.txt`
 ##### Hyperledger Sawtooth Adapter
 The Hyperledger Sawtooth adapter does not support python 3.6.      
 It was therefore removed from the requirements.txt.     
-To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. f"{}") or use the workaround listed in setup.md (only tested on MacOS).
+To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. `f"{}") or use the workaround listed in setup.md (only tested on MacOS).
 
 #### Upgrade pip on <3.6
 Use this command if upgrading pip fails due to SSL cert error:    
