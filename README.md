@@ -63,8 +63,8 @@ import db.database
 db.database.setup()
 ```
 
-> Calling the `setup` function of the [`database`](database.py) module will:
->
+Calling the `setup` function of the [`database`](database.py) module will:
+
 > 1. drop `credentials` and `transactions` tables if they already exist
 > 2. create tables for storing `credentials` and `transactions`
 > 3. seed the `credentials` table with credentials 
