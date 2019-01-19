@@ -13,8 +13,11 @@ tx_hash = migrate('[Transaction_Hash]', Blockchain.ETHEREUM)
 ```
 
 Or use the CLI:
-`source venv/bin/activate`
-`python3 cli.py`
+```python
+source venv/bin/activate
+
+python3 cli.py
+```
 
 
 
