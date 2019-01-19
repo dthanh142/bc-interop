@@ -8,8 +8,6 @@ Install the following packages using your favourite package manager:
 # pacman -S bitcoind bitcoin-cli
 ```
 
-> A GUI client is available in `bitcoin-qt`.
-
 ### Connecting to the Public Testnet
 
 To connect to the public testnet of Bitcoin (`testnet3`), the following settings are required in the `~/.bitcoin/bitcoin.conf` file:
@@ -43,7 +41,6 @@ $ bitcoin-cli stop
 ```
 
 ## Ethereum
-
 This command will start a docker node with a preconfigured account which holds 100 eth
 `docker-compose -f  docker/docker_compose_eth.yaml up`
 
@@ -52,6 +49,12 @@ Docker image used from here:
 https://hub.docker.com/r/trufflesuite/ganache-cli/
 
 ## Postgres
+This will start a postgres server on docker with the following configuration:
+* User = test
+* Password = 123456
+* Port 5432
+
+The DB structure will be automatically build when using the adapter.
 `docker-compose -f docker/docker_compose_postgres.yaml up`
 
 #### More information:    
