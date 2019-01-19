@@ -27,7 +27,7 @@ python3 cli.py
 Python 3.6.6 was used for this project. It is compatible with Mac, Linux and Windows.
 
 #### Install Docker
-(Linux) https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`
+(Linux) https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1 and `sudo apt-install docker-compose`    
 (Mac) Install from https://docs.docker.com/docker-for-mac/install/
 
 
