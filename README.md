@@ -74,10 +74,3 @@ Seed values are read from the [`config`](config.py) module.
 ### Blockchain Setup
 
 See descriptions in [SETUP.md](SETUP.md) for instruction to setup the local nodes.
-
-#### Hyperledger Sawtooth Adapter
-The Hyperledger Sawtooth adapter does not support python 3.6.      
-It was therefore removed from the requirements.txt.     
-To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. `f"{}"`) or use the workaround listed in setup.md (only tested on MacOS).
-
-   
