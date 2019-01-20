@@ -40,8 +40,13 @@ Activate environment:
 `source venv/bin/activate`    
 The python version of the environment will be the one with which the environment is created.    
 Deactivate environment:       
-  
+
+
+
 ### Import/Export and install dependencies
+
+#### Preparation
+(Linux only:) `sudo apt-get install python-dev`
 First, upgrade pip: `pip install --upgrade pip`
 
 Export: `venv/bin/pip freeze > requirements.txt`    
