@@ -32,6 +32,8 @@ Python 3.6.6 (also tested with 3.6.5) was used for this project. It is compatibl
 (Mac) Install from https://docs.docker.com/docker-for-mac/install/
 
 ### How to use venv
+Install (only needed on Linux):    
+`apt-get install python3-venv`    
 Create environment:    
 `python3 -m venv venv`    
 Activate environment:    
