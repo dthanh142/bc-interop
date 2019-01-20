@@ -56,7 +56,7 @@ Import/Install depenencies: `venv/bin/pip install -r requirements.txt`
 Export: `venv/bin/pip freeze > requirements.txt`    
 
 ### Database Setup
-(Mac Only) Install sqlite:
+(Mac Only) Install sqlite: `brew install sqlite3
 ```
 import db.database
 db.database.setup()
