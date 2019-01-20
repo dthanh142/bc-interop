@@ -108,7 +108,8 @@ IOTA does not need a sender for zero-value transactions. This means there is no 
 ## Hyperledger Sawtooth
 
 ### Setup Linux
-`sudo apt install libsecp256k1-dev` 
+`sudo apt-get install python3-pip build-essential autoconf  libtool automake pkg-config libtool libffi-dev libgmp-dev python-dev libsecp256k1-dev`
+`sudo pip3 install sawtooth-sdk` (only works with sudo pip)  
 `pip install sawtooth-sdk`
 
 ### Setup MacOS
@@ -119,16 +120,8 @@ Therefore refactor i.e. `f"{}"`
 Enable commented out imports in api.py.
 
 Start the node:    
-`docker-compose -f docker/docker-compose_hyperledger.yaml up`  (on Linux, sudo may be required)    
+`sudo docker-compose -f docker/docker-compose_hyperledger.yaml up`  (on Linux, sudo may be required)    
 
-#### No needed???????
-`sudo apt-get install python3-pip` 
-`sudo pip3 install sawtooth-sdk==1.0.1`
-`apt-get install autoconf automake libtool`    
-`sudo apt install python3-pip`    
-`sudo -H pip3 install secp256k1`    
-`sudo apt-get install libssl-dev`    
-`sudo pip3 install sawtooth-sdk`    
 
 See:    
 https://github.com/ludbb/secp256k1-py/issues/24#issuecomment-397505150
