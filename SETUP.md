@@ -147,10 +147,11 @@ https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/doc
 ## Multichain
 Build and start the docker container:    
 `docker-compose -f docker/docker_multichain/docker-compose.yml up` (on Linux, sudo may be required)    
-Enter container:
+Look up the name of the running container (column NAMES):    
+`sudo docker container ls`    
+Enter container:     
 `docker exec -it docker_multichain_masternode_1_5454208681af sh`, replace with name of container
-To get the name of the container (column NAMES):    
-`sudo docker container ls`
+
 
 
 Start CLI tool with preconfigured blockchain dockerchain:         
