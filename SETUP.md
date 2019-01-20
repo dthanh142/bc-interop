@@ -113,6 +113,7 @@ IOTA does not need a sender for zero-value transactions. This means there is no 
 
 ### Setup MacOS
 Sawtooth only supports version 3.5 because there is no way to install a compatible version of libsecp256k1 on Mac.
+Therefore refactor i.e. `f"{}"`
 
 ### Start
 Enable commented out imports in api.py.
