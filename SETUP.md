@@ -92,6 +92,8 @@ Uses public node, no local node is needed.
 The EOS library uses NodeJS in the background. Therefore install NodeJS:
 Mac: https://nodejs.org/en/download/     
 Linux:`apt-get -y install nodejs`
+Install eosjs with node:    
+`sudo npm install -g eosjs`
 
 ### Account creation
 An account can be created using http://jungle.cryptolions.io/#home
