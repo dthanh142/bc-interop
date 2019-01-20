@@ -146,7 +146,7 @@ https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/doc
    
 ## Multichain
 Build and start the docker container:    
-`docker-compose -f docker/docker_multichain/docker-compose.yml up`    
+`docker-compose -f docker/docker_multichain/docker-compose.yml up` (on Linux, sudo may be required)    
 Enter container:
 `docker exec -it docker_multichain_masternode_1_5454208681af sh`, replace with name of container
 
