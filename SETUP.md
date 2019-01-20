@@ -106,31 +106,16 @@ Uses public node, no local node is needed.
 IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
 
 ## Hyperledger Sawtooth
+As the setup for Hyperledger is more error prone to changes in the host environment, it is commented out by default in api.py.     
+Please follow the setup instructions below.
 
-### Setup Linux
-`sudo apt-get install python3-pip build-essential autoconf  libtool automake pkg-config libtool libffi-dev libgmp-dev python-dev libsecp256k1-dev`    
+
+### Setup
+(Linux)`sudo apt-get install python3-pip build-essential autoconf  libtool automake pkg-config libtool libffi-dev libgmp-dev python-dev libsecp256k1-dev`      
+(Mac)`brew install autoconf automake libtool`     
+
 `sudo pip3 install sawtooth-sdk` (only works with sudo pip)      
 `pip install sawtooth-sdk`    
-
-### Setup MacOS
-Sawtooth only supports version 3.5 because there is no way to install a compatible version of libsecp256k1 on Mac.
-Therefore refactor i.e. `f"{}"`
-
-See:    
-https://github.com/ludbb/secp256k1-py/issues/24#issuecomment-397505150
-
-download and unpack: https://pypi.org/project/sawtooth-sdk/#
-Make sure those are installed on your machine by running:         
-`brew install autoconf automake libtool`    
-IF there is a certification error installing secp256k1:    
-`/Applications/Python\ 3.6/Install\ Certificates.command`
-
-Download the source from the repo:
-https://github.com/stfairy/secp256k1-py
-`sudo apt-get install python3-setuptools` (only needed on linux, preinstalled with python3 on mac)     
-`sudo apt-get install -y pkg-config` (only needed on linux)    
-cd into this directory and then run `python3 setup.py install` to install secp256k1.     
-After that it should be possible to install the hyperledger sawtooth python sdk (`pip install sawtooth-sdk`, will be run from  requirements.txt)
 
 
 ### Start
@@ -141,7 +126,6 @@ Start the node:
 
 
 ### More information
-
 To test if local node is running: `curl http://localhost:8008/blocks`
 https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/docker.html
    
