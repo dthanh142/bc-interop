@@ -114,6 +114,10 @@ Sawtooth only supports version 3.5.
 Thus, when installing requirements there will be some errors while installing sawtooth-sdk.
 
 #### Linux
+`sudo apt-get install python3-pip`     
+`sudo pip3 install sawtooth-sdk==1.0.1`     
+
+
 `apt-get install autoconf automake libtool`    
 `sudo apt install libsecp256k1-dev`    
 `sudo apt install python3-pip`    
@@ -146,15 +150,18 @@ https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/doc
    
 ## Multichain
 Build and start the docker container:    
-`docker-compose -f docker/docker_multichain/docker-compose.yml up`    
-Enter container:
+`docker-compose -f docker/docker_multichain/docker-compose.yml up` (on Linux, sudo may be required)    
+Look up the name of the running container (column NAMES):    
+`sudo docker container ls`    
+Enter container:     
 `docker exec -it docker_multichain_masternode_1_5454208681af sh`, replace with name of container
 
-Start CLI tool with preconfigured blockchain dockerchain:     
+Start CLI tool with preconfigured blockchain dockerchain:         
 `multichain-cli dockerchain`    
 
-Create keys and save the result of this in the DB file:    
-`>createkeypairs` will return something like this:
+Create keys:        
+`>createkeypairs` will return something like this:    
+```
 [
     {
         "address" : "1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y",
@@ -162,6 +169,10 @@ Create keys and save the result of this in the DB file:
         "privkey" : "VHrFLuvdBeb1oVTmKD48Sdm1ovoc8mS5pbrk2gpKhCUWh72LavvAF8jx"
     }
 ]
-Grant the new address send and receive rights: 
-`grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`
+```
+Save the address and privkey in the SQLite DB under `address` resp. `key`. (e.g. using "DB Browser for SQLite", available in Ubuntu Store and as dmg for Mac)    
+
+Grant the new address send and receive rights:     
+`grant [address from beforesend,receive`     
+e.g. `grant 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y send,receive`    
 Save the resulting transaction hash in de database as transaction (will be used as input).
