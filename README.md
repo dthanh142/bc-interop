@@ -56,11 +56,8 @@ Import/Install depenencies: `venv/bin/pip install -r requirements.txt`
 Export: `venv/bin/pip freeze > requirements.txt`    
 
 ### Database Setup
-Install sqlite(not needed on linux, TEST on mac):        
-`pip install sqlite`
-
-Run the database setup:    
-```python
+(Mac Only) Install sqlite:
+```
 import db.database
 db.database.setup()
 ```
