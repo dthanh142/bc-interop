@@ -103,10 +103,10 @@ pyzmq==17.1.2
 regex==2018.8.29
 requests==2.19.1
 rlp==1.0.3
-sawtooth-sdk==1.0.5
-sawtooth-signing==1.0.5
-scrypt==0.8.6
-secp256k1==0.13.2
+#sawtooth-sdk==1.0.5
+#sawtooth-signing==1.0.5
+scrypt==0.8.	6
+#secp256k1==0.13.2
 simplejson==3.16.0
 six==1.11.0
 sseclient==0.0.19
