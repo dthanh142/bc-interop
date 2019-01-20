@@ -89,7 +89,7 @@ cd in the folder and run `python setup.py install`
 
 ## EOS
 Uses public node, no local node is needed.
-The EOS library uses NodeJS in the background. Therefore install NodeJS:
+The EOS library uses NodeJS in the background. Therefore install NodeJS:    
 Mac: https://nodejs.org/en/download/     
 Linux:`apt-get -y install nodejs`
 Install eosjs with node:    
