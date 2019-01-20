@@ -106,19 +106,21 @@ Uses public node, no local node is needed.
 IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
 
 ## Hyperledger Sawtooth
-Start the node:    
-`docker-compose -f docker/docker-compose_hyperledger.yaml up`  (on Linux, sudo may be required)    
 
-### Fix Sawtooth SDK installation issues
-Sawtooth only supports version 3.5.
-Thus, when installing requirements there will be some errors while installing sawtooth-sdk.
-
-#### Linux
-
+### Setup Linux
 `sudo apt install libsecp256k1-dev` 
 `pip install sawtooth-sdk`
 
-Not needed??
+### Setup MacOS
+Sawtooth only supports version 3.5 because there is no way to install a compatible version of libsecp256k1 on Mac.
+
+### Start
+Enable commented out imports in api.py.
+
+Start the node:    
+`docker-compose -f docker/docker-compose_hyperledger.yaml up`  (on Linux, sudo may be required)    
+
+#### No needed???????
 `sudo apt-get install python3-pip` 
 `sudo pip3 install sawtooth-sdk==1.0.1`
 `apt-get install autoconf automake libtool`    
@@ -129,8 +131,6 @@ Not needed??
 
 See:    
 https://github.com/ludbb/secp256k1-py/issues/24#issuecomment-397505150
-
-#### Mac
 
 download and unpack: https://pypi.org/project/sawtooth-sdk/#
 Make sure those are installed on your machine by running:         
