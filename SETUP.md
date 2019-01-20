@@ -116,13 +116,6 @@ IOTA does not need a sender for zero-value transactions. This means there is no 
 Sawtooth only supports version 3.5 because there is no way to install a compatible version of libsecp256k1 on Mac.
 Therefore refactor i.e. `f"{}"`
 
-### Start
-Enable commented out imports in api.py.
-
-Start the node:    
-`sudo docker-compose -f docker/docker-compose_hyperledger.yaml up`  (on Linux, sudo may be required)    
-
-
 See:    
 https://github.com/ludbb/secp256k1-py/issues/24#issuecomment-397505150
 
@@ -138,6 +131,14 @@ https://github.com/stfairy/secp256k1-py
 `sudo apt-get install -y pkg-config` (only needed on linux)    
 cd into this directory and then run `python3 setup.py install` to install secp256k1.     
 After that it should be possible to install the hyperledger sawtooth python sdk (`pip install sawtooth-sdk`, will be run from  requirements.txt)
+
+
+### Start
+Enable commented out imports in api.py.
+
+Start the node:    
+`sudo docker-compose -f docker/docker-compose_hyperledger.yaml up`  (on Linux, sudo may be required)    
+
 
 ### More information
 
