@@ -56,7 +56,7 @@ Use this command if upgrading pip fails due to SSL cert error:
 
 
 ### Database Setup
-Install sqlite:        
+Install sqlite(not needed on linux, TEST on mac):        
 `pip install sqlite`
 
 Run the database setup:    
