@@ -45,7 +45,7 @@ Deactivate environment:
 
 #### Preparation
 First, upgrade pip: `pip install --upgrade pip`     
-(Linux only)`sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev libssl-dev`
+(Linux only)`sudo apt-get install build-essential libssl-dev libffi-dev python3-dev`
 
 *Upgrade pip on <3.6:*    
 (Mac only) Use this command if upgrading upgrading pip fails due to SSL cert error:    
