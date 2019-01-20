@@ -166,7 +166,7 @@ Create keys:
     }
 ]
 ```
-Save the address and privkey in the SQLite DB under `address` resp. `key`.    
+Save the address and privkey in the SQLite DB under `address` resp. `key`. (e.g. using "DB Browser for SQLite", available in Ubuntu Store and as dmg for Mac)    
 
 Grant the new address send and receive rights:     
 `grant [address from beforesend,receive`     
