@@ -38,8 +38,7 @@ def askForMethod():
 	except (KeyboardInterrupt, SystemExit):
 		raise
 	except (KeyError):
-		print('Please do not click! Starting over...')
-		askForMethod()
+		print('Exiting...')
 
 
 def caseStore():
