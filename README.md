@@ -52,7 +52,7 @@ First, upgrade pip: `pip install --upgrade pip`
 `curl https://bootstrap.pypa.io/get-pip.py | python`
 
 #### Install/Export Dependencies  
-Import/Install depenencies: `venv/bin/pip install -r requirements.txt`
+Import/Install depenencies: `venv/bin/pip install -r requirements.txt`    
 Export: `venv/bin/pip freeze > requirements.txt`    
 
 ### Database Setup
