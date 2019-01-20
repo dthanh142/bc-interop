@@ -31,7 +31,7 @@ Python 3.6.6 (also tested with 3.6.5) was used for this project. It was tested o
 
 (Mac) Install from https://docs.docker.com/docker-for-mac/install/
 
-### How to use venv
+### Setup virtual environment (venv)
 (Linux Only) Install venv:    
 `apt-get install python3-venv`    
 Create environment:    
@@ -41,25 +41,19 @@ Activate environment:
 The python version of the environment will be the one with which the environment is created.    
 Deactivate environment:       
 
-
-
-### Import/Export and install dependencies
+### Install dependencies
 
 #### Preparation
-(Linux only:) `sudo apt-get install python-dev`
 First, upgrade pip: `pip install --upgrade pip`
-
-Export: `venv/bin/pip freeze > requirements.txt`    
-Import/Install: `venv/bin/pip install -r requirements.txt`
-
-*Installation problems on linux:*
-You may have to do the following installs:    
-`sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev libssl-dev`
+(Linux only)`sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev libssl-dev`
 
 *Upgrade pip on <3.6:*    
-Use this command if upgrading pip fails due to SSL cert error:    
+(Mac only) Use this command if upgrading upgrading pip fails due to SSL cert error:    
 `curl https://bootstrap.pypa.io/get-pip.py | python`
 
+#### Install/Export Dependencies  
+Import/Install depenencies: `venv/bin/pip install -r requirements.txt`
+Export: `venv/bin/pip freeze > requirements.txt`    
 
 ### Database Setup
 Install sqlite(not needed on linux, TEST on mac):        
