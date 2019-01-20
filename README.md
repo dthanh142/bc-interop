@@ -83,8 +83,4 @@ The Hyperledger Sawtooth adapter does not support python 3.6.
 It was therefore removed from the requirements.txt.     
 To use the Sawtooth Hyperledger adapter either use Python 3.5 (refactor adapter accordingly i.e. `f"{}"`) or use the workaround listed in setup.md (only tested on MacOS).
 
-### Useful docker commands 
-Stop and remove all docker container:     
-`docker rm -f $(docker ps -a -q)`    
-Delete all images:    
-`docker rmi $(docker images -q)`     
+   
