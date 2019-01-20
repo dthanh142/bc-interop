@@ -153,11 +153,12 @@ To get the name of the container (column NAMES):
 `sudo docker container ls`
 
 
-Start CLI tool with preconfigured blockchain dockerchain:     
+Start CLI tool with preconfigured blockchain dockerchain:         
 `multichain-cli dockerchain`    
 
-Create keys and save the result of this in the DB file:    
-`>createkeypairs` will return something like this:
+Create keys and save the result of this in the DB file:        
+`>createkeypairs` will return something like this:    
+```
 [
     {
         "address" : "1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y",
@@ -165,6 +166,7 @@ Create keys and save the result of this in the DB file:
         "privkey" : "VHrFLuvdBeb1oVTmKD48Sdm1ovoc8mS5pbrk2gpKhCUWh72LavvAF8jx"
     }
 ]
-Grant the new address send and receive rights: 
-`grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`
+```
+Grant the new address send and receive rights:     
+`grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`     
 Save the resulting transaction hash in de database as transaction (will be used as input).
