@@ -42,7 +42,7 @@ $ bitcoin-cli stop
 
 ## Ethereum
 This command will start a docker node with a preconfigured account which holds 100 eth
-`docker-compose -f  docker/docker_compose_eth.yaml up`
+`docker-compose -f  docker/docker_compose_eth.yaml up` (on Linux, sudo may be required)
 
 ### Dependencies
 Docker image used from here:    
@@ -56,7 +56,7 @@ Password = 123456
 Port 5432
 ```
 The DB structure will be automatically build when using the adapter.
-`docker-compose -f docker/docker_compose_postgres.yaml up`
+`docker-compose -f docker/docker_compose_postgres.yaml up`  (on Linux, sudo may be required)
 
 #### More information:    
 Psycopg: http://initd.org/psycopg/docs/install.html#binary-install-from-pypi    
@@ -68,7 +68,7 @@ Uses public node, no local node is needed
 
 ### To run with local node instead of public node
 Run a docker container and map port 8000 for REST requests.    
-`docker run --rm -it -p "8000:8000" --name stellar stellar/quickstart --testnet`    
+`docker run --rm -it -p "8000:8000" --name stellar stellar/quickstart --testnet`  (on Linux, sudo may be required)   
 In stellar_adapter.py, enable the following line:   
 builder = Builder(secret=cls.key, horizon_uri="http://localhost:8000/")
 
@@ -99,7 +99,7 @@ IOTA does not need a sender for zero-value transactions. This means there is no 
 
 ## Hyperledger Sawtooth
 Start the node:    
-`docker-compose -f docker/docker-compose_hyperledger.yaml up`    
+`docker-compose -f docker/docker-compose_hyperledger.yaml up`  (on Linux, sudo may be required)    
 
 ### Fix Sawtooth SDK installation issues
 Sawtooth only supports version 3.5.
