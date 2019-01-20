@@ -106,15 +106,15 @@ Uses public node, no local node is needed.
 IOTA does not need a sender for zero-value transactions. This means there is no need to create an account and private key to sign the transaction.
 
 ## Hyperledger Sawtooth
-As the setup for Hyperledger is more error prone to changes in the host environment, it is commented out by default in api.py.     
-Please follow the setup instructions below.
+As the Hyperledger libary tends to cause issues when installing, it is commented out by default in api.py.     
+Please follow the setup instructions below to install and enable it.
 
 
 ### Setup
 (Linux)`sudo apt-get install python3-pip build-essential autoconf  libtool automake pkg-config libtool libffi-dev libgmp-dev python-dev libsecp256k1-dev`      
 (Mac)`brew install autoconf automake libtool`     
 
-`sudo pip3 install sawtooth-sdk` (only works with sudo pip)      
+`sudo pip3 install sawtooth-sdk` (only works with sudo pip, install if needed)      
 `pip install sawtooth-sdk`    
 
 
