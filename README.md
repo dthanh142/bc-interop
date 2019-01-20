@@ -43,6 +43,8 @@ Deactivate environment:
 `(venv) $ deactivate`    
   
 ### Import/Export and install dependencies
+First, upgrade pip: `pip install --upgrade pip`
+
 Export: `venv/bin/pip freeze > requirements.txt`    
 Import/Install: `venv/bin/pip install -r requirements.txt`
 
