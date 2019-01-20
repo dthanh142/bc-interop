@@ -108,9 +108,9 @@ IOTA does not need a sender for zero-value transactions. This means there is no 
 ## Hyperledger Sawtooth
 
 ### Setup Linux
-`sudo apt-get install python3-pip build-essential autoconf  libtool automake pkg-config libtool libffi-dev libgmp-dev python-dev libsecp256k1-dev`
-`sudo pip3 install sawtooth-sdk` (only works with sudo pip)  
-`pip install sawtooth-sdk`
+`sudo apt-get install python3-pip build-essential autoconf  libtool automake pkg-config libtool libffi-dev libgmp-dev python-dev libsecp256k1-dev`    
+`sudo pip3 install sawtooth-sdk` (only works with sudo pip)      
+`pip install sawtooth-sdk`    
 
 ### Setup MacOS
 Sawtooth only supports version 3.5 because there is no way to install a compatible version of libsecp256k1 on Mac.
