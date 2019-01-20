@@ -1,5 +1,8 @@
 # Setup
 
+## General Remarks
+The credentials for the test accounts are already provided in the database.
+
 ## Bitcoin
 
 Install the following packages using your favourite package manager:
