@@ -169,5 +169,6 @@ Create keys and save the result of this in the DB file:
 ]
 ```
 Grant the new address send and receive rights:     
-`grant [address from before, e.g. 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y] send,receive`     
+`grant [address from beforesend,receive`     
+e.g. `grant 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y send,receive`    
 Save the resulting transaction hash in de database as transaction (will be used as input).
