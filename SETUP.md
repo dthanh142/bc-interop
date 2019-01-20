@@ -1,5 +1,8 @@
 # Setup
 
+## General Remarks
+The credentials for the test accounts are already provided in the database.
+
 ## Bitcoin
 
 Install the following packages using your favourite package manager:
@@ -88,7 +91,12 @@ cd in the folder and run `python setup.py install`
 
 
 ## EOS
-Uses public node, no local node is needed    
+Uses public node, no local node is needed.
+The EOS library uses NodeJS in the background. Therefore install NodeJS:    
+Mac: https://nodejs.org/en/download/     
+Linux:`apt-get -y install nodejs`
+Install eosjs with node:    
+`sudo npm install -g eosjs`
 
 ### Account creation
 An account can be created using http://jungle.cryptolions.io/#home
