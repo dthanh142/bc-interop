@@ -69,7 +69,6 @@ def migrate(transaction_hash, blockchain):
     """
     value = retrieve(transaction_hash)
     new_hash = store(value, blockchain)
-    print(new_hash)
     return new_hash
 
 
