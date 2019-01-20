@@ -114,12 +114,12 @@ Sawtooth only supports version 3.5.
 Thus, when installing requirements there will be some errors while installing sawtooth-sdk.
 
 #### Linux
-`sudo apt-get install python3-pip`     
+`sudo apt-get install python3-pip` 
+`sudo apt install libsecp256k1-dev` 
 `sudo pip3 install sawtooth-sdk==1.0.1`     
 
-
+Not needed??
 `apt-get install autoconf automake libtool`    
-`sudo apt install libsecp256k1-dev`    
 `sudo apt install python3-pip`    
 `sudo -H pip3 install secp256k1`    
 `sudo apt-get install libssl-dev`    
