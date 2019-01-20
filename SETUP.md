@@ -152,12 +152,10 @@ Look up the name of the running container (column NAMES):
 Enter container:     
 `docker exec -it docker_multichain_masternode_1_5454208681af sh`, replace with name of container
 
-
-
 Start CLI tool with preconfigured blockchain dockerchain:         
 `multichain-cli dockerchain`    
 
-Create keys and save the result of this in the DB file:        
+Create keys:        
 `>createkeypairs` will return something like this:    
 ```
 [
@@ -168,6 +166,8 @@ Create keys and save the result of this in the DB file:
     }
 ]
 ```
+Save the address and privkey in the SQLite DB under address resp. key.    
+
 Grant the new address send and receive rights:     
 `grant [address from beforesend,receive`     
 e.g. `grant 1LKfR5yQVKx3YJ27enyKDNske7XFHzkN6bm43Y send,receive`    
