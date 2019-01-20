@@ -39,7 +39,7 @@ Create environment:
 Activate environment:    
 `source venv/bin/activate`    
 The python version of the environment will be the one with which the environment is created.    
-Deactivate environment:       
+       
 
 ### Install dependencies
 
