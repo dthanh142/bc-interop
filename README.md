@@ -33,7 +33,7 @@ Python 3.6.6 (also tested with 3.6.5) was used for this project. It was tested o
 
 ### Setup virtual environment (venv)
 (Linux Only) Install venv:    
-`apt-get install python3-venv`    
+`sudo apt-get install python3-venv`    
 Create environment:    
 `python3 -m venv venv`    
 Activate environment:    
