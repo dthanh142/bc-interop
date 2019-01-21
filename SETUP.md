@@ -1,7 +1,7 @@
 # Setup
 
 ## General Remarks
-The credentials for the test accounts are already provided in the database.
+There are credentials provided in the database which can be used for testing. Additionally, there is code to help you create an account in the `account_creation folder.
 
 ## Bitcoin
 
