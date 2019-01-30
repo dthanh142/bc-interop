@@ -96,8 +96,8 @@ The EOS library uses NodeJS in the background. Therefore install NodeJS:
 Mac: https://nodejs.org/en/download/     
 Linux:`apt-get -y install nodejs`
 Install eosjs with node:    
-`sudo npm install -g eosjs`
-If you got a message saying "module not found", follow this:
+`sudo npm install -g eosjs`    
+If you got a message saying "module not found", follow this:    
 https://github.com/EvaCoop/eosjs_python/issues/4#issuecomment-433742701
 
 ### Account creation
