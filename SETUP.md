@@ -101,7 +101,7 @@ If you got a message saying "module not found", follow this:
 https://github.com/EvaCoop/eosjs_python/issues/4#issuecomment-433742701
 
 ### Account creation
-An account can be created using http://jungle.cryptolions.io/#home
+Info about creating the account and using the faucet can be found here: https://jungletestnet.io/
 
 ## IOTA
 Uses public node, no local node is needed.    
