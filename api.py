@@ -1,7 +1,7 @@
 # append the root project path to the pythonpath so that blockchain.py can be accessed by every adapter
 import sys
 import os
-sys.path.append("/Users/timo/Documents/repos/bc-interop")
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 from adapters.btc_adapter import BTCAdapter
 from adapters.mc_adapter import MCAdapter
