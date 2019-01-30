@@ -12,7 +12,7 @@ class EosAdapter(Adapter):
     address = credentials['address']
     key = credentials['key']
     user = credentials['user']
-    node_url = "http://dev.cryptolions.io:38888"
+    node_url = "http://jungle2.cryptolions.io:80"
 
     eos = Eos({
         'http_address': node_url,
